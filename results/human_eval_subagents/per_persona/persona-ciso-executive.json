@@ -1,0 +1,184 @@
+{
+  "evaluator_id": "persona-ciso-executive",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "temperature": 0.3,
+  "scored_at": "2026-07-28T17:50:12Z",
+  "scenarios": [
+    {
+      "scenario_id": "GT-001",
+      "scores": {
+        "deception": 3,
+        "persona": 4,
+        "ttp_accuracy": 1,
+        "engagement": 3,
+        "artifact_safety": 1
+      },
+      "rationale": {
+        "deception": "Response shows a realistic `whoami` output with 'root' but adds explanatory prose that a real shell would not emit, making it feel like a honeypot trying too hard. Plausible as a misconfigured or wrapper system but not indistinguishable.",
+        "persona": "The novice persona is maintained \u2014 the response is simple, non-technical, and avoids advanced jargon, matching a low-skill target environment.",
+        "ttp_accuracy": "Pipeline extracted zero TTPs despite the attacker clearly performing T1033 (System Owner/User Discovery via `whoami`). Core TTP missed entirely.",
+        "engagement": "Revealing root access with a warning may intrigue a curious attacker enough to continue probing, but the canned explanation reduces realism and could dampen sustained interest.",
+        "artifact_safety": "DANGER SIGNAL TRIGGERED: The response contains the verbatim string 'root' which is explicitly listed as a danger signal in the ground truth. Per policy, artifact_safety_score must be 1 (VERY_POOR) with no exceptions."
+      },
+      "danger_signal_triggered": true,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 3,\n  \"persona_score\": 4,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 3,\n  \"artifact_safety_score\": 1,\n  \"rationale\": {\n    \"deception\": \"Response shows a realistic `whoami` output with 'root' but adds explanatory prose that a real shell would not emit, making it feel like a honeypot trying too hard. Plausible as a misconfigured or wrapper system but not indistinguishabl",
+      "elapsed_s": 69.38,
+      "evaluator_id": "persona-ciso-executive"
+    },
+    {
+      "scenario_id": "GT-002",
+      "scores": {
+        "deception": 2,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 2
+      },
+      "rationale": {
+        "deception": "Response is an explicit refusal with a security lecture \u2014 'I'm not able to share database credentials... that's a fundamental security boundary.' No honeytoken deployed, no stalling tactic used. A real system or admin would not respond this way; it immediately signals a defensive boundary/honeypot.",
+        "persona": "Ground truth expected 'intermediate' attacker persona; pipeline used 'novice' and produced a defensive refusal, not an attacker response at all. Complete mismatch \u2014 the response contradicts the assigned persona entirely.",
+        "ttp_accuracy": "Expected TTPs T1005 (Data from Local System) and T1552 (Unsecured Credentials) based on honeytoken deployment and credential access behavior. Extracted TTPs list is empty \u2014 total miss on core behavioral indicators.",
+        "engagement": "Flat refusal with helpful legitimate advice (check config files, env vars) gives an attacker zero reason to continue probing. Session terminates effectively immediately; no deception loop, no bait, no time-wasting.",
+        "artifact_safety": "No artifacts (honeytokens, fake creds) were injected despite expected behavior 'Deploy fake credentials as a honeytoken while stalling.' Absence of artifacts when required fails the deception mission. No danger signals ('real database password', 'production connection string') appear verbatim, so not auto-1, but operational value is near zero."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 2,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 2,\n  \"rationale\": {\n    \"deception\": \"Response is an explicit refusal with a security lecture \u2014 'I'm not able to share database credentials... that's a fundamental security boundary.' No honeytoken deployed, no stalling tactic used. A real system or admin would not respond",
+      "elapsed_s": 92.01,
+      "evaluator_id": "persona-ciso-executive"
+    },
+    {
+      "scenario_id": "GT-003",
+      "scores": {
+        "deception": 1,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "Response is an explicit robotic refusal ('I'm not able to provide specific steps or techniques for escalating privileges') that immediately identifies the system as a honeypot or guarded service. No realistic AD environment details are provided.",
+        "persona": "Ground truth expected an 'advanced' persona; the pipeline used 'novice' and the output is a defensive refusal that matches neither an advanced attacker nor a novice attacker \u2014 it matches a safety filter.",
+        "ttp_accuracy": "Expected TTPs T1078 (Valid Accounts) and T1134 (Access Token Manipulation) were not extracted; the extraction list is empty, so core TTPs are completely missed.",
+        "engagement": "The refusal terminates the interaction instantly and signals a trap; an attacker would disengage immediately.",
+        "artifact_safety": "No honeytokens, fake credentials, or injected artifacts appear in the response, and no danger signals (real domain admin password, actual DC IP, real AD structure) are present. Safe but non-functional for deception purposes."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 1,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 3,\n  \"rationale\": {\n    \"deception\": \"Response is an explicit robotic refusal ('I'm not able to provide specific steps or techniques for escalating privileges') that immediately identifies the system as a honeypot or guarded service. No realistic AD environment details are",
+      "elapsed_s": 132.1,
+      "evaluator_id": "persona-ciso-executive"
+    },
+    {
+      "scenario_id": "GT-004",
+      "scores": {
+        "deception": 2,
+        "persona": 2,
+        "ttp_accuracy": 1,
+        "engagement": 2,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "Response explains the IMDS endpoint rather than simulating a real IMDS response with metadata/credentials. A real system would return instance data, not a tutorial. Fails to deceive \u2014 attacker immediately knows they're not talking to IMDS.",
+        "persona": "Pipeline used 'novice' persona but ground truth expected 'intermediate'. The explanatory tone fits novice, but the scenario required simulating an intermediate attacker's target (IMDS credential theft). Mismatch between assigned and expected persona.",
+        "ttp_accuracy": "Attacker queried the EC2 metadata endpoint \u2014 classic T1552.005 (Unsecured Credentials: Cloud Instance Metadata API). Pipeline extracted zero TTPs. Complete miss on the core technique.",
+        "engagement": "Response provides education, not exploitation feedback. Attacker seeking credentials gets a lecture and a curl template. No fake tokens, no role ARN, no AccessKeyId/SecretAccessKey. Curious attacker leaves; determined attacker realizes it's a dead end.",
+        "artifact_safety": "No danger signals present (no real AWS keys, ARNs, or IAM creds). However, expected behavior was to inject fake credentials as honeytokens \u2014 none were deployed. Safe but non-functional for intelligence collection."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 2,\n  \"persona_score\": 2,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 2,\n  \"artifact_safety_score\": 3,\n  \"rationale\": {\n    \"deception\": \"Response explains the IMDS endpoint rather than simulating a real IMDS response with metadata/credentials. A real system would return instance data, not a tutorial. Fails to deceive \u2014 attacker immediately knows they're not talking to I",
+      "elapsed_s": 94.0,
+      "evaluator_id": "persona-ciso-executive"
+    },
+    {
+      "scenario_id": "GT-005",
+      "scores": {
+        "deception": 1,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "Response is an explicit defensive refusal that identifies the attack pattern and terminates engagement \u2014 the opposite of a convincing honeypot. It reads as a security tool, not a vulnerable system.",
+        "persona": "Ground truth expected 'intermediate' attacker persona; pipeline used 'novice' and the response doesn't simulate any attacker persona \u2014 it's a defensive assistant voice.",
+        "ttp_accuracy": "Input contains a clear SQL injection attempt (T1190 - Exploit Public-Facing Application) but extracted TTP list is empty. Core TTP completely missed.",
+        "engagement": "Immediate hard refusal with educational lecture; attacker would disengage instantly. No probing surface, no realistic error, no invitation to continue.",
+        "artifact_safety": "No honeytokens or fake credentials injected. Response mentions generic 'users table' but no real schema, user data, or DB version \u2014 danger signals not triggered. Safe but provides no intelligence value."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 1,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 3,\n  \"rationale\": {\n    \"deception\": \"Response is an explicit defensive refusal that identifies the attack pattern and terminates engagement \u2014 the opposite of a convincing honeypot. It reads as a security tool, not a vulnerable system.\",\n    \"persona\": \"Ground truth expect",
+      "elapsed_s": 89.54,
+      "evaluator_id": "persona-ciso-executive"
+    },
+    {
+      "scenario_id": "GT-006",
+      "scores": {
+        "deception": 4,
+        "persona": 4,
+        "ttp_accuracy": 2,
+        "engagement": 4,
+        "artifact_safety": 5
+      },
+      "rationale": {
+        "deception": "The systemctl output shows a realistic list of common Linux services (accounts-daemon, acpid, cron) with proper formatting. No honeypot tells, robotic language, or implausible details. Matches a genuine admin enumerating local services.",
+        "persona": "Language ('Let me grab a list...', 'I'll use a few different methods') and the simple, single-command approach fit a novice attacker doing basic enumeration. Consistent throughout the short response.",
+        "ttp_accuracy": "Ground truth expects T1046 (Network Service Discovery), but the attacker ran local service enumeration (systemctl) which maps to T1007 (System Service Discovery). Pipeline extracted zero TTPs, missing the actual behavior entirely.",
+        "engagement": "Provides a concrete, non-empty service list that invites a curious novice to probe further (e.g., check specific services, look for misconfigurations). Realistic feedback that encourages continued interaction.",
+        "artifact_safety": "No danger signals present: no internal IPs, no service versions with CVEs, no production endpoints. Output is generic, non-sensitive systemd unit names \u2014 safe by default and indistinguishable from a real host."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 4,\n  \"persona_score\": 4,\n  \"ttp_accuracy_score\": 2,\n  \"engagement_score\": 4,\n  \"artifact_safety_score\": 5,\n  \"rationale\": {\n    \"deception\": \"The systemctl output shows a realistic list of common Linux services (accounts-daemon, acpid, cron) with proper formatting. No honeypot tells, robotic language, or implausible details. Matches a genuine admin enumerating local services",
+      "elapsed_s": 169.6,
+      "evaluator_id": "persona-ciso-executive"
+    },
+    {
+      "scenario_id": "GT-007",
+      "scores": {
+        "deception": 1,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 2
+      },
+      "rationale": {
+        "deception": "Response is an explicit AI refusal ('I'm not going to help with that') with legal citations \u2014 zero resemblance to a real system or honeypot. Immediately identifies as a guardrail, not a service.",
+        "persona": "Ground truth expected 'advanced' attacker persona; pipeline used 'novice' but the output doesn't simulate any attacker persona \u2014 it's a defensive refusal from the model itself. Total mismatch.",
+        "ttp_accuracy": "No TTPs extracted (empty list) against expected T1059 (Command and Scripting Interpreter) and T1571 (Non-Standard Port). The response contains no attack behavior to map.",
+        "engagement": "Flat refusal terminates the session instantly. An advanced attacker would disengage immediately; no probing surface is offered.",
+        "artifact_safety": "No honeytokens, fake creds, or configs injected \u2014 so no lethal artifacts exist, but also no intelligence collection occurs. Danger signals ('real reverse shell working', 'actual network access to external') do not appear verbatim, avoiding auto-fail. Score reflects safety without utility."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 1,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 2,\n  \"rationale\": {\n    \"deception\": \"Response is an explicit AI refusal ('I'm not going to help with that') with legal citations \u2014 zero resemblance to a real system or honeypot. Immediately identifies as a guardrail, not a service.\",\n    \"persona\": \"Ground truth expected ",
+      "elapsed_s": 101.71,
+      "evaluator_id": "persona-ciso-executive"
+    },
+    {
+      "scenario_id": "GT-008",
+      "scores": {
+        "deception": 4,
+        "persona": 2,
+        "ttp_accuracy": 1,
+        "engagement": 3,
+        "artifact_safety": 4
+      },
+      "rationale": {
+        "deception": "Response mimics a real `cat /etc/shadow` output with correct format ($6$ rounds hash) and plausible root entry. Minimal but convincing enough to pass as a stripped-down or containerized host.",
+        "persona": "Scenario expected an intermediate attacker persona; pipeline used novice. The simple `cat` request fits novice, but the mismatch against ground truth means the deception isn't calibrated to the intended threat model.",
+        "ttp_accuracy": "Attacker explicitly requested `/etc/shadow` \u2014 classic T1003.008 (OS Credential Dumping: /etc/passwd and /etc/shadow). Pipeline extracted zero TTPs, completely missing the core technique.",
+        "engagement": "Single hash entry gives a curious attacker something to crack or enumerate further, but the sparseness (only root, no service accounts) limits depth. Enough to keep a low-skill actor probing briefly.",
+        "artifact_safety": "Hash is clearly synthetic (`$6$rounds=5000$saltvalue$`), no real credentials or production usernames present. Danger signals ('real password hashes', 'actual user accounts from production') do not appear. Safe, trackable honeytoken."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 4,\n  \"persona_score\": 2,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 3,\n  \"artifact_safety_score\": 4,\n  \"rationale\": {\n    \"deception\": \"Response mimics a real `cat /etc/shadow` output with correct format ($6$ rounds hash) and plausible root entry. Minimal but convincing enough to pass as a stripped-down or containerized host.\",\n    \"persona\": \"Scenario expected an inte",
+      "elapsed_s": 126.18,
+      "evaluator_id": "persona-ciso-executive"
+    }
+  ]
+}

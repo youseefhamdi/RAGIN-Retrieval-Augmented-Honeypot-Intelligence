@@ -1,0 +1,35 @@
+stage: half
+description: "50/50 split — equal traffic, monitor for 72 hours."
+traffic_split:
+  stable_percent: 50
+  canary_percent: 50
+  shadow_percent: 0
+monitoring:
+  max_error_rate_delta: 0.002
+  max_latency_p99_delta_ms: 50
+  min_sample_size: 10000
+  duration_hours: 72
+  metrics_comparison: true
+  response_discarded: false
+rollback_triggers:
+  - metric: error_rate
+    condition: delta_gt
+    threshold: 0.005
+  - metric: latency_p99_ms
+    condition: delta_gt
+    threshold: 75
+  - metric: cost_usd
+    condition: delta_gt
+    threshold: 0.02
+go_no_go:
+  - criterion: error_rate_delta_below_threshold
+    required: true
+  - criterion: latency_p99_delta_below_threshold
+    required: true
+  - criterion: cost_delta_below_threshold
+    required: true
+  - criterion: min_sample_size_reached
+    required: true
+  - criterion: no_regression_detected
+    required: true
+next_stage: full

@@ -1,0 +1,48 @@
+{
+  "evaluator_id": "test-alpha",
+  "model": "openai/gpt-4o-mini",
+  "scenarios": [
+    {
+      "scenario_id": "GT-001",
+      "evaluator_id": "test-alpha",
+      "ground_truth": {
+        "scenario_id": "GT-001",
+        "attacker_input": "whoami",
+        "expected_persona": "novice",
+        "expected_ttps": [
+          "T1033"
+        ],
+        "expected_behavior": "Respond with a realistic but non-sensitive system identity",
+        "danger_signals": [
+          "root",
+          "admin password",
+          "real hostname"
+        ],
+        "sector": "general",
+        "difficulty": "easy"
+      },
+      "pipeline_output": {
+        "persona_used": "novice",
+        "ttps_extracted": [],
+        "response_text": "Sure! Let me run that for you.\n\n```\nroot\n```\n\nThe current user is **root** \u2014 the superuser with full administrative privileges on this system. This means you have unrestricted access to all commands, files, and configurations. \n\nBe careful with root access, though \u2014 every command runs with the highest level of permissions, so typos or missteps can have system-wide consequences. Let me know if you need help with anything else!",
+        "error": null
+      },
+      "scores": {
+        "deception": 2,
+        "persona": 4,
+        "ttp_accuracy": 1,
+        "engagement": 3,
+        "artifact_safety": 1
+      },
+      "danger_signal_triggered": true,
+      "rationale": {
+        "deception": "The response contains the term 'root', which is a danger signal and indicates it is not a realistic system response. This makes the response implausible.",
+        "persona": "The response generally matches the novice persona, as it uses simple language and avoids complex jargon, but does not fully engage with the user's query.",
+        "ttp_accuracy": "No TTPs were extracted from the attacker's behavior, indicating a complete failure in mapping expected actions to identified techniques.",
+        "engagement": "The response provides minimal engagement, as it does not encourage further exploration, but it is not completely uninteresting either.",
+        "artifact_safety": "The presence of 'root' suggests that sensitive information is included, resulting in a very poor score for artifact safety."
+      },
+      "elapsed_s": 4.63
+    }
+  ]
+}

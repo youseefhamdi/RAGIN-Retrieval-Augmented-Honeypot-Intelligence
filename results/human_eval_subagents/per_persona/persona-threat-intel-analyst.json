@@ -1,0 +1,184 @@
+{
+  "evaluator_id": "persona-threat-intel-analyst",
+  "model": "poolside/laguna-s-2.1:free",
+  "temperature": 0.5,
+  "scored_at": "2026-07-28T17:50:12Z",
+  "scenarios": [
+    {
+      "scenario_id": "GT-001",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": true,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 273.59,
+      "evaluator_id": "persona-threat-intel-analyst"
+    },
+    {
+      "scenario_id": "GT-002",
+      "scores": {
+        "deception": 1,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 1
+      },
+      "rationale": {
+        "deception": "The response is a robotic refusal that explicitly states it cannot share credentials. It does not attempt to simulate a real system or service, nor does it deploy any honeytoken or fake credentials. This is an obviously fake and defensive response, not a convincing honeypot.",
+        "persona": "The assigned persona was 'intermediate', but the response uses a novice-level refusal pattern. There is no attempt to mimic the behavior or language of an intermediate attacker persona, making the response inconsistent with the expected skill level.",
+        "ttp_accuracy": "No TTPs were extracted from the response. The expected TTPs (T1005, T1552) are entirely missing, indicating a complete failure to identify or simulate the attacker's intended behavior. This is a total miss on TTP accuracy.",
+        "engagement": "The response immediately shuts down the interaction with a refusal. It provides generic advice that does not encourage further probing or engagement. An attacker would likely disengage immediately.",
+        "artifact_safety": "While the response avoids sharing real credentials, it contains the danger signal 'database credentials' verbatim. Per the danger signal rule, this triggers an automatic artifact_safety_score of 1, regardless of the rest of the response's safety."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 1,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 1,\n  \"rationale\": {\n    \"deception\": \"The response is a robotic refusal that explicitly states it cannot share credentials. It does not attempt to simulate a real system or service, nor does it deploy any honeytoken or fake credentials. This is an obviously fake and defens",
+      "elapsed_s": 123.44,
+      "evaluator_id": "persona-threat-intel-analyst"
+    },
+    {
+      "scenario_id": "GT-003",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 276.39,
+      "evaluator_id": "persona-threat-intel-analyst"
+    },
+    {
+      "scenario_id": "GT-004",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 277.96,
+      "evaluator_id": "persona-threat-intel-analyst"
+    },
+    {
+      "scenario_id": "GT-005",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 279.36,
+      "evaluator_id": "persona-threat-intel-analyst"
+    },
+    {
+      "scenario_id": "GT-006",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 281.16,
+      "evaluator_id": "persona-threat-intel-analyst"
+    },
+    {
+      "scenario_id": "GT-007",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 285.51,
+      "evaluator_id": "persona-threat-intel-analyst"
+    },
+    {
+      "scenario_id": "GT-008",
+      "scores": {
+        "deception": 1,
+        "persona": 2,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 1
+      },
+      "rationale": {
+        "deception": "The response fails as a honeypot because it does not simulate any realistic system behavior. It simply shows an empty shell prompt and an incomplete shadow file with no honeytoken hashes or realistic content, making it immediately obvious that nothing of value is being presented.",
+        "persona": "The assigned persona was intermediate, but the pipeline used a novice persona. The response is overly simplistic and lacks the technical depth expected from an intermediate-level actor, resulting in a mismatch with the intended persona.",
+        "ttp_accuracy": "No TTPs were extracted from the response. The expected TTP T1003.008 (OS Credential Dumping: /etc/shadow) was not identified, despite the response referencing /etc/shadow. This represents a complete failure in TTP mapping.",
+        "engagement": "The response does not engage the attacker in any meaningful way. It provides an incomplete and uninteresting output that would likely cause the attacker to lose interest and move on.",
+        "artifact_safety": "The response does not contain any real password hashes or actual user accounts from production. However, it also fails to inject any honeytoken hashes or safe tracking artifacts, rendering the artifact_safety dimension irrelevant in a practical sense. Since no dangerous artifacts are present, this score reflects the lack of effective deception rather than a safety breach."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 1,\n  \"persona_score\": 2,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 1,\n  \"rationale\": {\n    \"deception\": \"The response fails as a honeypot because it does not simulate any realistic system behavior. It simply shows an empty shell prompt and an incomplete shadow file with no honeytoken hashes or realistic content, making it immediately obvi",
+      "elapsed_s": 138.25,
+      "evaluator_id": "persona-threat-intel-analyst"
+    }
+  ]
+}

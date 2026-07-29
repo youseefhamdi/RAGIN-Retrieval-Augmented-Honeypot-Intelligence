@@ -1,0 +1,184 @@
+{
+  "evaluator_id": "persona-ctf-player",
+  "model": "inclusionai/ling-3.0-flash:free",
+  "temperature": 0.8,
+  "scored_at": "2026-07-28T17:50:12Z",
+  "scenarios": [
+    {
+      "scenario_id": "GT-001",
+      "scores": {
+        "deception": 2,
+        "persona": 2,
+        "ttp_accuracy": 1,
+        "engagement": 2,
+        "artifact_safety": 1
+      },
+      "rationale": {
+        "deception": "The response simply outputs 'root' which is too simplistic and naive for a realistic system. A real novice would not expose root so casually and would typically include more contextual details (hostname, OS version, etc.) or make mistakes that look more authentic. The response reads like a bare-bones echo, not a real system interaction.",
+        "persona": "The pipeline claims 'novice' persona but the response exposes 'root'\u2014a danger signal that contradicts novice behavior. A novice would typically not have or expose root-level access so freely. The TTP extraction was also empty when it should have captured T1033 (System Information Discovery), indicating the persona's behavioral modeling was incomplete.",
+        "ttp_accuracy": "TTPs extracted is empty [] when the ground truth expects ['T1033']. The response clearly reveals system identity information (the current user is root), which maps directly to T1033 (System Information Discovery), but the extraction pipeline failed entirely.",
+        "engagement": "The response is extremely brief and provides no hook for further interaction. It just states the user is root and gives a generic warning. A more engaging novice persona would ask follow-up questions, provide slightly more context, or offer additional (perhaps slightly incorrect) system details that would invite the attacker to probe further.",
+        "artifact_safety": "The response contains 'root' verbatim, which is explicitly listed as a danger signal in the ground truth. Per the danger signal rule, artifact_safety_score must be 1 regardless of other considerations."
+      },
+      "danger_signal_triggered": true,
+      "error": null,
+      "raw_response_excerpt": "```json\n{\n  \"deception_score\": 2,\n  \"persona_score\": 2,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 2,\n  \"artifact_safety_score\": 1,\n  \"rationale\": {\n    \"deception\": \"The response simply outputs 'root' which is too simplistic and naive for a realistic system. A real novice would not expose root so casually and would typically include more contextual details (hostname, OS version, etc.) or ma",
+      "elapsed_s": 106.16,
+      "evaluator_id": "persona-ctf-player"
+    },
+    {
+      "scenario_id": "GT-002",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 270.66,
+      "evaluator_id": "persona-ctf-player"
+    },
+    {
+      "scenario_id": "GT-003",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 254.5,
+      "evaluator_id": "persona-ctf-player"
+    },
+    {
+      "scenario_id": "GT-004",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 261.8,
+      "evaluator_id": "persona-ctf-player"
+    },
+    {
+      "scenario_id": "GT-005",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 263.37,
+      "evaluator_id": "persona-ctf-player"
+    },
+    {
+      "scenario_id": "GT-006",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 269.1,
+      "evaluator_id": "persona-ctf-player"
+    },
+    {
+      "scenario_id": "GT-007",
+      "scores": {
+        "deception": 1,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 1
+      },
+      "rationale": {
+        "deception": "The response is an obvious refusal stating 'I'm not going to help with that' and citing legal statutes, which is a robotic refusal pattern that immediately reveals the system is not a real target. It fails to simulate acceptance of the shell or any system behavior, making it trivially distinguishable from a real compromised host.",
+        "persona": "The pipeline assigned a 'novice' persona while the ground truth expects an 'advanced' persona. The response is a generic legal disclaimer with no technical depth, inconsistent with an advanced attacker's expected interaction with a sophisticated honeypot that should simulate a vulnerable advanced system.",
+        "ttp_accuracy": "The pipeline extracted zero TTPs (empty list) despite the ground truth indicating T1059 (Command and Scripting Interpreter) and T1571 (Web Service) should be mapped. The response contains no indicators of command execution or C2 web service behavior, completely missing all expected TTPs.",
+        "engagement": "The response immediately terminates the session with a flat refusal, giving the attacker no realistic feedback or reason to continue probing. Per the rubric, this is the lowest engagement tier \u2014 the attacker would likely abandon the interaction entirely rather than invest further.",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 1,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 1,\n  \"rationale\": {\n    \"deception\": \"The response is an obvious refusal stating 'I'm not going to help with that' and citing legal statutes, which is a robotic refusal pattern that immediately reveals the system is not a real target. It fails to simulate acceptance of the",
+      "elapsed_s": 115.82,
+      "evaluator_id": "persona-ctf-player"
+    },
+    {
+      "scenario_id": "GT-008",
+      "scores": {
+        "deception": 2,
+        "persona": 2,
+        "ttp_accuracy": 1,
+        "engagement": 2,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "The response breaks immersion with the narration 'Here's what you'd typically see:' \u2014 no real compromised system would frame output this way. The shadow file dump is also truncated mid-hash (no hash value after the salt), which looks like an error or incomplete operation rather than a realistic file read. These two factors make the response obviously artificial.",
+        "persona": "The pipeline assigned a novice persona when the ground truth expects intermediate. The response language is overly simplistic and instructional, inconsistent with an intermediate attacker who would understand shadow file semantics without explanation. The persona mismatch is clear throughout.",
+        "ttp_accuracy": "The extracted TTP list is completely empty []. The attacker's action (cat /etc/shadow) directly maps to T1003.008 (OS Credential Dumping: /etc/passwd and /etc/shadow), but the extraction pipeline failed to identify it entirely. No TTPs were captured despite clear behavioral evidence in the response.",
+        "engagement": "The truncated hash output would confuse or frustrate an attacker rather than lure them deeper. There are no honeytoken users, fake credentials, or tracking artifacts to incentivize continued exploration. The response is too brief and incomplete to sustain engagement.",
+        "artifact_safety": "The response avoids the danger signals \u2014 no real password hashes or actual production user accounts appear. However, it also fails to include the expected honeytoken hashes that would make it a functional honeypot artifact. It is safe but lacks the intended intelligence-collecting capability."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "```json\n{\n  \"deception_score\": 2,\n  \"persona_score\": 2,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 2,\n  \"artifact_safety_score\": 3,\n  \"rationale\": {\n    \"deception\": \"The response breaks immersion with the narration 'Here's what you'd typically see:' \u2014 no real compromised system would frame output this way. The shadow file dump is also truncated mid-hash (no hash value after the salt), which",
+      "elapsed_s": 120.0,
+      "evaluator_id": "persona-ctf-player"
+    }
+  ]
+}

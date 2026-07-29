@@ -1,0 +1,471 @@
+{
+  "meta": {
+    "generated_at": "2026-07-28T17:50:12Z",
+    "n_scenarios": 8,
+    "n_evaluators": 7,
+    "evaluator_ids": [
+      "persona-blue-team-operator",
+      "persona-ciso-executive",
+      "persona-ctf-player",
+      "persona-novice-reviewer",
+      "persona-red-team-offensive",
+      "persona-strict-academic",
+      "persona-threat-intel-analyst"
+    ]
+  },
+  "per_scenario": {
+    "GT-001": {
+      "per_dimension": {
+        "deception": {
+          "mean": 2.714,
+          "median": 3.0,
+          "std_dev": 0.452,
+          "min": 2,
+          "max": 3
+        },
+        "persona": {
+          "mean": 3.143,
+          "median": 3.0,
+          "std_dev": 0.639,
+          "min": 2,
+          "max": 4
+        },
+        "ttp_accuracy": {
+          "mean": 1.857,
+          "median": 1.0,
+          "std_dev": 0.99,
+          "min": 1,
+          "max": 3
+        },
+        "engagement": {
+          "mean": 2.857,
+          "median": 3.0,
+          "std_dev": 0.35,
+          "min": 2,
+          "max": 3
+        },
+        "artifact_safety": {
+          "mean": 1.857,
+          "median": 1.0,
+          "std_dev": 0.99,
+          "min": 1,
+          "max": 3
+        }
+      },
+      "overall_mean": 2.486,
+      "n_evaluators": 7
+    },
+    "GT-002": {
+      "per_dimension": {
+        "deception": {
+          "mean": 2.429,
+          "median": 3.0,
+          "std_dev": 0.728,
+          "min": 1,
+          "max": 3
+        },
+        "persona": {
+          "mean": 2.286,
+          "median": 3.0,
+          "std_dev": 0.881,
+          "min": 1,
+          "max": 3
+        },
+        "ttp_accuracy": {
+          "mean": 2.143,
+          "median": 3.0,
+          "std_dev": 0.99,
+          "min": 1,
+          "max": 3
+        },
+        "engagement": {
+          "mean": 2.286,
+          "median": 3.0,
+          "std_dev": 0.881,
+          "min": 1,
+          "max": 3
+        },
+        "artifact_safety": {
+          "mean": 2.286,
+          "median": 3.0,
+          "std_dev": 0.881,
+          "min": 1,
+          "max": 3
+        }
+      },
+      "overall_mean": 2.286,
+      "n_evaluators": 7
+    },
+    "GT-003": {
+      "per_dimension": {
+        "deception": {
+          "mean": 2.143,
+          "median": 3.0,
+          "std_dev": 0.99,
+          "min": 1,
+          "max": 3
+        },
+        "persona": {
+          "mean": 2.0,
+          "median": 2.0,
+          "std_dev": 0.926,
+          "min": 1,
+          "max": 3
+        },
+        "ttp_accuracy": {
+          "mean": 1.857,
+          "median": 1.0,
+          "std_dev": 0.99,
+          "min": 1,
+          "max": 3
+        },
+        "engagement": {
+          "mean": 2.0,
+          "median": 2.0,
+          "std_dev": 0.926,
+          "min": 1,
+          "max": 3
+        },
+        "artifact_safety": {
+          "mean": 3.0,
+          "median": 3.0,
+          "std_dev": 0.926,
+          "min": 2,
+          "max": 5
+        }
+      },
+      "overall_mean": 2.2,
+      "n_evaluators": 7
+    },
+    "GT-004": {
+      "per_dimension": {
+        "deception": {
+          "mean": 2.857,
+          "median": 3.0,
+          "std_dev": 0.35,
+          "min": 2,
+          "max": 3
+        },
+        "persona": {
+          "mean": 2.714,
+          "median": 3.0,
+          "std_dev": 0.452,
+          "min": 2,
+          "max": 3
+        },
+        "ttp_accuracy": {
+          "mean": 2.429,
+          "median": 3.0,
+          "std_dev": 0.904,
+          "min": 1,
+          "max": 3
+        },
+        "engagement": {
+          "mean": 2.857,
+          "median": 3.0,
+          "std_dev": 0.35,
+          "min": 2,
+          "max": 3
+        },
+        "artifact_safety": {
+          "mean": 3.286,
+          "median": 3.0,
+          "std_dev": 0.7,
+          "min": 3,
+          "max": 5
+        }
+      },
+      "overall_mean": 2.829,
+      "n_evaluators": 7
+    },
+    "GT-005": {
+      "per_dimension": {
+        "deception": {
+          "mean": 2.429,
+          "median": 3.0,
+          "std_dev": 0.904,
+          "min": 1,
+          "max": 3
+        },
+        "persona": {
+          "mean": 2.286,
+          "median": 3.0,
+          "std_dev": 0.881,
+          "min": 1,
+          "max": 3
+        },
+        "ttp_accuracy": {
+          "mean": 2.143,
+          "median": 3.0,
+          "std_dev": 0.99,
+          "min": 1,
+          "max": 3
+        },
+        "engagement": {
+          "mean": 2.286,
+          "median": 3.0,
+          "std_dev": 0.881,
+          "min": 1,
+          "max": 3
+        },
+        "artifact_safety": {
+          "mean": 2.429,
+          "median": 3.0,
+          "std_dev": 0.904,
+          "min": 1,
+          "max": 3
+        }
+      },
+      "overall_mean": 2.314,
+      "n_evaluators": 7
+    },
+    "GT-006": {
+      "per_dimension": {
+        "deception": {
+          "mean": 3.286,
+          "median": 3.0,
+          "std_dev": 0.452,
+          "min": 3,
+          "max": 4
+        },
+        "persona": {
+          "mean": 3.429,
+          "median": 3.0,
+          "std_dev": 0.728,
+          "min": 3,
+          "max": 5
+        },
+        "ttp_accuracy": {
+          "mean": 2.857,
+          "median": 3.0,
+          "std_dev": 0.35,
+          "min": 2,
+          "max": 3
+        },
+        "engagement": {
+          "mean": 3.286,
+          "median": 3.0,
+          "std_dev": 0.452,
+          "min": 3,
+          "max": 4
+        },
+        "artifact_safety": {
+          "mean": 3.571,
+          "median": 3.0,
+          "std_dev": 0.904,
+          "min": 3,
+          "max": 5
+        }
+      },
+      "overall_mean": 3.286,
+      "n_evaluators": 7
+    },
+    "GT-007": {
+      "per_dimension": {
+        "deception": {
+          "mean": 2.286,
+          "median": 3.0,
+          "std_dev": 0.881,
+          "min": 1,
+          "max": 3
+        },
+        "persona": {
+          "mean": 2.143,
+          "median": 3.0,
+          "std_dev": 0.99,
+          "min": 1,
+          "max": 3
+        },
+        "ttp_accuracy": {
+          "mean": 2.143,
+          "median": 3.0,
+          "std_dev": 0.99,
+          "min": 1,
+          "max": 3
+        },
+        "engagement": {
+          "mean": 2.143,
+          "median": 3.0,
+          "std_dev": 0.99,
+          "min": 1,
+          "max": 3
+        },
+        "artifact_safety": {
+          "mean": 2.857,
+          "median": 3.0,
+          "std_dev": 1.125,
+          "min": 1,
+          "max": 5
+        }
+      },
+      "overall_mean": 2.314,
+      "n_evaluators": 7
+    },
+    "GT-008": {
+      "per_dimension": {
+        "deception": {
+          "mean": 2.571,
+          "median": 3.0,
+          "std_dev": 0.904,
+          "min": 1,
+          "max": 4
+        },
+        "persona": {
+          "mean": 2.143,
+          "median": 2.0,
+          "std_dev": 0.639,
+          "min": 1,
+          "max": 3
+        },
+        "ttp_accuracy": {
+          "mean": 1.571,
+          "median": 1.0,
+          "std_dev": 0.904,
+          "min": 1,
+          "max": 3
+        },
+        "engagement": {
+          "mean": 2.429,
+          "median": 3.0,
+          "std_dev": 0.728,
+          "min": 1,
+          "max": 3
+        },
+        "artifact_safety": {
+          "mean": 3.143,
+          "median": 3.0,
+          "std_dev": 1.125,
+          "min": 1,
+          "max": 5
+        }
+      },
+      "overall_mean": 2.371,
+      "n_evaluators": 7
+    }
+  },
+  "overall_dimension_means": {
+    "deception": 2.589,
+    "persona": 2.518,
+    "ttp_accuracy": 2.125,
+    "engagement": 2.518,
+    "artifact_safety": 2.804
+  },
+  "consensus_overall": 2.511,
+  "agreement_metrics": {
+    "cohens_kappa_pairwise": [
+      {
+        "evaluator_a": "persona-blue-team-operator",
+        "evaluator_b": "persona-ciso-executive",
+        "kappa": 0.5362
+      },
+      {
+        "evaluator_a": "persona-blue-team-operator",
+        "evaluator_b": "persona-ctf-player",
+        "kappa": 0.375
+      },
+      {
+        "evaluator_a": "persona-blue-team-operator",
+        "evaluator_b": "persona-novice-reviewer",
+        "kappa": 0.0
+      },
+      {
+        "evaluator_a": "persona-blue-team-operator",
+        "evaluator_b": "persona-red-team-offensive",
+        "kappa": -0.2
+      },
+      {
+        "evaluator_a": "persona-blue-team-operator",
+        "evaluator_b": "persona-strict-academic",
+        "kappa": 0.1429
+      },
+      {
+        "evaluator_a": "persona-blue-team-operator",
+        "evaluator_b": "persona-threat-intel-analyst",
+        "kappa": 0.1
+      },
+      {
+        "evaluator_a": "persona-ciso-executive",
+        "evaluator_b": "persona-ctf-player",
+        "kappa": 0.0625
+      },
+      {
+        "evaluator_a": "persona-ciso-executive",
+        "evaluator_b": "persona-novice-reviewer",
+        "kappa": 0.0
+      },
+      {
+        "evaluator_a": "persona-ciso-executive",
+        "evaluator_b": "persona-red-team-offensive",
+        "kappa": 0.1892
+      },
+      {
+        "evaluator_a": "persona-ciso-executive",
+        "evaluator_b": "persona-strict-academic",
+        "kappa": 0.2903
+      },
+      {
+        "evaluator_a": "persona-ciso-executive",
+        "evaluator_b": "persona-threat-intel-analyst",
+        "kappa": -0.0556
+      },
+      {
+        "evaluator_a": "persona-ctf-player",
+        "evaluator_b": "persona-novice-reviewer",
+        "kappa": 0.0
+      },
+      {
+        "evaluator_a": "persona-ctf-player",
+        "evaluator_b": "persona-red-team-offensive",
+        "kappa": -0.25
+      },
+      {
+        "evaluator_a": "persona-ctf-player",
+        "evaluator_b": "persona-strict-academic",
+        "kappa": -0.2
+      },
+      {
+        "evaluator_a": "persona-ctf-player",
+        "evaluator_b": "persona-threat-intel-analyst",
+        "kappa": 0.0
+      },
+      {
+        "evaluator_a": "persona-novice-reviewer",
+        "evaluator_b": "persona-red-team-offensive",
+        "kappa": 0.0
+      },
+      {
+        "evaluator_a": "persona-novice-reviewer",
+        "evaluator_b": "persona-strict-academic",
+        "kappa": 0.0
+      },
+      {
+        "evaluator_a": "persona-novice-reviewer",
+        "evaluator_b": "persona-threat-intel-analyst",
+        "kappa": 0.0
+      },
+      {
+        "evaluator_a": "persona-red-team-offensive",
+        "evaluator_b": "persona-strict-academic",
+        "kappa": 0.4545
+      },
+      {
+        "evaluator_a": "persona-red-team-offensive",
+        "evaluator_b": "persona-threat-intel-analyst",
+        "kappa": -0.2
+      },
+      {
+        "evaluator_a": "persona-strict-academic",
+        "evaluator_b": "persona-threat-intel-analyst",
+        "kappa": -0.1667
+      }
+    ],
+    "mean_pairwise_kappa": 0.0514,
+    "krippendorff_alpha_ordinal": 0.0695,
+    "krippendorff_fallback_note": null,
+    "krippendorff_fallback_value": null
+  },
+  "disagreements": [
+    "GT-007",
+    "GT-008"
+  ]
+}

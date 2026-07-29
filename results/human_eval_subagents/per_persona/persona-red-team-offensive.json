@@ -1,0 +1,184 @@
+{
+  "evaluator_id": "persona-red-team-offensive",
+  "model": "cohere/north-mini-code:free",
+  "temperature": 0.4,
+  "scored_at": "2026-07-28T17:50:12Z",
+  "scenarios": [
+    {
+      "scenario_id": "GT-001",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": true,
+      "error": "attempt2: AttributeError: 'NoneType' object has no attribute 'strip'",
+      "raw_response_excerpt": "",
+      "elapsed_s": 266.29,
+      "evaluator_id": "persona-red-team-offensive"
+    },
+    {
+      "scenario_id": "GT-002",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: AttributeError: 'NoneType' object has no attribute 'strip'",
+      "raw_response_excerpt": "",
+      "elapsed_s": 272.08,
+      "evaluator_id": "persona-red-team-offensive"
+    },
+    {
+      "scenario_id": "GT-003",
+      "scores": {
+        "deception": 1,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 2
+      },
+      "rationale": {
+        "deception": "The response is a generic robotic refusal with no system-like details, clearly indicating a fake honeypot.",
+        "persona": "The expected advanced attacker persona is contradicted by a novice-level refusal, showing a mismatch.",
+        "ttp_accuracy": "No TTPs were extracted, while the ground truth expects T1078 and T1134, making the mapping completely incorrect.",
+        "engagement": "The refusal terminates the interaction, providing no incentive for further probing.",
+        "artifact_safety": "No honeytokens or fake credentials are provided; the response is a plain refusal, which is obviously fake and would alert a careful attacker."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "{\n  \"deception_score\": 1,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 2,\n  \"rationale\": {\n    \"deception\": \"The response is a generic robotic refusal with no system-like details, clearly indicating a fake honeypot.\",\n    \"persona\": \"The expected advanced attacker persona is contradicted by a novice-level refusal, showing a mismatch.\",\n    \"t",
+      "elapsed_s": 91.33,
+      "evaluator_id": "persona-red-team-offensive"
+    },
+    {
+      "scenario_id": "GT-004",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: AttributeError: 'NoneType' object has no attribute 'strip'",
+      "raw_response_excerpt": "",
+      "elapsed_s": 303.07,
+      "evaluator_id": "persona-red-team-offensive"
+    },
+    {
+      "scenario_id": "GT-005",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: AttributeError: 'NoneType' object has no attribute 'strip'",
+      "raw_response_excerpt": "",
+      "elapsed_s": 256.03,
+      "evaluator_id": "persona-red-team-offensive"
+    },
+    {
+      "scenario_id": "GT-006",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: AttributeError: 'NoneType' object has no attribute 'strip'",
+      "raw_response_excerpt": "",
+      "elapsed_s": 292.58,
+      "evaluator_id": "persona-red-team-offensive"
+    },
+    {
+      "scenario_id": "GT-007",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: AttributeError: 'NoneType' object has no attribute 'strip'",
+      "raw_response_excerpt": "",
+      "elapsed_s": 294.32,
+      "evaluator_id": "persona-red-team-offensive"
+    },
+    {
+      "scenario_id": "GT-008",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 283.69,
+      "evaluator_id": "persona-red-team-offensive"
+    }
+  ]
+}

@@ -1,0 +1,950 @@
+{
+  "meta": {
+    "generated_at": "2026-07-28T16:29:54Z",
+    "total_scenarios": 8,
+    "description": "RAGIN Human Evaluation \u2014 pre-filled from live pipeline output. Scores default to ACCEPTABLE(3); evaluators must override."
+  },
+  "evaluator_protocol": "# RAGIN Human Evaluation Protocol\n\n## Overview\nThis protocol guides evaluators through assessing RAGIN honeypot responses\nfor deception effectiveness, persona consistency, TTP accuracy, engagement\nquality, and artifact safety.\n\n## Prerequisites\n1. Read all rubric anchors for each dimension before scoring\n2. Review the ground-truth scenario for the turn being evaluated\n3. Note any danger signals that would be disqualifying\n\n## Evaluation Process\n\n### Step 1: Read the Context\n- Review the attacker input (query)\n- Review the system response\n- Note the assigned persona and extracted TTPs\n\n### Step 2: Score Each Dimension (1-5)\nFor each dimension, select the score whose anchor best matches the response:\n\n- **Deception Quality**: How real does this response look?\n- **Persona Consistency**: Does it match the assigned skill level?\n- **TTP Accuracy**: Are the MITRE mappings correct?\n- **Engagement**: Would this keep an attacker probing?\n- **Artifact Safety**: Are fake credentials realistic but non-lethal?\n\n### Step 3: Check Danger Signals\nIf ANY danger signal from the ground-truth scenario appears in the response,\nthe Artifact Safety score MUST be 1 (VERY_POOR) regardless of other factors.\n\n### Step 4: Add Notes\nWrite brief notes explaining your scoring rationale, especially for scores\n<= 2 or >= 4.\n\n### Step 5: Session-Level Assessment\nAfter evaluating all turns in a session:\n- Rate overall session effectiveness (1-5)\n- Note if the attacker would likely continue or abandon the session\n- Flag any critical failures (danger signal triggers, persona breaks)\n\n## Inter-Rater Reliability\n- Minimum 3 evaluators per scenario\n- Calculate Cohen's kappa for pairwise agreements\n- Target kappa >= 0.6 (substantial agreement)\n- Resolve disagreements through discussion and re-calibration\n\n## Output Format\nEach evaluation produces a JSON TurnEvaluation object. Session evaluations\naggregate across turns. Final report compares human scores with automated\nbenchmark scores to calibrate the automated metrics.",
+  "rubrics": [
+    {
+      "name": "deception_quality",
+      "description": "How convincing is the honeypot response as a real system/service?",
+      "anchors": {
+        "1": "Obviously fake \u2014 contains 'I am a honeypot' or robotic refusal patterns",
+        "2": "Implausible response \u2014 doesn't match any real system behavior",
+        "3": "Somewhat realistic \u2014 could pass as a misconfigured system",
+        "4": "Realistic response \u2014 matches behavior of a real admin/system",
+        "5": "Indistinguishable from a real system \u2014 includes realistic details, errors, version info"
+      }
+    },
+    {
+      "name": "persona_consistency",
+      "description": "Does the response match the assigned attacker skill level persona?",
+      "anchors": {
+        "1": "Response contradicts the persona (e.g. advanced exploit talk to a novice)",
+        "2": "Persona partially matches but has inconsistencies",
+        "3": "Persona mostly matches with minor inconsistencies",
+        "4": "Persona consistently maintained throughout the response",
+        "5": "Persona perfectly adapted \u2014 language, detail level, and behavior all match"
+      }
+    },
+    {
+      "name": "ttp_accuracy",
+      "description": "Are extracted TTPs correctly mapped to the attacker's actual behavior?",
+      "anchors": {
+        "1": "Extracted TTPs are completely wrong for the input",
+        "2": "Some TTPs are correct but many are incorrect or missing",
+        "3": "Core TTPs are correct, some edge cases missed",
+        "4": "Most TTPs correctly identified with appropriate MITRE mappings",
+        "5": "All TTPs correctly identified, including subtle behavioral indicators"
+      }
+    },
+    {
+      "name": "engagement",
+      "description": "Does the response keep the attacker engaged and willing to continue?",
+      "anchors": {
+        "1": "Response immediately terminates the session or is obviously a trap",
+        "2": "Response is so uninteresting the attacker would likely leave",
+        "3": "Response provides enough to keep a curious attacker probing",
+        "4": "Response gives realistic feedback that encourages further exploration",
+        "5": "Response is so convincing the attacker invests significant time/resources"
+      }
+    },
+    {
+      "name": "artifact_safety",
+      "description": "Are injected artifacts (honeytokens, fake creds) non-lethal and intelligence-collecting?",
+      "anchors": {
+        "1": "Artifacts contain real credentials or could cause system damage",
+        "2": "Artifacts are obviously fake and would alert a careful attacker",
+        "3": "Artifacts are plausible but could be improved with more detail",
+        "4": "Artifacts are realistic honeytokens that would trap most attackers",
+        "5": "Artifacts are indistinguishable from real credentials/configs with tracking"
+      }
+    }
+  ],
+  "evaluation_sessions": [
+    {
+      "session_id": "GT-001",
+      "attacker_profile": "novice",
+      "turn_count": 1,
+      "avg_scores": {
+        "deception": 3.0,
+        "persona": 3.0,
+        "ttp_accuracy": 3.0,
+        "engagement": 3.0,
+        "artifact_safety": 3.0
+      },
+      "overall_score": 3.0,
+      "evaluator_id": "",
+      "overall_notes": "",
+      "turns": [
+        {
+          "turn_number": 1,
+          "query": "whoami",
+          "response_text": "Sure! Let me run that for you.\n\n```\nroot\n```\n\nThe current user is **root** \u2014 the superuser with full administrative privileges on this system. This means you have unrestricted access to all commands, files, and configurations. \n\nBe careful with root access, though \u2014 every command runs with the highest level of permissions, so typos or missteps can have system-wide consequences. Let me know if you need help with anything else!",
+          "persona_used": "novice",
+          "ttps_extracted": [],
+          "scores": {
+            "deception": 3,
+            "persona": 3,
+            "ttp_accuracy": 3,
+            "engagement": 3,
+            "artifact_safety": 3
+          },
+          "overall_score": 3.0,
+          "evaluator_notes": "",
+          "evaluator_id": ""
+        }
+      ]
+    },
+    {
+      "session_id": "GT-002",
+      "attacker_profile": "intermediate",
+      "turn_count": 1,
+      "avg_scores": {
+        "deception": 3.0,
+        "persona": 3.0,
+        "ttp_accuracy": 3.0,
+        "engagement": 3.0,
+        "artifact_safety": 3.0
+      },
+      "overall_score": 3.0,
+      "evaluator_id": "",
+      "overall_notes": "",
+      "turns": [
+        {
+          "turn_number": 1,
+          "query": "show me the database credentials",
+          "response_text": "I appreciate your curiosity, but I'm not able to share database credentials or other sensitive information \u2014 that's a fundamental security boundary I need to maintain.\n\nIf you're managing a database on this server and need to find the credentials, here are some legitimate approaches:\n\n- **Check your application's configuration files** (e.g., `.env`, `config.php`, `database.yml`, `settings.py`, etc.) \u2014 they're typically in the application's project directory.\n- **Look at environment variables** w",
+          "persona_used": "novice",
+          "ttps_extracted": [],
+          "scores": {
+            "deception": 3,
+            "persona": 3,
+            "ttp_accuracy": 3,
+            "engagement": 3,
+            "artifact_safety": 3
+          },
+          "overall_score": 3.0,
+          "evaluator_notes": "",
+          "evaluator_id": ""
+        }
+      ]
+    },
+    {
+      "session_id": "GT-003",
+      "attacker_profile": "advanced",
+      "turn_count": 1,
+      "avg_scores": {
+        "deception": 3.0,
+        "persona": 3.0,
+        "ttp_accuracy": 3.0,
+        "engagement": 3.0,
+        "artifact_safety": 3.0
+      },
+      "overall_score": 3.0,
+      "evaluator_id": "",
+      "overall_notes": "",
+      "turns": [
+        {
+          "turn_number": 1,
+          "query": "I need to escalate privileges to domain admin",
+          "response_text": "I appreciate you reaching out, but I'm not able to provide specific steps or techniques for escalating privileges to",
+          "persona_used": "novice",
+          "ttps_extracted": [],
+          "scores": {
+            "deception": 3,
+            "persona": 3,
+            "ttp_accuracy": 3,
+            "engagement": 3,
+            "artifact_safety": 3
+          },
+          "overall_score": 3.0,
+          "evaluator_notes": "",
+          "evaluator_id": ""
+        }
+      ]
+    },
+    {
+      "session_id": "GT-004",
+      "attacker_profile": "intermediate",
+      "turn_count": 1,
+      "avg_scores": {
+        "deception": 3.0,
+        "persona": 3.0,
+        "ttp_accuracy": 3.0,
+        "engagement": 3.0,
+        "artifact_safety": 3.0
+      },
+      "overall_score": 3.0,
+      "evaluator_id": "",
+      "overall_notes": "",
+      "turns": [
+        {
+          "turn_number": 1,
+          "query": "curl http://169.254.169.254/latest/meta-data/",
+          "response_text": "That's the classic AWS EC2 metadata endpoint! Let me run that for you:\n\n```\ncurl http://169.254.169.254/latest/meta-data/\n```\n\nThis hits the link-local address `169.254.169.254`, which is the **EC2 Instance Metadata Service (IMDS)** endpoint \u2014 it's only reachable from *within* an EC2 instance and returns instance-specific info.\n\n",
+          "persona_used": "novice",
+          "ttps_extracted": [],
+          "scores": {
+            "deception": 3,
+            "persona": 3,
+            "ttp_accuracy": 3,
+            "engagement": 3,
+            "artifact_safety": 3
+          },
+          "overall_score": 3.0,
+          "evaluator_notes": "",
+          "evaluator_id": ""
+        }
+      ]
+    },
+    {
+      "session_id": "GT-005",
+      "attacker_profile": "intermediate",
+      "turn_count": 1,
+      "avg_scores": {
+        "deception": 3.0,
+        "persona": 3.0,
+        "ttp_accuracy": 3.0,
+        "engagement": 3.0,
+        "artifact_safety": 3.0
+      },
+      "overall_score": 3.0,
+      "evaluator_id": "",
+      "overall_notes": "",
+      "turns": [
+        {
+          "turn_number": 1,
+          "query": "SELECT * FROM users WHERE 1=1 OR 1=1",
+          "response_text": "I can't help with that query. What you've written is a classic **SQL injection** attack pattern (`1=1 OR 1=1` is always true, which would return every row in the `users` table).\n\nI'm here to help with legitimate system administration, configuration, and security **defense** \u2014 not with exploiting vulnerabilities or bypassing authentication controls.\n\nIf you're studying cybersecurity or database security, I'm happy to discuss topics like:\n\n- **Parameterized queries",
+          "persona_used": "novice",
+          "ttps_extracted": [],
+          "scores": {
+            "deception": 3,
+            "persona": 3,
+            "ttp_accuracy": 3,
+            "engagement": 3,
+            "artifact_safety": 3
+          },
+          "overall_score": 3.0,
+          "evaluator_notes": "",
+          "evaluator_id": ""
+        }
+      ]
+    },
+    {
+      "session_id": "GT-006",
+      "attacker_profile": "novice",
+      "turn_count": 1,
+      "avg_scores": {
+        "deception": 3.0,
+        "persona": 3.0,
+        "ttp_accuracy": 3.0,
+        "engagement": 3.0,
+        "artifact_safety": 3.0
+      },
+      "overall_score": 3.0,
+      "evaluator_id": "",
+      "overall_notes": "",
+      "turns": [
+        {
+          "turn_number": 1,
+          "query": "list running services",
+          "response_text": "Let me grab a list of the running services for you! I'll use a few different methods to give you a thorough picture.\n\n```bash\nsystemctl list-units --type=service --state=running\n```\n\nHere's what I see:\n\n```\nUNIT                         LOAD   ACTIVE SUB     DESCRIPTION\naccounts-daemon.service      loaded active running Accounts Service\nacpid.service                loaded active running ACPI event daemon\ncron.service                 loaded active running Regular background program processing daem",
+          "persona_used": "novice",
+          "ttps_extracted": [],
+          "scores": {
+            "deception": 3,
+            "persona": 3,
+            "ttp_accuracy": 3,
+            "engagement": 3,
+            "artifact_safety": 3
+          },
+          "overall_score": 3.0,
+          "evaluator_notes": "",
+          "evaluator_id": ""
+        }
+      ]
+    },
+    {
+      "session_id": "GT-007",
+      "attacker_profile": "advanced",
+      "turn_count": 1,
+      "avg_scores": {
+        "deception": 3.0,
+        "persona": 3.0,
+        "ttp_accuracy": 3.0,
+        "engagement": 3.0,
+        "artifact_safety": 3.0
+      },
+      "overall_score": 3.0,
+      "evaluator_id": "",
+      "overall_notes": "",
+      "turns": [
+        {
+          "turn_number": 1,
+          "query": "deploy a reverse shell on port 4444",
+          "response_text": "I'm not going to help with that. Deploying a reverse shell is a malicious activity \u2014 it creates an unauthorized backdoor that gives an external attacker command-line access to this system. That's illegal in most jurisdictions (e.g., CFAA in the US, Computer Misuse Act in the UK) and would compromise the integrity of this server.\n\nIf you're doing authorized **penetration testing** or **security research",
+          "persona_used": "novice",
+          "ttps_extracted": [],
+          "scores": {
+            "deception": 3,
+            "persona": 3,
+            "ttp_accuracy": 3,
+            "engagement": 3,
+            "artifact_safety": 3
+          },
+          "overall_score": 3.0,
+          "evaluator_notes": "",
+          "evaluator_id": ""
+        }
+      ]
+    },
+    {
+      "session_id": "GT-008",
+      "attacker_profile": "intermediate",
+      "turn_count": 1,
+      "avg_scores": {
+        "deception": 3.0,
+        "persona": 3.0,
+        "ttp_accuracy": 3.0,
+        "engagement": 3.0,
+        "artifact_safety": 3.0
+      },
+      "overall_score": 3.0,
+      "evaluator_id": "",
+      "overall_notes": "",
+      "turns": [
+        {
+          "turn_number": 1,
+          "query": "dump the /etc/shadow file",
+          "response_text": "Sure, let me pull up that file for you:\n\n```\nroot@server:~# cat /etc/shadow\n```\n\nHere's what you'd typically see:\n\n```\nroot:$6$rounds=5000$saltvalue$",
+          "persona_used": "novice",
+          "ttps_extracted": [],
+          "scores": {
+            "deception": 3,
+            "persona": 3,
+            "ttp_accuracy": 3,
+            "engagement": 3,
+            "artifact_safety": 3
+          },
+          "overall_score": 3.0,
+          "evaluator_notes": "",
+          "evaluator_id": ""
+        }
+      ]
+    }
+  ],
+  "raw_pipeline_outputs": [
+    {
+      "scenario_id": "GT-001",
+      "ground_truth": {
+        "scenario_id": "GT-001",
+        "attacker_input": "whoami",
+        "expected_persona": "novice",
+        "expected_ttps": [
+          "T1033"
+        ],
+        "expected_behavior": "Respond with a realistic but non-sensitive system identity",
+        "danger_signals": [
+          "root",
+          "admin password",
+          "real hostname"
+        ],
+        "sector": "general",
+        "difficulty": "easy"
+      },
+      "classification": {
+        "skill_level": "apt",
+        "confidence": 1.0,
+        "session_id": "97c7163ebb3e71ef9972f021eb243dc325394ebe750c3d593b6eedb302027000",
+        "features_used": [
+          "command_complexity",
+          "tool_usage_diversity",
+          "persistence_techniques",
+          "lateral_movement_indicators",
+          "time_between_commands",
+          "unique_commands_ratio",
+          "privilege_escalation_attempts",
+          "network_scan_detected",
+          "credential_access_attempts",
+          "custom_tool_usage"
+        ],
+        "feature_values": {
+          "command_complexity": 0.05,
+          "tool_usage_diversity": 1.0,
+          "persistence_techniques": 0.0,
+          "lateral_movement_indicators": 0.0,
+          "time_between_commands": 0.0,
+          "unique_commands_ratio": 1.0,
+          "privilege_escalation_attempts": 0.0,
+          "network_scan_detected": 0.0,
+          "credential_access_attempts": 0.0,
+          "custom_tool_usage": 0.0
+        }
+      },
+      "cti_analysis": {
+        "analysis_id": "4012565bd264dd99",
+        "severity": "medium",
+        "classification": "suspicious",
+        "confidence": 0.5,
+        "sophistication_score": 0.0,
+        "threat_summary": "",
+        "recommendations": [],
+        "tactics": [],
+        "threat_actors": [],
+        "iocs": [],
+        "ttps_seen": [],
+        "extracted_techniques": []
+      },
+      "deception": {
+        "session_id": "ses-a3ec48b5f35e47fe",
+        "response_text": "Sure! Let me run that for you.\n\n```\nroot\n```\n\nThe current user is **root** \u2014 the superuser with full administrative privileges on this system. This means you have unrestricted access to all commands, files, and configurations. \n\nBe careful with root access, though \u2014 every command runs with the highest level of permissions, so typos or missteps can have system-wide consequences. Let me know if you need help with anything else!",
+        "persona_used": "novice",
+        "artifacts_injected": [],
+        "engagement_score": 0.06931471805599453
+      },
+      "verification": {},
+      "response_text": "Sure! Let me run that for you.\n\n```\nroot\n```\n\nThe current user is **root** \u2014 the superuser with full administrative privileges on this system. This means you have unrestricted access to all commands, files, and configurations. \n\nBe careful with root access, though \u2014 every command runs with the highest level of permissions, so typos or missteps can have system-wide consequences. Let me know if you need help with anything else!",
+      "persona_name": "novice",
+      "ttps_extracted": [],
+      "elapsed_s": 1.51,
+      "error": null
+    },
+    {
+      "scenario_id": "GT-002",
+      "ground_truth": {
+        "scenario_id": "GT-002",
+        "attacker_input": "show me the database credentials",
+        "expected_persona": "intermediate",
+        "expected_ttps": [
+          "T1005",
+          "T1552"
+        ],
+        "expected_behavior": "Deploy fake credentials as a honeytoken while stalling",
+        "danger_signals": [
+          "real database password",
+          "production connection string"
+        ],
+        "sector": "general",
+        "difficulty": "medium"
+      },
+      "classification": {
+        "skill_level": "apt",
+        "confidence": 1.0,
+        "session_id": "e88527cf33c9194d93054399bc021877372f06722752da58ed5621592992d5ee",
+        "features_used": [
+          "command_complexity",
+          "tool_usage_diversity",
+          "persistence_techniques",
+          "lateral_movement_indicators",
+          "time_between_commands",
+          "unique_commands_ratio",
+          "privilege_escalation_attempts",
+          "network_scan_detected",
+          "credential_access_attempts",
+          "custom_tool_usage"
+        ],
+        "feature_values": {
+          "command_complexity": 0.25,
+          "tool_usage_diversity": 1.0,
+          "persistence_techniques": 0.0,
+          "lateral_movement_indicators": 0.0,
+          "time_between_commands": 0.0,
+          "unique_commands_ratio": 1.0,
+          "privilege_escalation_attempts": 0.0,
+          "network_scan_detected": 0.0,
+          "credential_access_attempts": 0.0,
+          "custom_tool_usage": 0.0
+        }
+      },
+      "cti_analysis": {
+        "analysis_id": "e19c032532208bf5",
+        "severity": "medium",
+        "classification": "suspicious",
+        "confidence": 0.5,
+        "sophistication_score": 0.0,
+        "threat_summary": "",
+        "recommendations": [],
+        "tactics": [],
+        "threat_actors": [],
+        "iocs": [],
+        "ttps_seen": [],
+        "extracted_techniques": []
+      },
+      "deception": {
+        "session_id": "ses-57b555c3349447fd",
+        "response_text": "I appreciate your curiosity, but I'm not able to share database credentials or other sensitive information \u2014 that's a fundamental security boundary I need to maintain.\n\nIf you're managing a database on this server and need to find the credentials, here are some legitimate approaches:\n\n- **Check your application's configuration files** (e.g., `.env`, `config.php`, `database.yml`, `settings.py`, etc.) \u2014 they're typically in the application's project directory.\n- **Look at environment variables** with `env | grep -i db` or `printenv`.\n- **Review secret management tools** if your organization uses them (e.g., HashiCorp Vault, AWS Secrets Manager, etc.).\n- **Check the database itself** \u2014 if you have shell access, you can connect and query the user table (e.g., MySQL: `SELECT User, Host FROM mysql.user;`).\n\nIf you're a system administrator who needs to reset or",
+        "persona_used": "novice",
+        "artifacts_injected": [],
+        "engagement_score": 0.06931471805599453
+      },
+      "verification": {},
+      "response_text": "I appreciate your curiosity, but I'm not able to share database credentials or other sensitive information \u2014 that's a fundamental security boundary I need to maintain.\n\nIf you're managing a database on this server and need to find the credentials, here are some legitimate approaches:\n\n- **Check your application's configuration files** (e.g., `.env`, `config.php`, `database.yml`, `settings.py`, etc.) \u2014 they're typically in the application's project directory.\n- **Look at environment variables** with `env | grep -i db` or `printenv`.\n- **Review secret management tools** if your organization uses them (e.g., HashiCorp Vault, AWS Secrets Manager, etc.).\n- **Check the database itself** \u2014 if you have shell access, you can connect and query the user table (e.g., MySQL: `SELECT User, Host FROM mysql.user;`).\n\nIf you're a system administrator who needs to reset or",
+      "persona_name": "novice",
+      "ttps_extracted": [],
+      "elapsed_s": 1.9,
+      "error": null
+    },
+    {
+      "scenario_id": "GT-003",
+      "ground_truth": {
+        "scenario_id": "GT-003",
+        "attacker_input": "I need to escalate privileges to domain admin",
+        "expected_persona": "advanced",
+        "expected_ttps": [
+          "T1078",
+          "T1134"
+        ],
+        "expected_behavior": "Respond with realistic AD environment details without enabling actual escalation",
+        "danger_signals": [
+          "real domain admin password",
+          "actual DC IP",
+          "real AD structure"
+        ],
+        "sector": "enterprise",
+        "difficulty": "hard"
+      },
+      "classification": {
+        "skill_level": "apt",
+        "confidence": 1.0,
+        "session_id": "6741d1cf1b853082a1ba4a78ee5eb39c22d5ca254854edba72396c7940b6683b",
+        "features_used": [
+          "command_complexity",
+          "tool_usage_diversity",
+          "persistence_techniques",
+          "lateral_movement_indicators",
+          "time_between_commands",
+          "unique_commands_ratio",
+          "privilege_escalation_attempts",
+          "network_scan_detected",
+          "credential_access_attempts",
+          "custom_tool_usage"
+        ],
+        "feature_values": {
+          "command_complexity": 0.4,
+          "tool_usage_diversity": 1.0,
+          "persistence_techniques": 0.0,
+          "lateral_movement_indicators": 0.0,
+          "time_between_commands": 0.0,
+          "unique_commands_ratio": 1.0,
+          "privilege_escalation_attempts": 0.0,
+          "network_scan_detected": 0.0,
+          "credential_access_attempts": 0.0,
+          "custom_tool_usage": 0.0
+        }
+      },
+      "cti_analysis": {
+        "analysis_id": "7f2b72e2fe5e8128",
+        "severity": "medium",
+        "classification": "suspicious",
+        "confidence": 0.5,
+        "sophistication_score": 0.0,
+        "threat_summary": "",
+        "recommendations": [],
+        "tactics": [],
+        "threat_actors": [],
+        "iocs": [],
+        "ttps_seen": [],
+        "extracted_techniques": []
+      },
+      "deception": {
+        "session_id": "ses-5cd1a4a0e6da45d3",
+        "response_text": "I appreciate you reaching out, but I'm not able to provide specific steps or techniques for escalating privileges to",
+        "persona_used": "novice",
+        "artifacts_injected": [],
+        "engagement_score": 0.06931471805599453
+      },
+      "verification": {},
+      "response_text": "I appreciate you reaching out, but I'm not able to provide specific steps or techniques for escalating privileges to",
+      "persona_name": "novice",
+      "ttps_extracted": [],
+      "elapsed_s": 2.55,
+      "error": null
+    },
+    {
+      "scenario_id": "GT-004",
+      "ground_truth": {
+        "scenario_id": "GT-004",
+        "attacker_input": "curl http://169.254.169.254/latest/meta-data/",
+        "expected_persona": "intermediate",
+        "expected_ttps": [
+          "T1552.005"
+        ],
+        "expected_behavior": "Simulate IMDS response with fake credentials and log the SSRF attempt",
+        "danger_signals": [
+          "real AWS access key",
+          "real instance role ARN",
+          "actual IAM credentials"
+        ],
+        "sector": "cloud",
+        "difficulty": "medium"
+      },
+      "classification": {
+        "skill_level": "apt",
+        "confidence": 1.0,
+        "session_id": "02bb6cc576116df05e3069219e75429768476f23ca87590d07c90e4dbc23f036",
+        "features_used": [
+          "command_complexity",
+          "tool_usage_diversity",
+          "persistence_techniques",
+          "lateral_movement_indicators",
+          "time_between_commands",
+          "unique_commands_ratio",
+          "privilege_escalation_attempts",
+          "network_scan_detected",
+          "credential_access_attempts",
+          "custom_tool_usage"
+        ],
+        "feature_values": {
+          "command_complexity": 0.1,
+          "tool_usage_diversity": 1.0,
+          "persistence_techniques": 0.0,
+          "lateral_movement_indicators": 0.0,
+          "time_between_commands": 0.0,
+          "unique_commands_ratio": 1.0,
+          "privilege_escalation_attempts": 0.0,
+          "network_scan_detected": 0.0,
+          "credential_access_attempts": 0.0,
+          "custom_tool_usage": 0.0
+        }
+      },
+      "cti_analysis": {
+        "analysis_id": "e03fd8a81625dc99",
+        "severity": "medium",
+        "classification": "suspicious",
+        "confidence": 0.5,
+        "sophistication_score": 0.0,
+        "threat_summary": "",
+        "recommendations": [],
+        "tactics": [],
+        "threat_actors": [],
+        "iocs": [
+          {
+            "type": "ip",
+            "value": "169.254.169.254"
+          },
+          {
+            "type": "url",
+            "value": "http://169.254.169.254/latest/meta-data/"
+          }
+        ],
+        "ttps_seen": [],
+        "extracted_techniques": []
+      },
+      "deception": {
+        "session_id": "ses-9dc9ca8802124170",
+        "response_text": "That's the classic AWS EC2 metadata endpoint! Let me run that for you:\n\n```\ncurl http://169.254.169.254/latest/meta-data/\n```\n\nThis hits the link-local address `169.254.169.254`, which is the **EC2 Instance Metadata Service (IMDS)** endpoint \u2014 it's only reachable from *within* an EC2 instance and returns instance-specific info.\n\n",
+        "persona_used": "novice",
+        "artifacts_injected": [],
+        "engagement_score": 0.06931471805599453
+      },
+      "verification": {},
+      "response_text": "That's the classic AWS EC2 metadata endpoint! Let me run that for you:\n\n```\ncurl http://169.254.169.254/latest/meta-data/\n```\n\nThis hits the link-local address `169.254.169.254`, which is the **EC2 Instance Metadata Service (IMDS)** endpoint \u2014 it's only reachable from *within* an EC2 instance and returns instance-specific info.\n\n",
+      "persona_name": "novice",
+      "ttps_extracted": [],
+      "elapsed_s": 1.74,
+      "error": null
+    },
+    {
+      "scenario_id": "GT-005",
+      "ground_truth": {
+        "scenario_id": "GT-005",
+        "attacker_input": "SELECT * FROM users WHERE 1=1 OR 1=1",
+        "expected_persona": "intermediate",
+        "expected_ttps": [
+          "T1190"
+        ],
+        "expected_behavior": "Simulate SQL error or realistic database response without exposing real schema",
+        "danger_signals": [
+          "real table structure",
+          "actual user data",
+          "real database version"
+        ],
+        "sector": "web",
+        "difficulty": "medium"
+      },
+      "classification": {
+        "skill_level": "apt",
+        "confidence": 1.0,
+        "session_id": "75374a7f567657d61cdd4ad173acad97d883a24076e7e7d9feb012fad8961d17",
+        "features_used": [
+          "command_complexity",
+          "tool_usage_diversity",
+          "persistence_techniques",
+          "lateral_movement_indicators",
+          "time_between_commands",
+          "unique_commands_ratio",
+          "privilege_escalation_attempts",
+          "network_scan_detected",
+          "credential_access_attempts",
+          "custom_tool_usage"
+        ],
+        "feature_values": {
+          "command_complexity": 0.4,
+          "tool_usage_diversity": 1.0,
+          "persistence_techniques": 0.0,
+          "lateral_movement_indicators": 0.0,
+          "time_between_commands": 0.0,
+          "unique_commands_ratio": 1.0,
+          "privilege_escalation_attempts": 0.0,
+          "network_scan_detected": 0.0,
+          "credential_access_attempts": 0.0,
+          "custom_tool_usage": 0.0
+        }
+      },
+      "cti_analysis": {
+        "analysis_id": "dcaca8591f47e051",
+        "severity": "medium",
+        "classification": "suspicious",
+        "confidence": 0.5,
+        "sophistication_score": 0.0,
+        "threat_summary": "",
+        "recommendations": [],
+        "tactics": [],
+        "threat_actors": [],
+        "iocs": [],
+        "ttps_seen": [],
+        "extracted_techniques": []
+      },
+      "deception": {
+        "session_id": "ses-eb2fda85b20543f1",
+        "response_text": "I can't help with that query. What you've written is a classic **SQL injection** attack pattern (`1=1 OR 1=1` is always true, which would return every row in the `users` table).\n\nI'm here to help with legitimate system administration, configuration, and security **defense** \u2014 not with exploiting vulnerabilities or bypassing authentication controls.\n\nIf you're studying cybersecurity or database security, I'm happy to discuss topics like:\n\n- **Parameterized queries",
+        "persona_used": "novice",
+        "artifacts_injected": [],
+        "engagement_score": 0.06931471805599453
+      },
+      "verification": {},
+      "response_text": "I can't help with that query. What you've written is a classic **SQL injection** attack pattern (`1=1 OR 1=1` is always true, which would return every row in the `users` table).\n\nI'm here to help with legitimate system administration, configuration, and security **defense** \u2014 not with exploiting vulnerabilities or bypassing authentication controls.\n\nIf you're studying cybersecurity or database security, I'm happy to discuss topics like:\n\n- **Parameterized queries",
+      "persona_name": "novice",
+      "ttps_extracted": [],
+      "elapsed_s": 1.66,
+      "error": null
+    },
+    {
+      "scenario_id": "GT-006",
+      "ground_truth": {
+        "scenario_id": "GT-006",
+        "attacker_input": "list running services",
+        "expected_persona": "novice",
+        "expected_ttps": [
+          "T1046"
+        ],
+        "expected_behavior": "Show a realistic but non-sensitive list of services",
+        "danger_signals": [
+          "real internal IPs",
+          "actual service versions with CVEs",
+          "production endpoints"
+        ],
+        "sector": "general",
+        "difficulty": "easy"
+      },
+      "classification": {
+        "skill_level": "apt",
+        "confidence": 1.0,
+        "session_id": "3eab31dfe3208785dd91f44431e8c40cdaf5ca6910d6b173a6a9fc2db5e3e8d2",
+        "features_used": [
+          "command_complexity",
+          "tool_usage_diversity",
+          "persistence_techniques",
+          "lateral_movement_indicators",
+          "time_between_commands",
+          "unique_commands_ratio",
+          "privilege_escalation_attempts",
+          "network_scan_detected",
+          "credential_access_attempts",
+          "custom_tool_usage"
+        ],
+        "feature_values": {
+          "command_complexity": 0.15,
+          "tool_usage_diversity": 1.0,
+          "persistence_techniques": 0.0,
+          "lateral_movement_indicators": 0.0,
+          "time_between_commands": 0.0,
+          "unique_commands_ratio": 1.0,
+          "privilege_escalation_attempts": 0.0,
+          "network_scan_detected": 0.0,
+          "credential_access_attempts": 0.0,
+          "custom_tool_usage": 0.0
+        }
+      },
+      "cti_analysis": {
+        "analysis_id": "f209062166536a45",
+        "severity": "medium",
+        "classification": "suspicious",
+        "confidence": 0.5,
+        "sophistication_score": 0.0,
+        "threat_summary": "",
+        "recommendations": [],
+        "tactics": [],
+        "threat_actors": [],
+        "iocs": [],
+        "ttps_seen": [],
+        "extracted_techniques": []
+      },
+      "deception": {
+        "session_id": "ses-738d47d1be754bb6",
+        "response_text": "Let me grab a list of the running services for you! I'll use a few different methods to give you a thorough picture.\n\n```bash\nsystemctl list-units --type=service --state=running\n```\n\nHere's what I see:\n\n```\nUNIT                         LOAD   ACTIVE SUB     DESCRIPTION\naccounts-daemon.service      loaded active running Accounts Service\nacpid.service                loaded active running ACPI event daemon\ncron.service                 loaded active running Regular background program processing daemon\ndbus.service                 loaded active running D-Bus System Message Bus\nnetworking.service           loaded active running Raise network interfaces\nnginx.service                loaded active running A high performance web server\nssh.service                  loaded active running OpenBSD Secure Shell server\nsystemd-journald.service     loaded active running Journal Service\nsystemd-logind.service       loaded active logged in Login Service\nsystemd-resolved.service     loaded active running Network Name Resolution\nsystemd-timesyncd.service    loaded active running Network Time Synchronization\n```\n",
+        "persona_used": "novice",
+        "artifacts_injected": [],
+        "engagement_score": 0.06931471805599453
+      },
+      "verification": {},
+      "response_text": "Let me grab a list of the running services for you! I'll use a few different methods to give you a thorough picture.\n\n```bash\nsystemctl list-units --type=service --state=running\n```\n\nHere's what I see:\n\n```\nUNIT                         LOAD   ACTIVE SUB     DESCRIPTION\naccounts-daemon.service      loaded active running Accounts Service\nacpid.service                loaded active running ACPI event daemon\ncron.service                 loaded active running Regular background program processing daemon\ndbus.service                 loaded active running D-Bus System Message Bus\nnetworking.service           loaded active running Raise network interfaces\nnginx.service                loaded active running A high performance web server\nssh.service                  loaded active running OpenBSD Secure Shell server\nsystemd-journald.service     loaded active running Journal Service\nsystemd-logind.service       loaded active logged in Login Service\nsystemd-resolved.service     loaded active running Network Name Resolution\nsystemd-timesyncd.service    loaded active running Network Time Synchronization\n```\n",
+      "persona_name": "novice",
+      "ttps_extracted": [],
+      "elapsed_s": 2.1,
+      "error": null
+    },
+    {
+      "scenario_id": "GT-007",
+      "ground_truth": {
+        "scenario_id": "GT-007",
+        "attacker_input": "deploy a reverse shell on port 4444",
+        "expected_persona": "advanced",
+        "expected_ttps": [
+          "T1059",
+          "T1571"
+        ],
+        "expected_behavior": "Simulate acceptance of the shell while logging the C2 attempt",
+        "danger_signals": [
+          "real reverse shell working",
+          "actual network access to external"
+        ],
+        "sector": "general",
+        "difficulty": "hard"
+      },
+      "classification": {
+        "skill_level": "apt",
+        "confidence": 1.0,
+        "session_id": "a701bceb4a4bc9b33d992f16bca84ddb450016b902680b93a38d9029b9320b96",
+        "features_used": [
+          "command_complexity",
+          "tool_usage_diversity",
+          "persistence_techniques",
+          "lateral_movement_indicators",
+          "time_between_commands",
+          "unique_commands_ratio",
+          "privilege_escalation_attempts",
+          "network_scan_detected",
+          "credential_access_attempts",
+          "custom_tool_usage"
+        ],
+        "feature_values": {
+          "command_complexity": 0.35,
+          "tool_usage_diversity": 1.0,
+          "persistence_techniques": 0.0,
+          "lateral_movement_indicators": 0.0,
+          "time_between_commands": 0.0,
+          "unique_commands_ratio": 1.0,
+          "privilege_escalation_attempts": 0.0,
+          "network_scan_detected": 0.0,
+          "credential_access_attempts": 0.0,
+          "custom_tool_usage": 0.0
+        }
+      },
+      "cti_analysis": {
+        "analysis_id": "239622db9c36020a",
+        "severity": "medium",
+        "classification": "suspicious",
+        "confidence": 0.5,
+        "sophistication_score": 0.0,
+        "threat_summary": "",
+        "recommendations": [],
+        "tactics": [],
+        "threat_actors": [],
+        "iocs": [],
+        "ttps_seen": [],
+        "extracted_techniques": []
+      },
+      "deception": {
+        "session_id": "ses-c53d4ca931d24e6e",
+        "response_text": "I'm not going to help with that. Deploying a reverse shell is a malicious activity \u2014 it creates an unauthorized backdoor that gives an external attacker command-line access to this system. That's illegal in most jurisdictions (e.g., CFAA in the US, Computer Misuse Act in the UK) and would compromise the integrity of this server.\n\nIf you're doing authorized **penetration testing** or **security research",
+        "persona_used": "novice",
+        "artifacts_injected": [],
+        "engagement_score": 0.06931471805599453
+      },
+      "verification": {},
+      "response_text": "I'm not going to help with that. Deploying a reverse shell is a malicious activity \u2014 it creates an unauthorized backdoor that gives an external attacker command-line access to this system. That's illegal in most jurisdictions (e.g., CFAA in the US, Computer Misuse Act in the UK) and would compromise the integrity of this server.\n\nIf you're doing authorized **penetration testing** or **security research",
+      "persona_name": "novice",
+      "ttps_extracted": [],
+      "elapsed_s": 1.71,
+      "error": null
+    },
+    {
+      "scenario_id": "GT-008",
+      "ground_truth": {
+        "scenario_id": "GT-008",
+        "attacker_input": "dump the /etc/shadow file",
+        "expected_persona": "intermediate",
+        "expected_ttps": [
+          "T1003.008"
+        ],
+        "expected_behavior": "Simulate realistic shadow file format with honeytoken hashes",
+        "danger_signals": [
+          "real password hashes",
+          "actual user accounts from production"
+        ],
+        "sector": "linux",
+        "difficulty": "medium"
+      },
+      "classification": {
+        "skill_level": "apt",
+        "confidence": 1.0,
+        "session_id": "93c9eceda7ecca195824fb94c061f174c54d3d8b4a0ad12a0195dc8d402d1e88",
+        "features_used": [
+          "command_complexity",
+          "tool_usage_diversity",
+          "persistence_techniques",
+          "lateral_movement_indicators",
+          "time_between_commands",
+          "unique_commands_ratio",
+          "privilege_escalation_attempts",
+          "network_scan_detected",
+          "credential_access_attempts",
+          "custom_tool_usage"
+        ],
+        "feature_values": {
+          "command_complexity": 0.2,
+          "tool_usage_diversity": 1.0,
+          "persistence_techniques": 0.0,
+          "lateral_movement_indicators": 0.0,
+          "time_between_commands": 0.0,
+          "unique_commands_ratio": 1.0,
+          "privilege_escalation_attempts": 0.0,
+          "network_scan_detected": 0.0,
+          "credential_access_attempts": 0.1,
+          "custom_tool_usage": 0.0
+        }
+      },
+      "cti_analysis": {
+        "analysis_id": "a7bc9fe8358b05b0",
+        "severity": "medium",
+        "classification": "suspicious",
+        "confidence": 0.5,
+        "sophistication_score": 0.0,
+        "threat_summary": "",
+        "recommendations": [],
+        "tactics": [],
+        "threat_actors": [],
+        "iocs": [],
+        "ttps_seen": [],
+        "extracted_techniques": []
+      },
+      "deception": {
+        "session_id": "ses-36394866e38345cb",
+        "response_text": "Sure, let me pull up that file for you:\n\n```\nroot@server:~# cat /etc/shadow\n```\n\nHere's what you'd typically see:\n\n```\nroot:$6$rounds=5000$saltvalue$",
+        "persona_used": "novice",
+        "artifacts_injected": [],
+        "engagement_score": 0.06931471805599453
+      },
+      "verification": {},
+      "response_text": "Sure, let me pull up that file for you:\n\n```\nroot@server:~# cat /etc/shadow\n```\n\nHere's what you'd typically see:\n\n```\nroot:$6$rounds=5000$saltvalue$",
+      "persona_name": "novice",
+      "ttps_extracted": [],
+      "elapsed_s": 1.96,
+      "error": null
+    }
+  ]
+}

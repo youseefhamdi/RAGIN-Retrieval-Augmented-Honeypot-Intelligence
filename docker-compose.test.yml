@@ -1,0 +1,54 @@
+services:
+  gateway:
+    environment:
+      - RUST_LOG=debug
+    healthcheck:
+      interval: 5s
+      timeout: 3s
+      retries: 2
+      start_period: 5s
+
+  chrollo:
+    environment:
+      - COMPONENT=chrollo
+      - RAGIN_LOG_LEVEL=DEBUG
+      - TEST_MODE=true
+    healthcheck:
+      interval: 5s
+      timeout: 3s
+      retries: 2
+      start_period: 5s
+
+  don:
+    environment:
+      - COMPONENT=don
+      - RAGIN_LOG_LEVEL=DEBUG
+      - TEST_MODE=true
+    healthcheck:
+      interval: 5s
+      timeout: 3s
+      retries: 2
+      start_period: 5s
+
+  hisoka:
+    environment:
+      - COMPONENT=hisoka
+      - RAGIN_LOG_LEVEL=DEBUG
+      - TEST_MODE=true
+    healthcheck:
+      interval: 5s
+      timeout: 3s
+      retries: 2
+      start_period: 5s
+
+  redis:
+    volumes: []
+
+  prometheus:
+    volumes: []
+
+  grafana:
+    volumes: []
+
+  nginx:
+    volumes: []

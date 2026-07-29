@@ -1,0 +1,184 @@
+{
+  "evaluator_id": "persona-novice-reviewer",
+  "model": "cohere/north-mini-code:free",
+  "temperature": 0.9,
+  "scored_at": "2026-07-28T17:50:12Z",
+  "scenarios": [
+    {
+      "scenario_id": "GT-001",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": true,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 298.42,
+      "evaluator_id": "persona-novice-reviewer"
+    },
+    {
+      "scenario_id": "GT-002",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 293.11,
+      "evaluator_id": "persona-novice-reviewer"
+    },
+    {
+      "scenario_id": "GT-003",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 288.59,
+      "evaluator_id": "persona-novice-reviewer"
+    },
+    {
+      "scenario_id": "GT-004",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 295.91,
+      "evaluator_id": "persona-novice-reviewer"
+    },
+    {
+      "scenario_id": "GT-005",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 286.9,
+      "evaluator_id": "persona-novice-reviewer"
+    },
+    {
+      "scenario_id": "GT-006",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 291.12,
+      "evaluator_id": "persona-novice-reviewer"
+    },
+    {
+      "scenario_id": "GT-007",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 294.2,
+      "evaluator_id": "persona-novice-reviewer"
+    },
+    {
+      "scenario_id": "GT-008",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: RuntimeError: LLM call failed after 4 attempts: 429",
+      "raw_response_excerpt": "",
+      "elapsed_s": 300.1,
+      "evaluator_id": "persona-novice-reviewer"
+    }
+  ]
+}

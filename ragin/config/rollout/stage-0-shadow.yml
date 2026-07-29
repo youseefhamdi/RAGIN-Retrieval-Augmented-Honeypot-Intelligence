@@ -1,0 +1,28 @@
+stage: shadow
+description: "Shadow mode — canary processes requests but responses are discarded. Only metrics compared."
+traffic_split:
+  stable_percent: 100
+  canary_percent: 0
+  shadow_percent: 100
+monitoring:
+  max_error_rate_delta: 0.01
+  max_latency_p99_delta_ms: 200
+  min_sample_size: 1000
+  duration_hours: 24
+  metrics_comparison: true
+  response_discarded: true
+rollback_triggers:
+  - metric: error_rate
+    condition: delta_gt
+    threshold: 0.02
+  - metric: latency_p99_ms
+    condition: delta_gt
+    threshold: 300
+go_no_go:
+  - criterion: error_rate_stable
+    required: true
+  - criterion: latency_comparable
+    required: true
+  - criterion: cost_within_budget
+    required: true
+next_stage: canal

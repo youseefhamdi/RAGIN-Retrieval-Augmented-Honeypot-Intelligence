@@ -1,0 +1,19 @@
+stage: cleanup
+description: "Remove stable, rename canary to stable. Rollout complete."
+traffic_split:
+  stable_percent: 100
+  canary_percent: 0
+  shadow_percent: 0
+monitoring:
+  duration_hours: 0
+  cleanup: true
+rollback_triggers: []
+go_no_go:
+  - criterion: rollout_completed
+    required: true
+actions:
+  - stop hisoka-stable
+  - rename hisoka-canary to hisoka
+  - update nginx to remove canary routing
+  - remove canary overlay
+next_stage: null

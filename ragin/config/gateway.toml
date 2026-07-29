@@ -1,0 +1,130 @@
+[server]
+host = "0.0.0.0"
+port = 8080
+workers = 2
+max_request_size = 10485760
+request_timeout_secs = 120
+keep_alive_secs = 30
+
+[providers.openrouter]
+name = "openrouter"
+provider_type = "openrouter"
+api_key = "sk-or-v1-REPLACED_OPENROUTER_KEY"
+base_url = "https://openrouter.ai/api/v1"
+api_base_url = "https://openrouter.ai/api/v1"
+models = ["inclusionai/ling-3.0-flash:free", "openai/gpt-4o-mini"]
+priority = 1
+enabled = true
+weight = 1
+timeout_secs = 60
+max_retries = 3
+headers = {}
+
+[models]
+[models."inclusionai/ling-3.0-flash:free"]
+provider = "openrouter"
+context_window = 128000
+max_output_tokens = 16384
+input_cost_per_1k = 0.0
+output_cost_per_1k = 0.0
+enabled = true
+max_retries = 3
+timeout_secs = 60
+skill_levels = ["novice", "intermediate"]
+
+[models."inclusionai/ling-3.0-flash:free".capabilities]
+chat = true
+completion = false
+function_calling = true
+vision = false
+json_mode = true
+streaming = true
+system_prompt = true
+parallel_tool_calls = false
+
+[models."openai/gpt-4o-mini"]
+provider = "openrouter"
+context_window = 128000
+max_output_tokens = 16384
+input_cost_per_1k = 0.00015
+output_cost_per_1k = 0.0006
+enabled = true
+max_retries = 3
+timeout_secs = 60
+skill_levels = ["novice", "intermediate", "expert", "apt"]
+
+[models."openai/gpt-4o-mini".capabilities]
+chat = true
+completion = false
+function_calling = true
+vision = true
+json_mode = true
+streaming = true
+system_prompt = true
+parallel_tool_calls = true
+
+[routing]
+strategy = "priority"
+fallback_enabled = true
+fallback_models = ["openai/gpt-4o-mini"]
+latency_threshold_ms = 5000
+cost_threshold_usd = 0.01
+
+[routing.skill_routing]
+novice = "inclusionai/ling-3.0-flash:free"
+intermediate = "inclusionai/ling-3.0-flash:free"
+expert = "openai/gpt-4o-mini"
+apt = "openai/gpt-4o-mini"
+
+[rate_limiting]
+global_rpm = 100
+global_tpm = 100000
+burst_allowance = 1.5
+
+[rate_limiting.per_model_rpm]
+[rate_limiting.per_client_rpm]
+
+[circuit_breaker]
+failure_threshold = 5
+success_threshold = 3
+timeout_secs = 30
+
+[caching]
+enabled = true
+cache_responses = true
+cache_embeddings = false
+max_size_mb = 512
+ttl_secs = 3600
+
+[cost]
+daily_budget_usd = 20.00
+monthly_budget_usd = 500.00
+alert_threshold_percent = 80.0
+track_per_model = true
+track_per_provider = true
+track_per_skill = true
+
+[validation]
+enabled = false
+strict_mode = false
+max_tokens_per_response = 8192
+allowed_finish_reasons = ["stop", "length"]
+content_filters = []
+
+[prompt_engine]
+templates_dir = "./templates"
+default_skill_level = "intermediate"
+auto_detect_skill = true
+max_context_tokens = 128000
+
+[metrics]
+enabled = true
+prometheus_port = 9091
+log_level = "info"
+sample_rate = 1.0
+
+[security]
+cors_origins = ["*"]
+rate_limit_by_api_key = true
+
+[security.api_keys]

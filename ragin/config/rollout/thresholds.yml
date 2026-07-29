@@ -1,0 +1,22 @@
+stages:
+  shadow:
+    max_error_rate_delta: 0.01
+    max_latency_p99_delta_ms: 200
+    min_sample_size: 1000
+    duration_hours: 24
+  canal:
+    max_error_rate_delta: 0.005
+    max_latency_p99_delta_ms: 100
+    min_sample_size: 5000
+    duration_hours: 48
+  half:
+    max_error_rate_delta: 0.002
+    max_latency_p99_delta_ms: 50
+    min_sample_size: 10000
+    duration_hours: 72
+  full:
+    max_error_rate: 0.01
+    max_latency_p99_ms: 500
+    min_sample_size: 20000
+    duration_hours: 72
+    rollback_window_hours: 168

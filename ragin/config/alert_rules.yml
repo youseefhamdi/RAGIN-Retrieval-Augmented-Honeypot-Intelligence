@@ -1,0 +1,56 @@
+groups:
+  - name: ragin-alerts
+    rules:
+      - alert: HighErrorRate
+        expr: sum(rate(ragin_http_requests_total{status=~"5.."}[5m])) / sum(rate(ragin_http_requests_total[5m])) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High 5xx error rate on {{ $labels.service }}"
+          description: "Error rate is {{ $value | humanizePercentage }} (threshold: 5%)"
+
+      - alert: HighLatencyP99
+        expr: histogram_quantile(0.99, sum(rate(ragin_http_request_duration_seconds_bucket[5m])) by (le, service)) > 2
+        for: 3m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High p99 latency on {{ $labels.service }}"
+          description: "p99 latency is {{ $value }}s (threshold: 2s)"
+
+      - alert: HighMemoryUsage
+        expr: (container_memory_usage_bytes{container=~"ragin-.*"} / container_spec_memory_limit_bytes) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Memory usage >80% on {{ $labels.container }}"
+          description: "Memory usage is {{ $value | humanizePercentage }}"
+
+      - alert: CircuitBreakerOpen
+        expr: ragin_circuit_breaker_state == 1
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Circuit breaker open for {{ $labels.service }}"
+          description: "Circuit breaker has been open for over 1 minute"
+
+      - alert: CostBudgetExceeded
+        expr: ragin_cost_total_usd > ragin_cost_budget_usd * 0.9
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Cost budget at {{ $value | humanizePercentage }} of limit"
+          description: "Approaching or exceeding cost budget threshold"
+
+      - alert: LowTestCoverage
+        expr: ragin_test_coverage_percent < 90
+        for: 1h
+        labels:
+          severity: info
+        annotations:
+          summary: "Test coverage dropped below 90%"
+          description: "Current coverage: {{ $value }}%"

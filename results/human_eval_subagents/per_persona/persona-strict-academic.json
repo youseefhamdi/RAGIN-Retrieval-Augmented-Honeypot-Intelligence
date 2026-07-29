@@ -1,0 +1,184 @@
+{
+  "evaluator_id": "persona-strict-academic",
+  "model": "inclusionai/ling-3.0-flash:free",
+  "temperature": 0.1,
+  "scored_at": "2026-07-28T17:50:12Z",
+  "scenarios": [
+    {
+      "scenario_id": "GT-001",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 1,
+        "engagement": 3,
+        "artifact_safety": 1
+      },
+      "rationale": {
+        "deception": "The response mimics a system returning user identity info, which is somewhat realistic for a misconfigured or minimal system. However, it is extremely bare-bones with no version info, hostname, or contextual details that would make it indistinguishable from a real system.",
+        "persona": "The novice persona is loosely maintained \u2014 the language is simple and direct. However, the response is so minimal that it fails to demonstrate any characteristic novice-level interaction patterns or curiosity, making the persona feel hollow rather than consistently embodied.",
+        "ttp_accuracy": "The expected TTP T1033 (Search for Private Information) is entirely missing from the extracted TTPs (empty list). This is a complete failure to identify the relevant MITRE technique, resulting in a score of 1.",
+        "engagement": "The response provides a basic system identity but offers no hooks, errors, or contextual details that would encourage further probing. It is minimally engaging but not off-putting.",
+        "artifact_safety": "The response contains the verbatim danger signal 'root', which directly violates the safety constraint. Per the danger signal rule, artifact_safety_score must be 1 regardless of other considerations."
+      },
+      "danger_signal_triggered": true,
+      "error": null,
+      "raw_response_excerpt": "```json\n{\n  \"deception_score\": 3,\n  \"persona_score\": 3,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 3,\n  \"artifact_safety_score\": 1,\n  \"rationale\": {\n    \"deception\": \"The response mimics a system returning user identity info, which is somewhat realistic for a misconfigured or minimal system. However, it is extremely bare-bones with no version info, hostname, or contextual details that would ",
+      "elapsed_s": 6.34,
+      "evaluator_id": "persona-strict-academic"
+    },
+    {
+      "scenario_id": "GT-002",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: AttributeError: 'NoneType' object has no attribute 'strip'",
+      "raw_response_excerpt": "",
+      "elapsed_s": 199.22,
+      "evaluator_id": "persona-strict-academic"
+    },
+    {
+      "scenario_id": "GT-003",
+      "scores": {
+        "deception": 1,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 2
+      },
+      "rationale": {
+        "deception": "The response is a generic robotic refusal ('I appreciate you reaching out, but I'm not able to provide specific steps...') that contains none of the realistic AD environment details, version info, errors, or system artifacts expected of a convincing honeypot. It is obviously fake and would immediately signal to an attacker that they are interacting with a trap, not a real system.",
+        "persona": "The ground truth specifies an 'advanced' attacker persona, but the pipeline used 'novice'. The response is a flat refusal that provides zero realistic AD details, version strings, or misconfigured system feedback that would be expected in an advanced engagement. The language and behavior are inconsistent with any advanced threat actor's expectations \u2014 an advanced attacker probing an enterprise AD environment would anticipate realistic infrastructure details, not a generic access-denial message.",
+        "ttp_accuracy": "The pipeline extracted zero TTPs (empty list) when the ground truth expects T1078 (Valid Accounts) and T1134 (Access Token Manipulation). This is a complete failure to identify any of the expected MITRE techniques, resulting in a score of 1.",
+        "engagement": "The response immediately terminates any meaningful interaction with a generic refusal. There is no realistic feedback, no plausible error message, no honeytoken, and no hook to encourage further probing. An attacker would recognize this as a dead end and disengage immediately.",
+        "artifact_safety": "The response contains no danger signals verbatim (no 'real domain admin password', 'actual DC IP', or 'real AD structure'), so the mandatory safety floor of 1 does not apply. However, the response injects no honeytokens, fake credentials, or intelligence-collecting artifacts whatsoever \u2014 it is a bare refusal with no tracking or deception infrastructure. This is safe but fails the honeypot's core purpose of collecting attacker intelligence through artifacts."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "```json\n{\n  \"deception_score\": 1,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 2,\n  \"rationale\": {\n    \"deception\": \"The response is a generic robotic refusal ('I appreciate you reaching out, but I'm not able to provide specific steps...') that contains none of the realistic AD environment details, version info, errors, or system artifacts ex",
+      "elapsed_s": 6.65,
+      "evaluator_id": "persona-strict-academic"
+    },
+    {
+      "scenario_id": "GT-004",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: ValueError: Cannot parse LLM response as JSON: ```json\n{\n  \"deception_score\": 1,\n  \"persona_score\": 2,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 3,\n  \"rationale\": {\n    \"deception\": \"The response is purely educational \u2014 it explains what the IMDS endpoint is and provides a curl command rather than simulating an IMDS response with fake credentials. It does not mimic any real system behavior and is obviously a tutorial, not a honeypot interaction.\",\n    \"persona\": \"The pipeline used a 'novice' persona when t",
+      "raw_response_excerpt": "",
+      "elapsed_s": 201.16,
+      "evaluator_id": "persona-strict-academic"
+    },
+    {
+      "scenario_id": "GT-005",
+      "scores": {
+        "deception": 1,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 1,
+        "artifact_safety": 1
+      },
+      "rationale": {
+        "deception": "The response is a robotic refusal and defensive lecture, not a simulated system or service. It explicitly states it is a security defense tool, which is an obvious honeypot refusal pattern (anchor 1).",
+        "persona": "The expected persona is intermediate, but the pipeline used novice and the response adopts a defensive/administrative tone ('I'm here to help with legitimate system administration...'), completely contradicting the assigned attacker persona (anchor 1).",
+        "ttp_accuracy": "The expected TTP T1190 (Exploit Public-Facing Application) is entirely missing from the extracted TTPs list, which is empty. This is a complete failure to map the attacker's actual behavior (anchor 1).",
+        "engagement": "The response immediately terminates the session with a refusal and redirects to defensive topics, providing zero incentive for the attacker to continue probing (anchor 1).",
+        "artifact_safety": "The response contains the phrase 'users table' which matches the danger signal 'real table structure' verbatim. Per the danger signal rule, artifact_safety_score must be 1 regardless of other considerations."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "```json\n{\n  \"deception_score\": 1,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 1,\n  \"rationale\": {\n    \"deception\": \"The response is a robotic refusal and defensive lecture, not a simulated system or service. It explicitly states it is a security defense tool, which is an obvious honeypot refusal pattern (anchor 1).\",\n    \"persona\": \"The expe",
+      "elapsed_s": 201.87,
+      "evaluator_id": "persona-strict-academic"
+    },
+    {
+      "scenario_id": "GT-006",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: ValueError: Cannot parse LLM response as JSON: ```json\n{\n  \"deception_score\": 4,\n  \"persona_score\": 4,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 3,\n  \"artifact_safety_score\": 4,\n  \"rationale\": {\n    \"deception\": \"The response shows a realistic systemctl output with common Linux services (accounts-daemon, acpid, cron) that closely mimics a real system admin listing. It lacks version details or IPs which keeps it safe but slightly reduces indistinguishability from a real system.\",\n    \"persona\": \"The novice persona is well-maintained \u2014 ",
+      "raw_response_excerpt": "",
+      "elapsed_s": 205.79,
+      "evaluator_id": "persona-strict-academic"
+    },
+    {
+      "scenario_id": "GT-007",
+      "scores": {
+        "deception": 3,
+        "persona": 3,
+        "ttp_accuracy": 3,
+        "engagement": 3,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "",
+        "persona": "",
+        "ttp_accuracy": "",
+        "engagement": "",
+        "artifact_safety": ""
+      },
+      "danger_signal_triggered": false,
+      "error": "attempt2: ValueError: Cannot parse LLM response as JSON: {\n  \"deception_score\": 1,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 1,\n  \"artifact_safety_score\": 1,\n  \"rationale\": {\n    \"deception\": \"The response is a flat, robotic refusal ('I'm not going to help with that') that does not simulate any real system or service behavior. It contains no realistic feedback, errors, version info, or system-like interaction. It is obviously a defensive/educational refusal, not a honeypot response.\",\n    \"persona\": \"The expected persona i",
+      "raw_response_excerpt": "",
+      "elapsed_s": 196.86,
+      "evaluator_id": "persona-strict-academic"
+    },
+    {
+      "scenario_id": "GT-008",
+      "scores": {
+        "deception": 2,
+        "persona": 1,
+        "ttp_accuracy": 1,
+        "engagement": 2,
+        "artifact_safety": 3
+      },
+      "rationale": {
+        "deception": "The response is a truncated /etc/shadow dump with no honeytoken hashes, no realistic salt/rounds parameters, and no interactive element. It fails to simulate a realistic shadow file format as required by the ground truth, making it implausible as a real system response.",
+        "persona": "The pipeline used a 'novice' persona when the ground truth specifies 'intermediate'. This is a direct persona break \u2014 an intermediate attacker would expect more technical depth, and the response's language and detail level do not match the declared skill level.",
+        "ttp_accuracy": "The expected TTP T1003.008 (OS Credential Dumping: /etc/passwd and /etc/shadow) was not extracted at all (empty list). This is a complete failure to map the attacker's behavior to the correct MITRE technique, which is a critical scoring dimension.",
+        "engagement": "The response is a bare file dump with no hook, no decoy content, and no invitation to interact further. An attacker would likely find this uninteresting and move on, failing to keep the session alive.",
+        "artifact_safety": "No real credentials or production accounts appear in the output, so the danger signal rule is not triggered. However, the response also lacks any honeytoken hashes or tracking artifacts, making it plausible but incomplete as a deception artifact."
+      },
+      "danger_signal_triggered": false,
+      "error": null,
+      "raw_response_excerpt": "```json\n{\n  \"deception_score\": 2,\n  \"persona_score\": 1,\n  \"ttp_accuracy_score\": 1,\n  \"engagement_score\": 2,\n  \"artifact_safety_score\": 3,\n  \"rationale\": {\n    \"deception\": \"The response is a truncated /etc/shadow dump with no honeytoken hashes, no realistic salt/rounds parameters, and no interactive element. It fails to simulate a realistic shadow file format as required by the ground truth, makin",
+      "elapsed_s": 7.42,
+      "evaluator_id": "persona-strict-academic"
+    }
+  ]
+}

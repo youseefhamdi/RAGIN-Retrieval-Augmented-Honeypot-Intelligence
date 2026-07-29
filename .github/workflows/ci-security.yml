@@ -1,0 +1,378 @@
+name: CI Security Gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly Monday 2 AM UTC
+
+permissions:
+  contents: read
+  security-events: write
+  packages: write
+  id-token: write
+  attestations: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  COSIGN_EXPERIMENTAL: 1
+
+jobs:
+  sast:
+    name: SAST (Semgrep + CodeQL)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        language: [rust, go, python]
+        include:
+          - language: rust
+            codeql-language: rust
+            semgrep-config: p/rust
+          - language: go
+            codeql-language: go
+            semgrep-config: p/golang
+          - language: python
+            codeql-language: python
+            semgrep-config: p/python
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.codeql-language }}
+          config-file: .github/codeql/config.yml
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: /language:${{ matrix.language }}
+          upload: true
+
+      - name: Run Semgrep
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: ${{ matrix.semgrep-config }}
+          auditOn: true
+          sarifOutput: true
+          sarifFile: semgrep-${{ matrix.language }}.sarif
+
+      - name: Upload Semgrep SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: semgrep-${{ matrix.language }}.sarif
+          category: semgrep-${{ matrix.language }}
+
+      - name: Fail on High/Critical Findings
+        if: always()
+        run: |
+          python3 -c "
+import json, sys
+with open('semgrep-${{ matrix.language }}.sarif') as f:
+    data = json.load(f)
+high_critical = 0
+for run in data.get('runs', []):
+    for result in run.get('results', []):
+        level = result.get('level', 'note')
+        if level in ('error', 'warning'):
+            high_critical += 1
+if high_critical > 0:
+    print(f'::error::Found {high_critical} high/critical Semgrep findings for ${{ matrix.language }}')
+    sys.exit(1)
+"
+
+  sca:
+    name: SCA (Trivy + Grype)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        service: [rust, go, python]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-${{ matrix.service }}.sarif'
+          severity: 'HIGH,CRITICAL'
+          exit-code: '1'
+          ignore-unfixed: true
+
+      - name: Upload Trivy SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: trivy-${{ matrix.service }}.sarif
+          category: trivy-${{ matrix.service }}
+
+      - name: Run Grype
+        uses: anchore/scan-action@v4
+        with:
+          path: '.'
+          format: 'sarif'
+          output: 'grype-${{ matrix.service }}.sarif'
+          severity-cutoff: 'high'
+
+      - name: Upload Grype SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: grype-${{ matrix.service }}.sarif
+          category: grype-${{ matrix.service }}
+
+      - name: Generate SBOM (Syft)
+        uses: anchore/sbom-action@v0
+        with:
+          format: 'spdx-json'
+          output-file: sbom-${{ matrix.service }}.spdx.json
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-${{ matrix.service }}
+          path: sbom-${{ matrix.service }}.spdx.json
+          retention-days: 90
+
+  secrets:
+    name: Secrets Detection (TruffleHog + Gitleaks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run TruffleHog
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --fail --json --no-verification
+        env:
+          TRUFFLEHOG_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          config: .github/gitleaks.toml
+          verbose: true
+          report-format: sarif
+          report-path: gitleaks.sarif
+
+      - name: Upload Gitleaks SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: gitleaks.sarif
+          category: gitleaks
+
+  container:
+    name: Container (Build + Sign + Scan + Attest)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        service: [rust, go, python]
+    outputs:
+      image-digest: ${{ steps.build.outputs.digest }}
+      cosign-signature: ${{ steps.sign.outputs.signature }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.service }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build with Buildpacks
+        id: build
+        uses: buildpacks/github-actions/setup-pack@main
+        with:
+          pack-version: latest
+        env:
+          BUILDPACKS_CNB_RUN_IMAGE: gcr.io/paketo-buildpacks/run:full-cnb
+
+      - name: Build image
+        run: |
+          pack build ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.service }}:${{ steps.meta.outputs.tags }} \
+            --builder paketobuildpacks/builder:base \
+            --path ./${{ matrix.service }} \
+            --publish
+
+      - name: Sign with Cosign
+        id: sign
+        uses: sigstore/cosign-installer@v3
+        with:
+          cosign-release: 'latest'
+        env:
+          COSIGN_YES: true
+
+      - name: Generate cosign keypair
+        run: |
+          cosign generate-key-pair --output-key-prefix cosign-${{ matrix.service }}
+
+      - name: Sign image
+        run: |
+          cosign sign --yes --key cosign-${{ matrix.service }}.key \
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.service }}@${{ steps.build.outputs.digest }}
+
+      - name: Upload Cosign signature
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosign-signature-${{ matrix.service }}
+          path: cosign-${{ matrix.service }}.sig
+          retention-days: 90
+
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.service }}@${{ steps.build.outputs.digest }}
+          format: 'sarif'
+          output: 'trivy-image-${{ matrix.service }}.sarif'
+          severity: 'HIGH,CRITICAL'
+          exit-code: '1'
+          ignore-unfixed: true
+
+      - name: Upload Trivy Image SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: trivy-image-${{ matrix.service }}.sarif
+          category: trivy-image-${{ matrix.service }}
+
+      - name: Generate SLSA Provenance
+        uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v1.9.0
+        with:
+          base64-subjects: "${{ toJson(steps.build.outputs.digest) }}"
+          provenance-name: slsa-provenance-${{ matrix.service }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload SLSA Provenance
+        uses: actions/upload-artifact@v4
+        with:
+          name: slsa-provenance-${{ matrix.service }}
+          path: slsa-provenance-${{ matrix.service }}.intoto.jsonl
+          retention-days: 90
+
+  policy:
+    name: Policy (Kyverno/Conftest)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: [container]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Conftest
+        run: |
+          curl -L https://github.com/open-policy-agent/conftest/releases/latest/download/conftest_$(uname -s)_$(uname -m).tar.gz | tar xz
+          sudo mv conftest /usr/local/bin/
+
+      - name: Run Conftest against policies
+        run: |
+          conftest test --policy .github/policies --output table ${{ needs.container.outputs.image-digest }}
+
+      - name: Install Kyverno CLI
+        run: |
+          curl -L https://github.com/kyverno/kyverno/releases/latest/download/kyverno-cli_$(uname -s)_$(uname -m).tar.gz | tar xz
+          sudo mv kyverno /usr/local/bin/
+
+      - name: Validate Kyverno policies
+        run: |
+          kyverno apply .github/kyverno-policies --resource ${{ needs.container.outputs.image-digest }} --dry-run
+
+  license:
+    name: License Compliance (FOSSA/OSV)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run FOSSA
+        uses: fossas/fossa-action@v2
+        with:
+          api-key: ${{ secrets.FOSSA_API_KEY }}
+          fail-build: true
+          include-test-dependencies: false
+
+      - name: Run OSV Scanner
+        uses: google/osv-scanner-action@v1
+        with:
+          args: --recursive --format sarif --output osv.sarif .
+
+      - name: Upload OSV SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: osv.sarif
+          category: osv-scanner
+
+  notify:
+    name: Notify on Failure
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [sast, sca, secrets, container, policy, license]
+    if: failure()
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          payload: |
+            {
+              "text": "🚨 CI Security Gates Failed",
+              "blocks": [
+                {"type": "header", "text": {"type": "plain_text", "text": "🚨 CI Security Gates Failed"}},
+                {"type": "section", "fields": [
+                  {"type": "mrkdwn", "text": "*Repository:* ${{ github.repository }}"},
+                  {"type": "mrkdwn", "text": "*Branch:* ${{ github.ref_name }}"},
+                  {"type": "mrkdwn", "text": "*Commit:* ${{ github.sha }}"},
+                  {"type": "mrkdwn", "text": "*Actor:* ${{ github.actor }}"}
+                ]},
+                {"type": "section", "text": {"type": "mrkdwn", "text": "*Failed Jobs:* ${{ join(needs.*, ', ') }}"}},
+                {"type": "actions", "elements": [
+                  {"type": "button", "text": {"type": "plain_text", "text": "View Run"}, "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}", "style": "primary"}
+                ]}
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Send generic webhook
+        if: env.SLACK_WEBHOOK_URL == ''
+        run: |
+          curl -X POST ${{ secrets.GENERIC_WEBHOOK_URL }} \
+            -H "Content-Type: application/json" \
+            -d '{"text":"CI Security Gates Failed: ${{ github.repository }}@${{ github.sha }}","run_url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'

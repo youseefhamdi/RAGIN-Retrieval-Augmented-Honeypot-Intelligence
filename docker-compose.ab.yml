@@ -1,0 +1,115 @@
+# A/B testing overlay — runs control + treatment hisoka side by side.
+# Usage: docker compose -f docker-compose.yml -f docker-compose.ab.yml up -d
+
+services:
+  hisoka-control:
+    image: ${RAGIN_IMAGE:-ragin:latest}
+    command: ["python3", "-m", "ragin.server", "--component", "hisoka"]
+    ports:
+      - "8083:8080"
+    environment:
+      - COMPONENT=hisoka
+      - RAGIN_EXPERIMENT_GROUP=control
+      - REDIS_URL=redis://redis:6379/0
+      - API_KEY=${API_KEY}
+      - GATEWAY_URL=http://gateway:8080
+      - RAGIN_LOG_LEVEL=INFO
+    networks:
+      - ragin-internal
+    depends_on:
+      gateway:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+        reservations:
+          memory: 512M
+          cpus: "0.5"
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+  hisoka-treatment:
+    image: ${RAGIN_TREATMENT_IMAGE:-ragin:treatment}
+    command: ["python3", "-m", "ragin.server", "--component", "hisoka"]
+    ports:
+      - "8084:8080"
+    environment:
+      - COMPONENT=hisoka
+      - RAGIN_EXPERIMENT_GROUP=treatment
+      - REDIS_URL=redis://redis:6379/0
+      - API_KEY=${API_KEY}
+      - GATEWAY_URL=http://gateway:8080
+      - RAGIN_LOG_LEVEL=INFO
+    networks:
+      - ragin-internal
+    depends_on:
+      gateway:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+        reservations:
+          memory: 512M
+          cpus: "0.5"
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+  nginx-ab:
+    image: nginx:1.25-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./ragin/config/nginx-ab.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - ragin-external
+    depends_on:
+      - hisoka-control
+      - hisoka-treatment
+      - gateway
+      - chrollo
+      - don
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:80/nginx-health"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.5"
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "3"

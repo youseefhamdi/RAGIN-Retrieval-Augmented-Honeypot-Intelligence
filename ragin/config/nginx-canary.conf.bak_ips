@@ -1,0 +1,6 @@
+# Canary IP whitelist — add IPs that should always see the canary version
+# Format: one CIDR or IP per line
+# Example:
+# 10.0.0.50/32
+# 192.168.1.0/24
+127.0.0.1/32

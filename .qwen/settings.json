@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(extension-creator)",
+      "mcp__lean-ctx__ctx_compose",
+      "Agent(general-purpose)",
+      "Bash(cargo build)"
+    ]
+  },
+  "$version": 4
+}

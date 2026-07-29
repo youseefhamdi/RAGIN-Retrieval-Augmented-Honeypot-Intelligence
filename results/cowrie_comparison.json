@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "generated_at": "2026-07-29T02:54:49Z",
+    "cowrie_path": "data/cowrie_logs/cowrie.json",
+    "ragin_path": "results/live_benchmark.json"
+  },
+  "ragin": {
+    "source": "ragin_live_benchmark",
+    "n_sessions": 30,
+    "engagement_rate": 0.96,
+    "ttps_detected": 5,
+    "ttps_unique": 13,
+    "detection_precision": 0.74,
+    "honeytokens_deployed": 30,
+    "honeytokens_triggered": 0,
+    "composite_score": 0.697,
+    "perf": {
+      "mean_response_ms": 7287,
+      "throughput_rps": null
+    }
+  },
+  "cowrie": {
+    "source": "cowrie_vps_deployment",
+    "n_sessions": 2,
+    "engagement_rate": 1.0,
+    "ttps_detected": 2,
+    "ttps_unique": 5,
+    "detection_precision": 1.0,
+    "honeytokens_deployed": 2,
+    "honeytokens_triggered": 0,
+    "composite_score": 0.45,
+    "perf": {
+      "mean_response_ms": 0.0,
+      "throughput_rps": null
+    },
+    "all_ttps_observed": [
+      "T1003.008",
+      "T1033",
+      "T1057",
+      "T1082",
+      "T1083"
+    ],
+    "command_corpus_size": 8
+  },
+  "delta": {
+    "engagement_rate_delta": -0.04,
+    "ttps_unique_delta": 8,
+    "honeytokens_deployed_delta": 28,
+    "composite_delta": 0.247,
+    "composite_pct": 54.9
+  },
+  "interpretation": {
+    "engagement": "Cowrie logs every successful auth as a session; RAGIN's 96.7% engagement comes from 30 single-turn probes via the gateway \u2014 apples-to-oranges. Normalize on session_count or turn_count when comparing.",
+    "ttps": "RAGIN surfaces 13 unique MITRE techniques vs Cowrie's 5, but the corpus sizes differ: 8 Cowrie commands vs 218 RAGIN queries across CTI/Actor/Persona suites. The richer RAGIN corpus is what enables wider TTP coverage; Cowrie's TP list reflects only the commands actually executed.",
+    "honeytokens": "RAGIN injected 30 honeytokens across 30 sessions; Cowrie v3.0.x has no honeytoken engine. This is the primary RAGIN differentiator: adversarial value-add, not raw emulation.",
+    "composite": "Composite score RAGIN=0.697 vs Cowrie=0.45. Cowrie scores low here because the EffectivenessMetrics composite weights honeytokens + persona accuracy + adaptive strategy \u2014 none of which Cowrie produces. Use this delta to argue the differentiation, not pure TTP recall."
+  }
+}

@@ -1,0 +1,92 @@
+[package]
+name = "llm-gateway"
+version = "0.1.0"
+edition = "2021"
+description = "RAGIN LLM Gateway - Multi-provider LLM routing with cost tracking, skill-based routing, and validation"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.38", features = ["full", "rt-multi-thread", "macros", "sync", "time"] }
+async-trait = "0.1.76"
+
+# HTTP client
+reqwest = { version = "0.12", features = ["json", "stream", "rustls-tls", "gzip", "brotli", "cookies", "multipart"] }
+
+# Web framework
+axum = { version = "0.7", features = ["json", "multipart"] }
+tower = { version = "0.4", features = ["timeout", "retry", "buffer", "load"] }
+tower-http = { version = "0.6", features = ["trace", "compression-br"] }
+
+# Circuit breaker
+# tower-circuit-breaker = "0.5"
+
+# Rate limiting
+governor = { version = "0.6", features = ["dashmap", "std"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+futures = "0.3"
+
+# Configuration
+figment = { version = "0.10", features = ["toml", "env"] }
+secrecy = "0.10"
+
+# Prometheus metrics
+prometheus = "0.13"
+metrics = "0.21"
+metrics-exporter-prometheus = "0.13"
+
+# Templates
+tera = "1.18"
+
+# Tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt", "json"] }
+
+# Utilities
+uuid = { version = "1.8", features = ["v4", "serde", "fast-rng"] }
+chrono = { version = "0.4", features = ["serde"] }
+anyhow = "1.0"
+thiserror = "1.0"
+dashmap = "5.5"
+parking_lot = "0.12"
+lru = "0.11"
+rand = "0.8"
+
+# Validation
+validator = { version = "0.19", features = ["derive"] }
+regex = "1.10"
+
+# Security
+ring = "0.17"
+zeroize = "1.8"
+argon2 = "0.5"
+
+# CLI
+clap = { version = "4.5", features = ["derive", "env"] }
+
+[dev-dependencies]
+tokio-test = "0.4"
+mockall = "0.12"
+wiremock = "0.6"
+criterion = "0.5"
+tempfile = "3.10"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.release-with-debug]
+inherits = "release"
+debug = true
+
+[features]
+default = ["openrouter", "ollama", "mock"]
+openrouter = ["reqwest/json", "reqwest/stream"]
+ollama = []
+mock = []

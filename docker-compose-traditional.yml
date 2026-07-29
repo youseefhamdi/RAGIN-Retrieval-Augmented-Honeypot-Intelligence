@@ -1,0 +1,61 @@
+# Traditional Honeypot Benchmark Deployment
+# ==========================================
+# Deploys Dionaea, Conpot, and Kippo for live comparison with RAGIN.
+#
+# Usage:
+#   docker compose -f docker-compose-traditional.yml up -d
+#   python tests/benchmark_traditional.py --results results/traditional_benchmark.json
+#   docker compose -f docker-compose-traditional.yml down
+
+version: "3.8"
+
+services:
+  # ── Dionaea: Malware Capture Honeypot ──────────────────────────────
+  dionaea:
+    image: dionaea/dionaea:latest
+    container_name: ragin-dionaea
+    ports:
+      - "2121:21"      # FTP
+      - "4445:445"     # SMB
+      - "8081:80"      # HTTP
+      - "5061:5060"    # SIP
+    volumes:
+      - dionaea-data:/opt/dionaea/var
+    restart: unless-stopped
+    networks:
+      - honeypot-net
+
+  # ── Conpot: ICS/SCADA Honeypot ────────────────────────────────────
+  conpot:
+    image: conpot/conpot:latest
+    container_name: ragin-conpot
+    ports:
+      - "5021:502"     # Modbus
+      - "8181:81"      # HTTP
+      - "1021:102"     # S7comm
+    volumes:
+      - conpot-data:/opt/conpot/log
+    restart: unless-stopped
+    networks:
+      - honeypot-net
+
+  # ── Kippo: SSH Honeypot ───────────────────────────────────────────
+  kippo:
+    image: kwart/kippo:latest
+    container_name: ragin-kippo
+    ports:
+      - "2222:2222"    # SSH
+    volumes:
+      - kippo-data:/opt/kippo/var
+    restart: unless-stopped
+    networks:
+      - honeypot-net
+
+volumes:
+  dionaea-data:
+  conpot-data:
+  kippo-data:
+
+networks:
+  honeypot-net:
+    driver: bridge
