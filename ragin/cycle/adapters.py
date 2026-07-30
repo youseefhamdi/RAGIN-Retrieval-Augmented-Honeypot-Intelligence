@@ -56,20 +56,87 @@ class ChrolloAdapter:
 
         try:
             result = self._classifier.classify(session_log)
+            error = ""
             return {
                 "skill_level": result.skill_level.value,
                 "confidence": result.confidence,
                 "session_id": result.session_id,
                 "features_used": result.features_used[:10],
                 "feature_values": {k: round(v, 4) for k, v in list(result.feature_values.items())[:20]},
+                "error": error,
             }
         except Exception as e:
             logger.warning("Chrollo classify failed: %s", e)
             return {
                 "skill_level": "novice",
                 "confidence": 0.0,
+                "session_id": "",
+                "features_used": [],
+                "feature_values": {},
                 "error": str(e),
             }
+
+
+_EVASION_RULES: list[tuple[str, str]] = [
+    ("history_disabled", r"unset\s+(history|histfile)|histfile=/dev/null"),
+    ("log_cleared", r"(rm|truncate|>)[\s/]*(var/log|\.(bash|zsh|sh)_history)"),
+    ("process_hiding", r"(nohup|disown|setsid)\s+"),
+    ("timestamp_smudging", r"touch\s+[-][dt]\s+"),
+    ("obfuscation", r"base64\s+[-]d|echo\s+.*\|.*base64|printf.*\\x"),
+]
+_TOOL_RULES: list[tuple[str, str]] = [
+    ("curl", r"\bcurl\s+"),
+    ("wget", r"\bwget\s+"),
+    ("netcat", r"\b(nc|ncat|socat)\s+"),
+    ("nmap", r"\bnmap\s+"),
+    ("masscan", r"\bmasscan\s+"),
+    ("python", r"\bpython[23]?\s+"),
+    ("perl", r"\bperl\s+"),
+    ("ruby", r"\bruby\s+"),
+    ("ssh_client", r"\b(ssh|scp)\s+"),
+    ("git", r"\bgit\s+"),
+    ("openssl", r"\bopenssl\s+"),
+    ("archive", r"\b(tar|gzip|zip)\s+"),
+    ("tmux_screen", r"\b(tmux|screen)\s+"),
+    ("ftp_client", r"\b(ftp|sftp)\s+"),
+]
+_CREDENTIAL_RULES: list[tuple[str, str]] = [
+    ("password_file_read", r"/etc/(passwd|shadow)"),
+    ("ssh_key_read", r"\.ssh/(id_rsa|authorized_keys|config)"),
+    ("user_enumeration", r"\b(whoami|id|users|w|lastlog|last)\b"),
+    ("sudo_su", r"\b(sudo|su)\s+"),
+    ("history_sniff", r"\bhistory\b"),
+    ("db_access", r"\b(mysql|psql|mongo|redis-cli)\s+"),
+    ("passwd_change", r"\bpasswd\s+"),
+]
+
+
+def _match_rules(commands: list[str], rules: list[tuple[str, str]]) -> dict[str, list[str]]:
+    import re
+
+    result: dict[str, list[str]] = {}
+    for cmd in commands:
+        cmd_lower = cmd.lower().strip()
+        if not cmd_lower:
+            continue
+        for key, pattern in rules:
+            if re.search(pattern, cmd_lower):
+                result.setdefault(key, []).append(cmd)
+    return result
+
+
+def _extract_evidence(session_context: dict[str, Any]) -> dict[str, Any]:
+    commands: list[str] = []
+    for inp in session_context.get("attacker_inputs", []):
+        if isinstance(inp, dict):
+            commands.append(str(inp.get("command", inp.get("input", str(inp)))))
+        else:
+            commands.append(str(inp))
+    return {
+        "evasion_techniques": _match_rules(commands, _EVASION_RULES),
+        "tools_used": _match_rules(commands, _TOOL_RULES),
+        "credential_access": _match_rules(commands, _CREDENTIAL_RULES),
+    }
 
 
 class DonAdapter:
@@ -122,8 +189,11 @@ class DonAdapter:
         if attacker_input:
             session_log.append({"role": "attacker", "content": attacker_input})
 
+        evidence = _extract_evidence(session_context)
+
         try:
             result = self._engine.analyze(req, session_log)
+            error = ""
             return {
                 "analysis_id": result.analysis_id,
                 "severity": result.severity.value,
@@ -137,10 +207,13 @@ class DonAdapter:
                 "tactics": [
                     {"id": t.tactic_id, "name": t.tactic_name, "confidence": t.confidence} for t in result.tactics
                 ],
-                "threat_actors": [
-                    {"name": a.name, "confidence": a.confidence, "known_ttps": a.known_ttps}
+                "candidate_actors": [
+                    {"name": a.name, "confidence": a.confidence, "known_ttps": a.known_ttps, "basis": "tactic-heuristic"}
                     for a in result.threat_actors
                 ],
+                "evasion_techniques": evidence["evasion_techniques"],
+                "tools_used": evidence["tools_used"],
+                "credential_access": evidence["credential_access"],
                 "iocs": [{"type": ioc.type.value, "value": ioc.value} for ioc in result.iocs[:20]],
                 "ttps_seen": list(
                     {tid for a in result.threat_actors for tid in a.known_ttps}
@@ -150,14 +223,23 @@ class DonAdapter:
                     {tid for a in result.threat_actors for tid in a.known_ttps}
                     | {tid for t in result.tactics for tid in t.techniques + t.sub_techniques}
                 ),
+                "error": error,
             }
         except Exception as e:
             logger.warning("Don analyze failed: %s", e)
             return {
+                "analysis_id": "",
+                "severity": "unknown",
+                "classification": "unknown",
+                "confidence": 0.0,
+                "sophistication_score": 0.0,
                 "threat_summary": "",
                 "recommendations": [],
                 "tactics": [],
-                "threat_actors": [],
+                "candidate_actors": [],
+                "evasion_techniques": evidence["evasion_techniques"],
+                "tools_used": evidence["tools_used"],
+                "credential_access": evidence["credential_access"],
                 "iocs": [],
                 "ttps_seen": [],
                 "extracted_techniques": [],
@@ -185,16 +267,19 @@ class HisokaAdapter:
     def generate_response(self, attacker_input: str, session_context: dict[str, Any]) -> dict[str, Any]:
         try:
             result = self._deceiver.generate_response(attacker_input, session_context)
+            error = ""
             return {
                 "session_id": result.session_id,
                 "response_text": result.response_text,
                 "persona_used": result.persona_used,
                 "artifacts_injected": result.artifacts_injected,
                 "engagement_score": result.engagement_score,
+                "error": error,
             }
         except Exception as e:
             logger.warning("Hisoka generate_response failed: %s", e)
             return {
+                "session_id": "",
                 "response_text": "Error generating response.",
                 "persona_used": "unknown",
                 "artifacts_injected": False,

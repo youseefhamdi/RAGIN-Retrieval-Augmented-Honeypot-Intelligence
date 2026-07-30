@@ -294,7 +294,7 @@ def process_session(a: dict):
                 if ar:
                     sev = ar.get("severity", "?")
                     tac = ar.get("tactics", [])
-                    act = ar.get("threat_actors", [])
+                    act = ar.get("candidate_actors", [])
                     print(f"severity={sev}", end="")
                     if tac:
                         print(f" tactics={[t['name'] for t in tac[:3]]}", end="")
