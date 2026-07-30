@@ -21,6 +21,7 @@ services:
       start_period: 10s
 
   chrollo:
+    image: ragin-python:latest
     build:
       context: .
       dockerfile: Dockerfile.python
@@ -45,6 +46,7 @@ services:
       start_period: 15s
 
   don:
+    image: ragin-python:latest
     build:
       context: .
       dockerfile: Dockerfile.python
@@ -69,12 +71,15 @@ services:
       start_period: 15s
 
   hisoka:
+    image: ragin-python:latest
     build:
       context: .
       dockerfile: Dockerfile.python
     command: ["python3", "-m", "ragin.server", "--component", "hisoka"]
     ports:
       - "${HISOKA_PORT:-8083}:8080"
+    volumes:
+      - ./ragin:/app/ragin:ro
     environment:
       - COMPONENT=hisoka
       - REDIS_URL=redis://redis:6379/0

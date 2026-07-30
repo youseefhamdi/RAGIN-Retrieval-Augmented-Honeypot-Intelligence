@@ -10,12 +10,15 @@ Output: writes to data/cowrie_logs/cowrie.json (Cowrie's native format).
 from __future__ import annotations
 
 import argparse
+import logging
 import random
 import sys
 import time
 from pathlib import Path
 
 import paramiko
+
+logger = logging.getLogger(__name__)
 
 SCENARIOS: list[dict[str, list[str]]] = [
     {
@@ -166,7 +169,9 @@ def drive_cowrie(
 
     for i in range(target_sessions):
         scenario = SCENARIOS[i % len(SCENARIOS)]
-        username = rng.choice(USERNAMES)
+        # Ponytail: Cowrie default accepts ANY password for these usernames;
+        # use them exclusively to maximize successful logins + command volume.
+        username = rng.choice(["admin", "test", "root"])
         password = rng.choice(PASSWORDS)
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -181,8 +186,8 @@ def drive_cowrie(
         finally:
             try:
                 client.close()
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Error closing SSH client: %s", e)
         time.sleep(0.3)
 
     return stats

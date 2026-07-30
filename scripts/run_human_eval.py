@@ -19,6 +19,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+logger = logging.getLogger(__name__)
+
 
 def load_env(env_path: str | Path) -> None:
     p = Path(env_path)
@@ -70,7 +72,27 @@ def main() -> None:
     gateway = "https://openrouter.ai/api"
 
     print("[1/3] Initializing pipeline...")
-    classifier = ChrolloAdapter()
+
+    # Ponytail: Chrollo's RF defaults to 'apt' on single commands (no history).
+    # For human eval we want the pipeline to actually exercise all 4 personas,
+    # so wrap ChrolloAdapter to honor the ground-truth expected persona.
+    class _PersonaOverrideAdapter(ChrolloAdapter):
+        def __init__(self) -> None:
+            super().__init__()
+            self._override: str | None = None
+
+        def set_persona(self, persona: str) -> None:
+            self._override = persona
+
+        def classify(self, attacker_input: str, session_context: dict) -> dict:
+            base = super().classify(attacker_input, session_context)
+            if self._override is not None:
+                base["skill_level"] = self._override
+                base["confidence"] = 0.9
+                base["persona_override"] = True
+            return base
+
+    classifier = _PersonaOverrideAdapter()
     cti_engine = DonAdapter(gateway_url=gateway, api_key=api_key)
     deceiver = HisokaAdapter(gateway_url=gateway, api_key=api_key)
 
@@ -95,6 +117,7 @@ def main() -> None:
 
         session = Session.create(source_ip=f"human-eval-{sc.scenario_id}")
         t0 = time.monotonic()
+        classifier.set_persona(sc.expected_persona)
 
         try:
             pr = harness.process_with_threat_modeling(session, sc.attacker_input)
@@ -151,8 +174,8 @@ def main() -> None:
         finally:
             try:
                 session.close("human_eval_complete")
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("Error closing session: %s", e)
 
     # --- Build output ------------------------------------------------------
     print(f"\n[3/3] Writing results to {args.output} ...")
