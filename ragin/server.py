@@ -1,13 +1,16 @@
 """RAGIN HTTP server — exposes Chrollo, Don, and Hisoka as HTTP services.
 
 Production wiring: audit logging, Prometheus metrics, rate limiting,
-budget enforcement, circuit breaker status, health checks.
+budget enforcement, circuit breaker status, health checks, RF-first
+scanner detection, and LRU response cache.
 """
 
 import argparse
 import logging
 import os
+import re
 import time
+from collections import OrderedDict
 from typing import Any
 
 import yaml
@@ -25,6 +28,95 @@ COMPONENT = os.environ.get("COMPONENT", "chrollo")
 REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
 PORT = int(os.environ.get("CHROLLO_PORT", os.environ.get("DON_PORT", os.environ.get("HISOKA_PORT", "8080"))))
 LOG_LEVEL = os.environ.get("RAGIN_LOG_LEVEL", "INFO")
+
+# RF-first scanner/bot detection patterns
+_SCANNER_PATTERNS = [
+    re.compile(r, re.IGNORECASE)
+    for r in [
+        r"nmap\s+-[sS]",
+        r"masscan\s+",
+        r"zmap\s+",
+        r"unicornscan",
+        r"gobuster\s+",
+        r"dirb\s+",
+        r"ffuf\s+",
+        r"wfuzz\s+",
+        r"dirsearch",
+        r"gospider",
+        r"nikto\s+-",
+        r"wapiti",
+        r"wpscan\s+",
+        r"acunetix",
+        r"nexpose",
+        r"nessus",
+        r"openvas",
+        r"appscan",
+        r"arachni",
+        r"zap\s+-",
+        r"sqlmap\s+",
+        r"jsqli",
+        r"hydra\s+-[lL]",
+        r"medusa\s+",
+        r"ncrack\s+",
+        r"sublist3r\s+",
+        r"amass\s+(?:enum|intel)",
+        r"subfinder\s+",
+        r"dnsrecon\s+",
+        r"dnsenum\s+",
+        r"msfconsole",
+        r"msfvenom",
+        r"searchsploit",
+        r"chisel\s+(?:client|server)",
+        r"socat\s+",
+        r"ncat\s+",
+        r"sshpass\s+-p",
+        r"python[23]?\s+-c\s+[\"'](?:import|exec|eval|__import__)",
+        r"perl\s+-e\s+",
+        r"ruby\s+-e\s+",
+    ]
+]
+
+
+class _ResponseCache:
+    def __init__(self, maxsize: int = 512, ttl: float = 300.0):
+        self._cache: OrderedDict[tuple[str, str], tuple[float, dict]] = OrderedDict()
+        self._maxsize = maxsize
+        self._ttl = ttl
+
+    def _key(self, attacker_input: str, persona: str) -> tuple[str, str]:
+        norm = attacker_input.strip().lower()
+        norm = re.sub(r"\s+", " ", norm)
+        return (norm, persona)
+
+    def get(self, attacker_input: str, persona: str) -> dict | None:
+        key = self._key(attacker_input, persona)
+        if key not in self._cache:
+            return None
+        ts, response = self._cache[key]
+        if time.monotonic() - ts > self._ttl:
+            del self._cache[key]
+            return None
+        self._cache.move_to_end(key)
+        return response
+
+    def put(self, attacker_input: str, persona: str, response: dict) -> None:
+        key = self._key(attacker_input, persona)
+        self._cache[key] = (time.monotonic(), response)
+        self._cache.move_to_end(key)
+        while len(self._cache) > self._maxsize:
+            self._cache.popitem(last=False)
+
+    @property
+    def size(self) -> int:
+        return len(self._cache)
+
+
+_response_cache = _ResponseCache()
+
+
+def _is_scanner(attacker_input: str) -> bool:
+    return any(pattern.search(attacker_input) for pattern in _SCANNER_PATTERNS)
+
 
 # Lazy imports per component
 _component = None
@@ -324,7 +416,29 @@ async def deceive(request):
             "skill_level": data.get("skill_level", "novice"),
             "context": data.get("context", ""),
         }
-        result = _component.generate_response(attacker_input, session_context)
+        persona = session_context["skill_level"]
+
+        # Guard 1: LRU response cache
+        cached = _response_cache.get(attacker_input, persona)
+        if cached is not None:
+            logger.debug("cache hit for %r (persona=%s)", attacker_input[:60], persona)
+            return web.json_response(cached)
+
+        # Guard 2: RF-first scanner detection
+        if _is_scanner(attacker_input):
+            logger.info("scanner input blocked: %r", attacker_input[:80])
+            result = _component._static_fallback(persona, attacker_input)
+        else:
+            result = _component.generate_response(attacker_input, session_context)
+
+        response_dict = {
+            "session_id": result.session_id,
+            "response_text": result.response_text,
+            "persona_used": result.persona_used,
+            "artifacts_injected": result.artifacts_injected,
+            "engagement_score": result.engagement_score,
+        }
+        _response_cache.put(attacker_input, persona, response_dict)
 
         # Audit log
         if _audit:
@@ -342,15 +456,7 @@ async def deceive(request):
         if _metrics_collector:
             _metrics_collector.record_deception(result.session_id, 0.0, result.engagement_score)
 
-        return web.json_response(
-            {
-                "session_id": result.session_id,
-                "response_text": result.response_text,
-                "persona_used": result.persona_used,
-                "artifacts_injected": result.artifacts_injected,
-                "engagement_score": result.engagement_score,
-            }
-        )
+        return web.json_response(response_dict)
     except ValueError as e:
         return web.json_response({"error": str(e)}, status=400)
     except Exception as e:

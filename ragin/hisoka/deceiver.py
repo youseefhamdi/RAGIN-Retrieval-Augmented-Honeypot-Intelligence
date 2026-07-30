@@ -51,7 +51,7 @@ class AdaptiveDeceiver:
 
         # Production infrastructure
         self._circuit_breaker = CircuitBreaker(threshold=5, timeout_s=60.0)
-        self._cost_tracker = CostTracker(daily_budget_usd=100.0, monthly_budget_usd=2000.0, per_request_budget_usd=0.10)
+        self._cost_tracker = CostTracker(daily_budget_usd=20.0, monthly_budget_usd=2000.0, per_request_budget_usd=0.10)
         self._prompt_limiter = PromptTokenLimiter(max_prompt_tokens=32_000)
 
     def generate_response(
