@@ -1,0 +1,105 @@
+[server]
+host = "0.0.0.0"
+port = 8080
+workers = 4
+max_request_size = 10485760
+request_timeout_secs = 60
+keep_alive_secs = 30
+
+[providers.openrouter]
+name = "OpenRouter"
+provider_type = "openrouter"
+base_url = "https://openrouter.ai/api/v1"
+api_base_url = "https://openrouter.ai/api/v1"
+models = ["inclusionai/ling-3.0-flash:free"]
+priority = 1
+enabled = true
+weight = 1
+timeout_secs = 60
+max_retries = 3
+headers = {}
+
+[models."inclusionai/ling-3.0-flash:free"]
+provider = "openrouter"
+context_window = 128000
+max_output_tokens = 4096
+input_cost_per_1k = 0.0
+output_cost_per_1k = 0.0
+enabled = true
+max_retries = 3
+timeout_secs = 60
+skill_levels = ["intermediate"]
+
+[models."inclusionai/ling-3.0-flash:free".capabilities]
+chat = true
+completion = false
+function_calling = false
+vision = false
+json_mode = false
+streaming = true
+system_prompt = true
+parallel_tool_calls = false
+
+[routing]
+strategy = "priority"
+fallback_enabled = true
+fallback_models = ["inclusionai/ling-3.0-flash:free"]
+latency_threshold_ms = 5000
+cost_threshold_usd = 0.01
+
+[routing.skill_routing]
+novice = "inclusionai/ling-3.0-flash:free"
+intermediate = "inclusionai/ling-3.0-flash:free"
+expert = "inclusionai/ling-3.0-flash:free"
+apt = "inclusionai/ling-3.0-flash:free"
+
+[rate_limiting]
+global_rpm = 1000
+global_tpm = 100000
+per_model_rpm = {}
+per_client_rpm = {}
+burst_allowance = 1.5
+
+[circuit_breaker]
+failure_threshold = 5
+success_threshold = 3
+timeout_secs = 30
+
+[caching]
+enabled = true
+cache_responses = true
+cache_embeddings = false
+max_size_mb = 100
+ttl_secs = 3600
+
+[cost]
+daily_budget_usd = 20.0
+monthly_budget_usd = 500.0
+alert_threshold_percent = 80.0
+track_per_model = true
+track_per_provider = true
+track_per_skill = true
+
+[validation]
+enabled = true
+strict_mode = false
+max_tokens_per_response = 8192
+allowed_finish_reasons = ["stop", "length", "tool_calls", "content_filter"]
+content_filters = []
+
+[prompt_engine]
+templates_dir = "./templates"
+default_skill_level = "intermediate"
+auto_detect_skill = true
+max_context_tokens = 128000
+
+[metrics]
+enabled = true
+prometheus_port = 9090
+log_level = "info"
+sample_rate = 1.0
+
+[security]
+api_keys = {}
+cors_origins = ["*"]
+rate_limit_by_api_key = true

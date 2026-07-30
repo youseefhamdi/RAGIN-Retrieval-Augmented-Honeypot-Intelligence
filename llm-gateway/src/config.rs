@@ -210,11 +210,22 @@ impl GatewayConfig {
     pub fn load() -> GatewayResult<Self> {
         use figment::{Figment, providers::{Format, Toml, Env}};
 
-        let config = Figment::new()
+        let mut config = Figment::new()
             .merge(Toml::file("config.toml"))
             .merge(Env::prefixed("RAGIN_"))
             .extract::<GatewayConfig>()
             .map_err(|e| GatewayError::Config(format!("Failed to load config: {}", e)))?;
+
+        // Fallback: read api key from flat env vars (figment Env doesn't auto-nest)
+        if let Ok(api_key) = std::env::var("OPENROUTER_API_KEY")
+            .or_else(|_| std::env::var("RAGIN_OPENROUTER_API_KEY"))
+        {
+            if let Some(provider) = config.providers.get_mut("openrouter") {
+                if provider.api_key.is_none() {
+                    provider.api_key = Some(api_key);
+                }
+            }
+        }
 
         Ok(config)
     }
