@@ -164,6 +164,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "${HISOKA_DECEPTION_PORT:-2222}:2222"
     volumes:
       - ./ragin/config/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./ssl/cert.pem:/etc/nginx/ssl/cert.pem:ro
@@ -182,6 +183,17 @@ services:
       timeout: 3s
       retries: 3
 
+  cowrie:
+    image: cowrie/cowrie:latest
+    ports:
+      - "${COWRIE_PORT:-2223}:2222"
+    volumes:
+      - cowrie-data:/cowrie/var/log/cowrie
+    networks:
+      - ragin-internal
+      - ragin-external
+    restart: unless-stopped
+
 networks:
   ragin-internal:
     driver: bridge
@@ -193,3 +205,4 @@ volumes:
   redis-data:
   prometheus-data:
   grafana-data:
+  cowrie-data:
