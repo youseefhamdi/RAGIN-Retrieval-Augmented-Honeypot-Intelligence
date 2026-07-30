@@ -217,10 +217,10 @@ impl GatewayConfig {
             .map_err(|e| GatewayError::Config(format!("Failed to load config: {}", e)))?;
 
         // Fallback: read api key from flat env vars (figment Env doesn't auto-nest)
-        if let Ok(api_key) = std::env::var("OPENROUTER_API_KEY")
-            .or_else(|_| std::env::var("RAGIN_OPENROUTER_API_KEY"))
+        if let Ok(api_key) = std::env::var("TOKENROUTER_API_KEY")
+            .or_else(|_| std::env::var("RAGIN_TOKENROUTER_API_KEY"))
         {
-            if let Some(provider) = config.providers.get_mut("openrouter") {
+            if let Some(provider) = config.providers.get_mut("tokenrouter") {
                 if provider.api_key.is_none() {
                     provider.api_key = Some(api_key);
                 }
