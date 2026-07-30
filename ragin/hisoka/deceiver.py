@@ -81,10 +81,12 @@ class AdaptiveDeceiver:
         # Budget enforcement
         if not self._cost_tracker.check_budget("hisoka"):
             logger.warning("Hisoka budget exhausted — returning static deception")
-            response_text = self._static_fallback(skill_level, redacted_input)
+            fallback_resp = self._static_fallback(skill_level, redacted_input)
+            response_text = fallback_resp.response_text
         elif not self._circuit_breaker.allow():
             logger.warning("Hisoka circuit breaker open — static fallback")
-            response_text = self._static_fallback(skill_level, redacted_input)
+            fallback_resp = self._static_fallback(skill_level, redacted_input)
+            response_text = fallback_resp.response_text
         else:
             # Build prompt — include attacker history if available
             prompt_text = f"{session_context.get('context', '')}\n{redacted_input}"
@@ -154,7 +156,7 @@ class AdaptiveDeceiver:
             honeytoken_triggered=honeytoken_triggered,
         )
 
-    def _static_fallback(self, skill_level: str, attacker_input: str) -> str:
+    def _static_fallback(self, skill_level: str, attacker_input: str) -> DeceptionResponse:
         """Return a pre-crafted deceptive response when LLM is unavailable."""
         fallbacks = {
             "novice": "Permission denied. This operation is not authorized.",
@@ -162,7 +164,15 @@ class AdaptiveDeceiver:
             "expert": "Segmentation fault (core dumped).",
             "apt": "Connection to remote host timed out.",
         }
-        return fallbacks.get(skill_level, "Unknown command.")
+        text = fallbacks.get(skill_level, "Unknown command.")
+        return DeceptionResponse(
+            session_id="static",
+            response_text=text,
+            persona_used=skill_level,
+            artifacts_injected=[],
+            engagement_score=0.0,
+            honeytoken_triggered=False,
+        )
 
     def adapt_persona(self, skill_level: str) -> Persona:
         """Switch to a persona matching the given skill level."""

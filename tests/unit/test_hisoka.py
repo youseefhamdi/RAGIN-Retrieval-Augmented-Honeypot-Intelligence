@@ -6,13 +6,16 @@ interface and validate behavior once the module ships.
 
 from __future__ import annotations
 
+import importlib.util
 import time
 from unittest.mock import MagicMock
 
 import pytest
 
+HAS_HISOKA = importlib.util.find_spec("ragin.hisoka") is not None
+
 try:
-    from ragin.hisoka import deception as hisoka_mod
+    from ragin.hisoka.deceiver import AdaptiveDeceiver
     from ragin.hisoka.deception import (
         ArtifactInjector,
         EngagementTracker,
@@ -20,10 +23,9 @@ try:
         ResponseGenerator,
         SessionManager,
     )
-
-    HAS_HISOKA = True
+    from ragin.hisoka.models import DeceptionResponse
 except ImportError:
-    HAS_HISOKA = False
+    pass
 
 pytestmark = pytest.mark.unit
 
@@ -55,7 +57,7 @@ class TestPersonaSelection:
 
     def test_invalid_level_raises(self):
         pm = PersonaManager()
-        with pytest.raises(ValueError):
+        with pytest.raises(ValueError, match="nonexistent"):
             pm.select("nonexistent")
 
 
@@ -110,10 +112,9 @@ class TestResponseGeneration:
 
     def test_response_varies_by_level(self):
         rg = ResponseGenerator()
-        novice = rg.generate(skill_level="novice", user_input="help")
-        expert = rg.generate(skill_level="expert", user_input="help")
-        # Responses should differ by skill level
-        assert novice != expert or True  # at minimum, no crash
+        rg.generate(skill_level="novice", user_input="help")
+        rg.generate(skill_level="expert", user_input="help")
+        # at minimum, no crash
 
 
 # ---------------------------------------------------------------------------
@@ -323,7 +324,7 @@ class TestHisokaPipelineExtended:
         from ragin.hisoka.session_manager import SessionManagerExtended
 
         sm = SessionManagerExtended()
-        session = sm.create_session(session_id="upgrade-sess", skill_level="novice", source_ip="10.0.0.5")
+        sm.create_session(session_id="upgrade-sess", skill_level="novice", source_ip="10.0.0.5")
         deceiver = MagicMock()
         new_persona = PersonaManager().select("expert")
         deceiver.adapt_persona.return_value = new_persona
@@ -381,10 +382,73 @@ class TestHisokaPipelineExtended:
         memory.add_attacker_profile.return_value = True
 
         sm = SessionManagerExtended()
-        session = sm.create_session(session_id="mem-end", skill_level="expert", source_ip="10.0.0.8")
+        sm.create_session(session_id="mem-end", skill_level="expert", source_ip="10.0.0.8")
         sm.update_session("mem-end", {"command": "cat /etc/passwd"})
 
         pipeline = HisokaPipeline(session_manager=sm, memory=memory)
         summary = pipeline.end_session("mem-end")
         assert summary.source_ip == "10.0.0.8"
         memory.add_attacker_profile.assert_called_once()
+
+
+# AdaptiveDeceiver — _static_fallback return type and budget/circuit-breaker paths
+
+
+@pytest.mark.skipif(not HAS_HISOKA, reason="ragin.hisoka not yet implemented")
+class TestAdaptiveDeceiverFallback:
+    """Verify that ``_static_fallback`` returns a ``DeceptionResponse`` and that
+    the budget/circuit-breaker branches in ``generate_response`` produce a
+    valid ``DeceptionResponse`` rather than crashing on attribute access."""
+
+    FALLBACK_TEXTS = {
+        "novice": "Permission denied. This operation is not authorized.",
+        "intermediate": "Command not found. Did you mean 'help'?",
+        "expert": "Segmentation fault (core dumped).",
+        "apt": "Connection to remote host timed out.",
+    }
+
+    @pytest.mark.parametrize("skill", ["novice", "intermediate", "expert", "apt"])
+    def test_static_fallback_returns_deception_response(self, skill):
+        deceiver = AdaptiveDeceiver()
+        result = deceiver._static_fallback(skill, "some input")
+        assert isinstance(result, DeceptionResponse)
+        assert result.session_id == "static"
+        assert result.response_text == self.FALLBACK_TEXTS[skill]
+        assert result.persona_used == skill
+        assert result.artifacts_injected == []
+        assert result.engagement_score == 0.0
+        assert result.honeytoken_triggered is False
+
+    def test_static_fallback_unknown_level(self):
+        deceiver = AdaptiveDeceiver()
+        result = deceiver._static_fallback("unknown_level", "input")
+        assert isinstance(result, DeceptionResponse)
+        assert result.response_text == "Unknown command."
+        assert result.persona_used == "unknown_level"
+
+    def test_generate_response_budget_exhausted_returns_deception_response(self):
+        deceiver = AdaptiveDeceiver()
+        deceiver._cost_tracker.check_budget = MagicMock(return_value=False)
+
+        result = deceiver.generate_response(
+            "ls -la",
+            {"session_id": "budget-test", "classification": {"skill_level": "novice"}},
+        )
+
+        assert isinstance(result, DeceptionResponse)
+        assert result.response_text == self.FALLBACK_TEXTS["novice"]
+        assert result.session_id == "budget-test"
+        assert result.honeytoken_triggered is False
+
+    def test_generate_response_circuit_breaker_open_returns_deception_response(self):
+        deceiver = AdaptiveDeceiver()
+        deceiver._circuit_breaker.allow = MagicMock(return_value=False)
+
+        result = deceiver.generate_response(
+            "whoami",
+            {"session_id": "circuit-test", "classification": {"skill_level": "expert"}},
+        )
+
+        assert isinstance(result, DeceptionResponse)
+        assert result.response_text == self.FALLBACK_TEXTS["expert"]
+        assert result.session_id == "circuit-test"
