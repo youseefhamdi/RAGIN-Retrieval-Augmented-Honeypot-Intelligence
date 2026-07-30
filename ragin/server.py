@@ -261,6 +261,12 @@ async def analyze(request):
                 [t.tactic_id for t in result.tactics],
             )
 
+        from ragin.cycle.adapters import _extract_evidence
+
+        commands = data.get("commands", data.get("features", {}).get("commands", []))
+        session_context = {"attacker_inputs": commands}
+        evidence = _extract_evidence(session_context)
+
         return web.json_response(
             {
                 "analysis_id": result.analysis_id,
@@ -269,11 +275,34 @@ async def analyze(request):
                 "classification": result.classification.value,
                 "confidence": result.confidence,
                 "sophistication_score": result.sophistication_score,
+                "threat_summary": result.summary if hasattr(result, "summary") else "",
+                "recommendations": [
+                    r if isinstance(r, str) else str(r) for r in getattr(result, "recommendations", [])
+                ],
                 "tactics": [
                     {"id": t.tactic_id, "name": t.tactic_name, "confidence": t.confidence} for t in result.tactics
                 ],
-                "threat_actors": [{"name": a.name, "confidence": a.confidence} for a in result.threat_actors],
+                "candidate_actors": [
+                    {
+                        "name": a.name,
+                        "confidence": a.confidence,
+                        "known_ttps": a.known_ttps,
+                        "basis": "tactic-heuristic",
+                    }
+                    for a in result.threat_actors
+                ],
+                "evasion_techniques": evidence["evasion_techniques"],
+                "tools_used": evidence["tools_used"],
+                "credential_access": evidence["credential_access"],
                 "iocs": [{"type": ioc.type.value, "value": ioc.value} for ioc in result.iocs[:20]],
+                "ttps_seen": list(
+                    {tid for a in result.threat_actors for tid in a.known_ttps}
+                    | {tid for t in result.tactics for tid in t.techniques + t.sub_techniques}
+                ),
+                "extracted_techniques": list(
+                    {tid for a in result.threat_actors for tid in a.known_ttps}
+                    | {tid for t in result.tactics for tid in t.techniques + t.sub_techniques}
+                ),
             }
         )
     except ValueError as e:

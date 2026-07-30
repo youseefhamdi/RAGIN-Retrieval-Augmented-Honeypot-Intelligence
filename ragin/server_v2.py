@@ -234,7 +234,7 @@ async def classify(request: web.Request) -> web.Response:
 
 
 async def analyze(request: web.Request) -> web.Response:
-    """Individual analyze endpoint — backward compatible with server.py."""
+    """Individual analyze endpoint — uses DonAdapter for full Phase-1 schema."""
     try:
         data = await request.json()
     except Exception:
@@ -244,30 +244,32 @@ async def analyze(request: web.Request) -> web.Response:
         return web.json_response({"error": "don not available in pipeline mode"}, status=400)
 
     try:
-        from ragin.don.models import AnalysisRequest, ClassificationLabel
+        from ragin.cycle.adapters import DonAdapter
 
-        classification_str = data.get("classification", "unknown")
-        classification_map = {
-            "benign": ClassificationLabel.BENIGN,
-            "suspicious": ClassificationLabel.SUSPICIOUS,
-            "malicious": ClassificationLabel.MALICIOUS,
+        attacker_input = data.get("command", data.get("attacker_input", ""))
+        commands = data.get("commands", data.get("features", {}).get("commands", []))
+        if not commands and attacker_input:
+            commands = [attacker_input]
+
+        session_context = {
+            "session_id": data.get("session_id", "unknown"),
+            "attacker_inputs": commands,
+            "classification": {
+                "skill_level": data.get("classification", "unknown"),
+                "confidence": data.get("confidence", 0.0),
+            },
+            "features": data.get("features", {}),
         }
-        req = AnalysisRequest(
-            session_id=data.get("session_id", "unknown"),
-            classification=classification_map.get(classification_str, ClassificationLabel.SUSPICIOUS),
-            confidence=data.get("confidence", 0.5),
-            features=data.get("features", {}),
+        system_responses = data.get("system_responses", data.get("session_log", []))
+        if system_responses:
+            session_context["system_responses"] = system_responses
+
+        da = DonAdapter(
+            gateway_url=os.environ.get("GATEWAY_URL"),
+            api_key=os.environ.get("OPENROUTER_API_KEY"),
         )
-        session_log = data.get("session_log", [])
-        result = _component.analyze(req, session_log)
-        return web.json_response(
-            {
-                "analysis_id": result.analysis_id,
-                "severity": result.severity.value,
-                "classification": result.classification.value,
-                "confidence": result.confidence,
-            }
-        )
+        result = da.analyze(attacker_input, session_context)
+        return web.json_response(result)
     except Exception as e:
         logger.exception("analyze error")
         return web.json_response({"error": str(e)}, status=500)
