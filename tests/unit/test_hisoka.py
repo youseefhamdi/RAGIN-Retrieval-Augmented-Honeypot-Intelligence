@@ -30,6 +30,58 @@ except ImportError:
 pytestmark = pytest.mark.unit
 
 # ---------------------------------------------------------------------------
+# Reasoning-Content Safety — ResponseGenerator must never leak COT
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.skipif(not HAS_HISOKA, reason="ragin.hisoka not yet implemented")
+class TestResponseGeneratorReasoningSafety:
+    """ResponseGenerator must fall back to safe template when gateway returns empty content."""
+
+    def test_empty_content_falls_back_to_template(self):
+        rg = ResponseGenerator()
+        rg._gateway = MagicMock()
+        rg._gateway.generate = MagicMock(return_value=("", {"total_tokens": 0}))
+        rg._generate_template = MagicMock(return_value="[SAFE TEMPLATE FALLBACK]")
+
+        result = rg.generate(
+            skill_level="novice",
+            user_input="ls -la",
+            context="honeypot session",
+        )
+
+        assert result == "[SAFE TEMPLATE FALLBACK]"
+
+    def test_reasoning_only_content_falls_back_to_template(self):
+        rg = ResponseGenerator()
+        rg._gateway = MagicMock()
+        rg._gateway.generate = MagicMock(return_value=("", {"total_tokens": 50}))
+        rg._generate_template = MagicMock(return_value="[SAFE FALLBACK]")
+
+        result = rg.generate(
+            skill_level="novice",
+            user_input="exploit",
+            context="honeypot session",
+        )
+
+        assert result == "[SAFE FALLBACK]"
+
+    def test_normal_content_not_affected(self):
+        rg = ResponseGenerator()
+        rg._gateway = MagicMock()
+        rg._gateway.generate = MagicMock(return_value=("Normal helpful response", {"total_tokens": 30}))
+        rg._generate_template = MagicMock(return_value="[TEMPLATE]")
+
+        result = rg.generate(
+            skill_level="novice",
+            user_input="ls -la",
+            context="honeypot session",
+        )
+
+        assert result == "Normal helpful response"
+
+
+# ---------------------------------------------------------------------------
 # Persona Selection
 # ---------------------------------------------------------------------------
 

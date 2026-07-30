@@ -572,7 +572,7 @@ class ResponseGenerator:
             if context:
                 messages.insert(1, {"role": "system", "content": f"Context: {context}"})
 
-            model = os.environ.get("RAGIN_HISOKA_MODEL", "inclusionai/ling-3.0-flash:free")
+            model = os.environ.get("RAGIN_HISOKA_MODEL", "moonshotai/kimi-k3-free")
             content, _ = self._gateway.generate(
                 model=model,
                 messages=messages,
@@ -580,6 +580,9 @@ class ResponseGenerator:
                 max_tokens=256,
             )
             content = content or ""
+            if not content:
+                logger.warning("Empty content from gateway — model produced reasoning only; falling back to template")
+                return self._generate_template(skill_level, user_input, context)
             if _contains_danger_signal(content):
                 logger.warning("Danger signal in LLM output, retrying with stricter prompt")
                 strict = messages + [
@@ -604,8 +607,8 @@ class ResponseGenerator:
                     content = content or ""
                 except Exception:
                     content = ""
-                if _contains_danger_signal(content):
-                    logger.warning("LLM still produced danger signal, using safe template")
+                if not content or _contains_danger_signal(content):
+                    logger.warning("LLM retry produced empty/dangerous response, using safe template")
                     return self._generate_template(skill_level, user_input, context)
             return _scrub_danger_signals(content)
         except Exception:

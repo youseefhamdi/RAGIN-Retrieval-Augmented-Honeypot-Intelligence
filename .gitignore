@@ -50,3 +50,8 @@ RAGIN_KEY.pem
 # Data and models (large files)
 data/
 models/
+
+# Artifacts
+gateway.tar
+attacker_log.jsonl
+attacker_report.md

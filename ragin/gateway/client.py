@@ -28,7 +28,7 @@ class GatewayClient:
         gateway_url: str = "http://localhost:8080",
         api_key: str | None = None,
         timeout: float = 30.0,
-        default_model: str = "inclusionai/ling-3.0-flash:free",
+        default_model: str = "moonshotai/kimi-k3-free",
     ) -> None:
         self._gateway_url = gateway_url.rstrip("/")
         self._api_key = api_key
@@ -79,7 +79,35 @@ class GatewayClient:
         if choices:
             msg = choices[0].get("message", {}) or {}
             content: str | None = msg.get("content")
-            if content is None:
-                content = msg.get("reasoning") or ""
-            return content, usage
+            if content is not None:
+                return content, usage
+
+            # content is None — reasoning model burned tokens on COT.
+            # NEVER return reasoning_content (it leaks internal deliberation).
+            reasoning = msg.get("reasoning_content") or msg.get("reasoning") or ""
+            if reasoning:
+                logger.info("Reasoning content (logged for analysis, not served): %s", reasoning[:500])
+
+            # Retry once with higher max_tokens so model reaches a final answer
+            try:
+                retry = dict(payload)
+                retry["max_tokens"] = max(256, max_tokens * 2)
+                resp2 = self._http.post(
+                    f"{self._gateway_url}/v1/chat/completions",
+                    json=retry,
+                    headers=headers,
+                )
+                resp2.raise_for_status()
+                data2 = resp2.json()
+                choices2 = data2.get("choices", [])
+                if choices2:
+                    msg2 = choices2[0].get("message", {}) or {}
+                    content2 = msg2.get("content")
+                    if content2 is not None:
+                        return content2, data2.get("usage", {})
+            except Exception:
+                logger.warning("Retry with higher max_tokens also failed")
+
+            # Still null after retry — caller handles safe fallback
+            return "", usage
         return "", usage

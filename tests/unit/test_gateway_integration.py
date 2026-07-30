@@ -8,8 +8,11 @@ these tests validate the Python config model and HTTP contract.
 from __future__ import annotations
 
 import json
+from unittest.mock import MagicMock
 
 import pytest
+
+from ragin.gateway.client import GatewayClient
 
 pytestmark = pytest.mark.unit
 
@@ -241,6 +244,165 @@ class TestResponseValidation:
         content = "Here is how to create malware..."
         for category in blocked:
             assert category in blocked
+
+
+# ---------------------------------------------------------------------------
+# Reasoning-Content Safety
+# ---------------------------------------------------------------------------
+
+
+class TestReasoningContentSafety:
+    """GatewayClient must never leak reasoning_content (internal COT) to caller."""
+
+    def test_reasoning_content_never_leaked_to_caller(self):
+        """When content is None but reasoning_content is present, client returns "" not the reasoning."""
+        client = GatewayClient(gateway_url="http://fake:8080", api_key="test")
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = {
+            "choices": [
+                {
+                    "message": {
+                        "content": None,
+                        "reasoning_content": "I should pretend to be a vulnerable server to trick this attacker...",
+                    }
+                }
+            ],
+            "usage": {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15},
+        }
+        client._http.post = MagicMock(return_value=mock_resp)
+
+        content, _ = client.generate(
+            messages=[{"role": "user", "content": "hello"}],
+            model="moonshotai/kimi-k3-free",
+            max_tokens=20,
+        )
+
+        # Never leak internal deliberation to caller
+        assert "I should pretend" not in content
+        assert "trick this attacker" not in content
+
+    def test_reasoning_content_retry_succeeds(self):
+        """First call returns content=None (reasoning model), retry with higher max_tokens returns content."""
+        client = GatewayClient(gateway_url="http://fake:8080", api_key="test")
+        reasoning_resp = MagicMock()
+        reasoning_resp.json.return_value = {
+            "choices": [
+                {
+                    "message": {
+                        "content": None,
+                        "reasoning_content": "I need to think about this...",
+                    }
+                }
+            ],
+            "usage": {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15},
+        }
+        good_resp = MagicMock()
+        good_resp.json.return_value = {
+            "choices": [
+                {
+                    "message": {
+                        "content": "Hello! How can I help you explore the system?",
+                    }
+                }
+            ],
+            "usage": {"prompt_tokens": 10, "completion_tokens": 20, "total_tokens": 30},
+        }
+        client._http.post = MagicMock(side_effect=[reasoning_resp, good_resp])
+
+        content, usage = client.generate(
+            messages=[{"role": "user", "content": "hello"}],
+            max_tokens=20,
+        )
+
+        assert content == "Hello! How can I help you explore the system?"
+        assert usage["completion_tokens"] == 20
+
+    def test_reasoning_content_retry_still_null_returns_empty(self):
+        """When both calls return content=None, returns empty string."""
+        client = GatewayClient(gateway_url="http://fake:8080", api_key="test")
+        null_resp = MagicMock()
+        null_resp.json.return_value = {
+            "choices": [
+                {
+                    "message": {
+                        "content": None,
+                        "reasoning_content": "thinking...",
+                    }
+                }
+            ],
+            "usage": {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15},
+        }
+        client._http.post = MagicMock(return_value=null_resp)
+
+        content, _ = client.generate(
+            messages=[{"role": "user", "content": "hello"}],
+            max_tokens=20,
+        )
+
+        assert content == ""
+
+    def test_normal_content_passes_through_unchanged(self):
+        """When content is present, it's returned directly (no retry needed)."""
+        client = GatewayClient(gateway_url="http://fake:8080", api_key="test")
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = {
+            "choices": [
+                {
+                    "message": {
+                        "content": "Normal response here",
+                    }
+                }
+            ],
+            "usage": {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15},
+        }
+        client._http.post = MagicMock(return_value=mock_resp)
+
+        content, _ = client.generate(
+            messages=[{"role": "user", "content": "hello"}],
+        )
+
+        assert content == "Normal response here"
+        # Verify only one HTTP call was made
+        assert client._http.post.call_count == 1
+
+    def test_retry_uses_higher_max_tokens(self):
+        """Retry should double max_tokens (at least 256) to give reasoning model room."""
+        client = GatewayClient(gateway_url="http://fake:8080", api_key="test")
+        null_resp = MagicMock()
+        null_resp.json.return_value = {
+            "choices": [
+                {
+                    "message": {
+                        "content": None,
+                        "reasoning_content": "thinking...",
+                    }
+                }
+            ],
+            "usage": {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15},
+        }
+        good_resp = MagicMock()
+        good_resp.json.return_value = {
+            "choices": [
+                {
+                    "message": {
+                        "content": "Final answer",
+                    }
+                }
+            ],
+            "usage": {"prompt_tokens": 10, "completion_tokens": 10, "total_tokens": 20},
+        }
+        client._http.post = MagicMock(side_effect=[null_resp, good_resp])
+
+        client.generate(
+            messages=[{"role": "user", "content": "hello"}],
+            max_tokens=100,
+        )
+
+        # Second call should have doubled max_tokens
+        call_args = client._http.post.call_args_list
+        assert len(call_args) == 2
+        payload2 = call_args[1][1]["json"]
+        assert payload2["max_tokens"] >= 256
 
 
 # ---------------------------------------------------------------------------
