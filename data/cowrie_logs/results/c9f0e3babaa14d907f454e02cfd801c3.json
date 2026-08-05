@@ -1,0 +1,64 @@
+{
+  "session_id": "c9f0e3babaa14d907f454e02cfd801c3c2573b2a859d9cf4147699fa988bbb13",
+  "timestamp": "2026-07-29T21:17:15.471830+00:00",
+  "classify_result": {
+    "skill_level": "apt",
+    "confidence": 1.0,
+    "session_id": "f5f16fdb242723c7a41770e9ff32ba0380b49ed5304cc7d3145c4630a424cef2",
+    "features_used": [
+      "command_complexity",
+      "tool_usage_diversity",
+      "persistence_techniques",
+      "lateral_movement_indicators",
+      "time_between_commands",
+      "unique_commands_ratio",
+      "privilege_escalation_attempts",
+      "network_scan_detected",
+      "credential_access_attempts",
+      "custom_tool_usage"
+    ],
+    "feature_values": {
+      "command_complexity": 0.175,
+      "tool_usage_diversity": 1.0,
+      "persistence_techniques": 0.0,
+      "lateral_movement_indicators": 0.0,
+      "time_between_commands": 0.0,
+      "unique_commands_ratio": 1.0,
+      "privilege_escalation_attempts": 0.0,
+      "network_scan_detected": 0.0,
+      "credential_access_attempts": 0.1,
+      "custom_tool_usage": 0.0
+    }
+  },
+  "analyze_result": {
+    "analysis_id": "fde42173731dac74",
+    "session_id": "c9f0e3babaa14d907f454e02cfd801c3c2573b2a859d9cf4147699fa988bbb13",
+    "severity": "medium",
+    "classification": "suspicious",
+    "confidence": 1.0,
+    "sophistication_score": 0.0,
+    "tactics": [
+      {
+        "id": "TA0006",
+        "name": "Credential Access",
+        "confidence": 0.5
+      },
+      {
+        "id": "TA0007",
+        "name": "Discovery",
+        "confidence": 0.5
+      }
+    ],
+    "threat_actors": [
+      {
+        "name": "Hafnium",
+        "confidence": 0.2
+      },
+      {
+        "name": "Fin7",
+        "confidence": 0.2
+      }
+    ],
+    "iocs": []
+  }
+}

@@ -87,7 +87,7 @@ Score each dimension 1-5 based on the rubric anchors. Return ONLY JSON."""
 
 def call_llm(system: str, user: str, api_key: str, model: str = "openai/gpt-4o-mini") -> str:
     resp = httpx.post(
-        "https://openrouter.ai/api/v1/chat/completions",
+        "https://api.tokenrouter.com/v1/chat/completions",
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
@@ -153,9 +153,9 @@ def main() -> None:
     if args.verbose:
         logging.getLogger().setLevel(logging.INFO)
 
-    api_key = os.environ.get("OPENROUTER_API_KEY", "")
+    api_key = os.environ.get("TOKENROUTER_API_KEY", os.environ.get("OPENROUTER_API_KEY", ""))
     if not api_key:
-        print("FATAL: OPENROUTER_API_KEY not set")
+        print("FATAL: TOKENROUTER_API_KEY/OPENROUTER_API_KEY not set")
         sys.exit(1)
 
     # Load input

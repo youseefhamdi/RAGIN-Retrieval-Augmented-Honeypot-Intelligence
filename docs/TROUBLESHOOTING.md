@@ -59,7 +59,7 @@ curl http://localhost:8080/health
 curl http://localhost:9090/api/v1/query?query=ragin_circuit_breaker_state
 
 # Check OpenRouter connectivity
-docker compose exec gateway curl -s https://openrouter.ai/api/v1/models | head
+docker compose exec gateway curl -s https://api.tokenrouter.com/v1/models | head
 ```
 
 **Fixes:**
@@ -186,10 +186,10 @@ curl -s http://localhost:9090/api/v1/targets | python3 -m json.tool | grep -A5 '
 
 ```bash
 # Test outbound connectivity from container
-docker compose exec gateway curl -s https://openrouter.ai/api/v1/models > /dev/null && echo "OK"
+docker compose exec gateway curl -s https://api.tokenrouter.com/v1/models > /dev/null && echo "OK"
 
 # Check DNS resolution
-docker compose exec gateway nslookup openrouter.ai
+docker compose exec gateway nslookup api.tokenrouter.com
 
 # Check network mode
 docker network inspect ragin_ragin-internal

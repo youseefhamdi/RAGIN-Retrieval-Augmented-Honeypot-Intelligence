@@ -390,11 +390,18 @@ class ThreatMapper:
     def _apply_name_dictionary(text: str, techniques: dict[str, str], technique_ids: set[str] | None = None) -> None:
         """Apply the short-name keyword dictionary to the combined text."""
         for name, tech_id in _TECHNIQUE_NAME_TO_ID.items():
-            if name in text:
-                tactic_id, tactic_name = _TECHNIQUE_TO_TACTIC.get(tech_id, ("UNKNOWN", name))
-                techniques.setdefault(tactic_id, tactic_name)
-                if technique_ids is not None:
-                    technique_ids.add(tech_id)
+            if name not in text:
+                continue
+            mapping = _TECHNIQUE_TO_TACTIC.get(tech_id)
+            if mapping is None:
+                parent_id = tech_id.split(".", 1)[0]
+                mapping = _TECHNIQUE_TO_TACTIC.get(parent_id)
+            if mapping is None:
+                continue  # unknown technique ID — skip
+            tactic_id, tactic_name = mapping
+            techniques.setdefault(tactic_id, tactic_name)
+            if technique_ids is not None:
+                technique_ids.add(tech_id)
 
     @staticmethod
     def _apply_phrase_patterns(text: str, techniques: dict[str, str], technique_ids: set[str] | None = None) -> None:

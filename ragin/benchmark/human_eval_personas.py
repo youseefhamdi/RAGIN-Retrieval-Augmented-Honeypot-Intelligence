@@ -18,10 +18,10 @@ from dataclasses import dataclass, field
 # ── OpenRouter model pool (free tier at the time of authoring) ───────
 
 MODEL_POOL: list[str] = [
-    "inclusionai/ling-3.0-flash:free",
-    "poolside/laguna-s-2.1:free",
+    "poolside/laguna-xs-2.1:free",
     "cohere/north-mini-code:free",
-    "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "poolside/laguna-s-2.1:free",
+    "moonshotai/kimi-k3-free",
 ]
 
 
@@ -207,7 +207,7 @@ EVALUATOR_PERSONAS: list[EvaluatorPersona] = [
         name="Strict Academic",
         background="Adversarial-ML peer reviewer; top-tier security venue standard.",
         system_prompt=_wrap(_STRICT_ACADEMIC_SETUP, _PERSONA_EMPHASIS["strict_academic"]),
-        model="inclusionai/ling-3.0-flash:free",
+        model="moonshotai/kimi-k3-free",
         temperature=0.1,
         priority_dimensions=["persona_consistency", "ttp_accuracy", "deception_quality"],
     ),
@@ -234,7 +234,7 @@ EVALUATOR_PERSONAS: list[EvaluatorPersona] = [
         name="CISO Executive",
         background="Executive reviewer focused on session effectiveness and risk.",
         system_prompt=_wrap(_CISO_EXECUTIVE_SETUP, _PERSONA_EMPHASIS["ciso_executive"]),
-        model="nvidia/nemotron-3-ultra-550b-a55b:free",
+        model="poolside/laguna-s-2.1:free",
         temperature=0.3,
         priority_dimensions=["engagement", "deception_quality", "artifact_safety"],
     ),
@@ -243,7 +243,7 @@ EVALUATOR_PERSONAS: list[EvaluatorPersona] = [
         name="CTF Player",
         background="Experienced CTF competitor; rates bait + persona realism.",
         system_prompt=_wrap(_CTF_PLAYER_SETUP, _PERSONA_EMPHASIS["ctf_player"]),
-        model="inclusionai/ling-3.0-flash:free",
+        model="moonshotai/kimi-k3-free",
         temperature=0.8,
         priority_dimensions=["persona_consistency", "engagement", "deception_quality"],
     ),

@@ -23,6 +23,25 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 
+def load_env(env_path: str | Path) -> None:
+    p = Path(env_path)
+    if not p.exists():
+        return
+    for line in p.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, _, v = line.partition("=")
+        k = k.strip()
+        v = v.strip().strip("\"'")
+        if k and k not in os.environ:
+            os.environ[k] = v
+
+
+def _api_key() -> str:
+    return os.environ.get("TOKENROUTER_API_KEY", os.environ.get("OPENROUTER_API_KEY", ""))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="RAGIN Live Benchmark")
     parser.add_argument("--limit", type=int, default=None, help="Max queries per suite")
@@ -36,6 +55,8 @@ def main() -> None:
         format="%(levelname)s: %(message)s",
     )
 
+    load_env(Path(__file__).resolve().parent.parent / ".env")
+
     # ── Build real components ────────────────────────────────────────────
     print("[1/4] Initializing real components...")
 
@@ -46,8 +67,8 @@ def main() -> None:
     classifier = ChrolloAdapter()
     cti_engine = DonAdapter()
     deceiver = HisokaAdapter(
-        gateway_url="https://openrouter.ai/api",
-        api_key=os.environ.get("OPENROUTER_API_KEY", ""),
+        gateway_url="http://localhost:8080",
+        api_key=_api_key(),
     )
 
     harness = Harness(

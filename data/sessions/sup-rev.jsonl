@@ -1,0 +1,120 @@
+{"event_id": "af500d82813e", "event_type": "attacker_input", "timestamp": "2026-07-27T13:44:47.689634+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "7d11674ba9d4", "event_type": "system_response", "timestamp": "2026-07-27T13:44:47.692740+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "0f1a72952fb7", "event_type": "attacker_input", "timestamp": "2026-07-27T13:49:54.368333+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "1b59837c263b", "event_type": "system_response", "timestamp": "2026-07-27T13:49:54.372707+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "ebc728c41ba0", "event_type": "attacker_input", "timestamp": "2026-07-27T13:50:19.291741+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "8f16a8a273d1", "event_type": "system_response", "timestamp": "2026-07-27T13:50:19.295968+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "b9a56781bb75", "event_type": "attacker_input", "timestamp": "2026-07-27T14:31:19.405551+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "8f9d3e7d29a7", "event_type": "system_response", "timestamp": "2026-07-27T14:31:19.408215+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "1e56f5def9ee", "event_type": "attacker_input", "timestamp": "2026-07-27T15:01:19.684923+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "a3ee452b6deb", "event_type": "system_response", "timestamp": "2026-07-27T15:01:19.687594+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "dc7c2cb48ce5", "event_type": "attacker_input", "timestamp": "2026-07-27T15:50:38.826553+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "bc63cc0a2584", "event_type": "system_response", "timestamp": "2026-07-27T15:50:38.829250+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "e4a0bfe4f9fb", "event_type": "attacker_input", "timestamp": "2026-07-27T17:58:30.226458+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "26e7f03a70b9", "event_type": "system_response", "timestamp": "2026-07-27T17:58:30.229349+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "74c950b7bb1b", "event_type": "attacker_input", "timestamp": "2026-07-27T18:20:03.066870+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "6f4e54ff0a93", "event_type": "system_response", "timestamp": "2026-07-27T18:20:03.069392+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "e5485e2b4da9", "event_type": "attacker_input", "timestamp": "2026-07-27T18:31:17.900808+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "7f509c4c746b", "event_type": "system_response", "timestamp": "2026-07-27T18:31:17.903597+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "ff250e7c50ba", "event_type": "attacker_input", "timestamp": "2026-07-27T18:32:07.585156+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "b259e0c48d7e", "event_type": "system_response", "timestamp": "2026-07-27T18:32:07.587817+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "f885b102b81d", "event_type": "attacker_input", "timestamp": "2026-07-27T18:36:54.285172+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "6b8c40638177", "event_type": "system_response", "timestamp": "2026-07-27T18:36:54.287939+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "1f96c87d2127", "event_type": "attacker_input", "timestamp": "2026-07-27T18:43:47.206319+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "74a60bbd1b12", "event_type": "system_response", "timestamp": "2026-07-27T18:43:47.209386+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "3256204c553c", "event_type": "attacker_input", "timestamp": "2026-07-27T19:03:07.524683+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "e85552186374", "event_type": "system_response", "timestamp": "2026-07-27T19:03:07.527589+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "0d981c530e3b", "event_type": "attacker_input", "timestamp": "2026-07-27T19:10:06.069869+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "fe004678c3cf", "event_type": "system_response", "timestamp": "2026-07-27T19:10:06.073355+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "32a78bd83f1c", "event_type": "attacker_input", "timestamp": "2026-07-28T02:16:02.787259+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "8f74eae32dc8", "event_type": "system_response", "timestamp": "2026-07-28T02:16:02.795916+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "ff5a3fab4315", "event_type": "attacker_input", "timestamp": "2026-07-28T03:31:07.556660+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "a5b13f60078e", "event_type": "system_response", "timestamp": "2026-07-28T03:31:07.561419+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "582af4219910", "event_type": "attacker_input", "timestamp": "2026-07-28T03:33:20.642381+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "180adb023d6d", "event_type": "system_response", "timestamp": "2026-07-28T03:33:20.646411+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "b740ad8891f7", "event_type": "attacker_input", "timestamp": "2026-07-28T03:37:09.873714+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "82ddaae19661", "event_type": "system_response", "timestamp": "2026-07-28T03:37:09.878282+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "a0fc7a9cbb51", "event_type": "attacker_input", "timestamp": "2026-07-28T03:56:09.207602+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "c914d8f7e45f", "event_type": "system_response", "timestamp": "2026-07-28T03:56:09.211797+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "1bb1109e249e", "event_type": "attacker_input", "timestamp": "2026-07-28T03:56:40.585777+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "7104dbdd93c7", "event_type": "system_response", "timestamp": "2026-07-28T03:56:40.590113+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "a814cc051f41", "event_type": "attacker_input", "timestamp": "2026-07-28T04:09:42.678384+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "667b4e27f731", "event_type": "system_response", "timestamp": "2026-07-28T04:09:42.682761+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "731f771fe742", "event_type": "attacker_input", "timestamp": "2026-07-28T04:36:13.011398+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "92b6f7c33235", "event_type": "system_response", "timestamp": "2026-07-28T04:36:13.016374+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "fb9930af9a36", "event_type": "attacker_input", "timestamp": "2026-07-28T04:37:18.638624+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "2f83469be7b1", "event_type": "system_response", "timestamp": "2026-07-28T04:37:18.644860+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "d0d10c69c353", "event_type": "attacker_input", "timestamp": "2026-07-28T14:09:10.264375+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "3f39150e8f55", "event_type": "system_response", "timestamp": "2026-07-28T14:09:10.267157+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "4c569e311b3a", "event_type": "attacker_input", "timestamp": "2026-07-29T04:20:18.441458+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "5f2c32a52d4f", "event_type": "system_response", "timestamp": "2026-07-29T04:20:18.444461+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "2dc8cdd3a878", "event_type": "attacker_input", "timestamp": "2026-07-29T04:31:08.583172+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "ad6d06c2ccad", "event_type": "system_response", "timestamp": "2026-07-29T04:31:08.585604+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "3e3299026cf2", "event_type": "attacker_input", "timestamp": "2026-07-29T04:34:47.939658+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "fd2447039e46", "event_type": "system_response", "timestamp": "2026-07-29T04:34:47.942148+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "b8fcf9f5aef2", "event_type": "attacker_input", "timestamp": "2026-07-29T04:38:26.703844+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "d19952a274df", "event_type": "system_response", "timestamp": "2026-07-29T04:38:26.706855+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "620599496d6c", "event_type": "attacker_input", "timestamp": "2026-07-29T04:46:34.697753+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "8196e9d036e5", "event_type": "system_response", "timestamp": "2026-07-29T04:46:34.700459+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "b4a7954f926a", "event_type": "attacker_input", "timestamp": "2026-07-29T08:18:05.191718+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "16ca246f4d49", "event_type": "system_response", "timestamp": "2026-07-29T08:18:05.194292+00:00", "data": {"text": "", "persona_used": "", "persona": ""}, "source": "harness"}
+{"event_id": "f6e0d8e67d03", "event_type": "attacker_input", "timestamp": "2026-07-29T09:19:25.842154+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "0cf17c96be61", "event_type": "error", "timestamp": "2026-07-29T09:19:25.845030+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "67337a180503", "event_type": "error", "timestamp": "2026-07-29T09:19:25.848580+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "603bdea41014", "event_type": "attacker_input", "timestamp": "2026-07-29T09:20:29.772312+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "34dbca3fbbc7", "event_type": "error", "timestamp": "2026-07-29T09:20:29.774969+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "4afd9e908c0e", "event_type": "error", "timestamp": "2026-07-29T09:20:29.778099+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "d71d79e849cb", "event_type": "attacker_input", "timestamp": "2026-07-29T09:22:25.271681+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "cc632cf30b9b", "event_type": "error", "timestamp": "2026-07-29T09:22:25.274638+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "197b73875385", "event_type": "error", "timestamp": "2026-07-29T09:22:25.277882+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "0e5dbb11d4c0", "event_type": "attacker_input", "timestamp": "2026-07-29T09:25:44.941171+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "9815bd3a302d", "event_type": "error", "timestamp": "2026-07-29T09:25:44.944808+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "7273f5241951", "event_type": "error", "timestamp": "2026-07-29T09:25:44.949607+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "d86da3308d53", "event_type": "attacker_input", "timestamp": "2026-07-29T09:26:47.819189+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "3f9a1ab778b6", "event_type": "error", "timestamp": "2026-07-29T09:26:47.822353+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "dd70d5687492", "event_type": "error", "timestamp": "2026-07-29T09:26:47.825719+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "eca40a1a5a74", "event_type": "attacker_input", "timestamp": "2026-07-29T09:29:00.139864+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "0a8113faf108", "event_type": "error", "timestamp": "2026-07-29T09:29:00.142838+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "480443052ef9", "event_type": "error", "timestamp": "2026-07-29T09:29:00.146409+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "ff61ede4e99d", "event_type": "attacker_input", "timestamp": "2026-07-29T09:31:11.949214+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "fc7bdcbc37ce", "event_type": "error", "timestamp": "2026-07-29T09:31:11.952424+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "5f50c37754f0", "event_type": "error", "timestamp": "2026-07-29T09:31:11.955501+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "16ac1f2025ef", "event_type": "attacker_input", "timestamp": "2026-07-29T13:12:29.297017+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "ed9479bf8d75", "event_type": "error", "timestamp": "2026-07-29T13:12:29.304907+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "3fee15d23a5e", "event_type": "error", "timestamp": "2026-07-29T13:12:29.309417+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "beb857d4ff29", "event_type": "attacker_input", "timestamp": "2026-07-29T13:18:15.420568+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "fab99fad19c1", "event_type": "error", "timestamp": "2026-07-29T13:18:15.428815+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "10d572292488", "event_type": "error", "timestamp": "2026-07-29T13:18:15.439715+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "e31efd15d7d6", "event_type": "attacker_input", "timestamp": "2026-07-30T12:47:36.506669+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "612466d5b31c", "event_type": "error", "timestamp": "2026-07-30T12:47:36.510202+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "468dd139af4e", "event_type": "error", "timestamp": "2026-07-30T12:47:36.514260+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "d147ac06c521", "event_type": "attacker_input", "timestamp": "2026-07-30T12:48:32.087286+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "f6b253230808", "event_type": "error", "timestamp": "2026-07-30T12:48:32.091691+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "277a729c61cf", "event_type": "error", "timestamp": "2026-07-30T12:48:32.095981+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "565811d4ff7d", "event_type": "attacker_input", "timestamp": "2026-07-30T17:09:44.309994+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "3f45d94489e4", "event_type": "error", "timestamp": "2026-07-30T17:09:44.313541+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "d0da0cf0d43f", "event_type": "error", "timestamp": "2026-07-30T17:09:44.316764+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "2a618c73acfd", "event_type": "attacker_input", "timestamp": "2026-07-30T17:12:07.909843+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "aeb17bcb21f8", "event_type": "error", "timestamp": "2026-07-30T17:12:07.916803+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "9c4c65322692", "event_type": "error", "timestamp": "2026-07-30T17:12:07.926134+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "5beb95d8b8cd", "event_type": "attacker_input", "timestamp": "2026-07-30T17:14:04.014119+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "30605e2beb00", "event_type": "error", "timestamp": "2026-07-30T17:14:04.017260+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "f196dc36d560", "event_type": "error", "timestamp": "2026-07-30T17:14:04.020584+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "d26d3f241717", "event_type": "attacker_input", "timestamp": "2026-07-30T18:06:56.073389+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "4cf6f753829b", "event_type": "error", "timestamp": "2026-07-30T18:06:56.076955+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "7fec2ebfb1a2", "event_type": "error", "timestamp": "2026-07-30T18:06:56.080186+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "3028c2767ac2", "event_type": "attacker_input", "timestamp": "2026-07-30T18:08:12.758843+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "911638c12f3e", "event_type": "error", "timestamp": "2026-07-30T18:08:12.762800+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "07fb5aec2690", "event_type": "error", "timestamp": "2026-07-30T18:08:12.766838+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "cb89e3345404", "event_type": "attacker_input", "timestamp": "2026-07-30T18:10:21.596685+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "a10ec5aba6ad", "event_type": "error", "timestamp": "2026-07-30T18:10:21.599510+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "0d06ad280f99", "event_type": "error", "timestamp": "2026-07-30T18:10:21.602672+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "d65ddad80f57", "event_type": "attacker_input", "timestamp": "2026-07-30T18:12:26.058467+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "cab87e721f4b", "event_type": "error", "timestamp": "2026-07-30T18:12:26.061691+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "5d7f457d7263", "event_type": "error", "timestamp": "2026-07-30T18:12:26.065523+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "051d01668781", "event_type": "attacker_input", "timestamp": "2026-07-30T18:17:23.538556+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "6a902f204569", "event_type": "error", "timestamp": "2026-07-30T18:17:23.541790+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "874f4fc53d26", "event_type": "error", "timestamp": "2026-07-30T18:17:23.545174+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}
+{"event_id": "a39b735ac9b4", "event_type": "attacker_input", "timestamp": "2026-07-31T08:26:24.820033+00:00", "data": {"command": "ls -la"}, "source": "harness"}
+{"event_id": "4737ef9a7868", "event_type": "error", "timestamp": "2026-07-31T08:26:25.476820+00:00", "data": {"stage": "supervisor_routing", "error": "'NoneType' object has no attribute 'route'"}, "source": "supervisor"}
+{"event_id": "3e68f5a0ea03", "event_type": "error", "timestamp": "2026-07-31T08:26:32.522535+00:00", "data": {"stage": "pipeline", "error": "'NoneType' object has no attribute 'needs_expert'"}, "source": "harness"}

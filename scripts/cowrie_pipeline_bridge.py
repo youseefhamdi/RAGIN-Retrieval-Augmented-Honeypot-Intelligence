@@ -184,6 +184,11 @@ def poll_cowrie():
         offset = read_offset()
         file_size = COWRIE_LOG.stat().st_size
 
+        if file_size < offset:
+            write_offset(0)
+            print(f"[*] Log rotated/shrunk ({file_size}B < offset {offset}B) — resetting offset")
+            offset = 0
+
         if file_size <= offset:
             # Check for stale sessions even when no new logs
             stale_found = False

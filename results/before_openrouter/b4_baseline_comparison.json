@@ -1,0 +1,56 @@
+{
+  "experiment": "B4_no_rag_baseline",
+  "limit": 10,
+  "rag": {
+    "elapsed_s": 189.69642894802382,
+    "metrics": {
+      "honeytoken_triggers": 0,
+      "honeytokens_deployed": 30,
+      "total_sessions": 30,
+      "sessions_with_engagement": 29,
+      "persona_correct_assignments": 30,
+      "persona_total_assignments": 30,
+      "ttps_detected": 5,
+      "ttps_detected_unique": 13,
+      "cti_alerts_generated": 5,
+      "false_positives": 0,
+      "true_positives": 5,
+      "attacker_retention_turns": 0.9666666666666667,
+      "max_retention_turns": 30,
+      "mean_session_duration_s": 6.318394349868565,
+      "deception_artifacts_deployed": 30,
+      "deception_artifacts_accessed": 0,
+      "strategy_adaptations": 1,
+      "avg_response_time_ms": 6318.394349868565
+    },
+    "technique_avg": 0.71,
+    "actor_avg": 0.39,
+    "persona_avg": 0.64
+  },
+  "no_rag": {
+    "elapsed_s": 170.06726042798255,
+    "metrics": {
+      "honeytoken_triggers": 0,
+      "honeytokens_deployed": 30,
+      "total_sessions": 30,
+      "sessions_with_engagement": 30,
+      "persona_correct_assignments": 30,
+      "persona_total_assignments": 30,
+      "ttps_detected": 0,
+      "ttps_detected_unique": 0,
+      "cti_alerts_generated": 0,
+      "false_positives": 0,
+      "true_positives": 0,
+      "attacker_retention_turns": 1.0,
+      "max_retention_turns": 30,
+      "mean_session_duration_s": 5.663524213132526,
+      "deception_artifacts_deployed": 30,
+      "deception_artifacts_accessed": 0,
+      "strategy_adaptations": 1,
+      "avg_response_time_ms": 5663.524213132526
+    },
+    "technique_avg": 0.71,
+    "actor_avg": 0.45,
+    "persona_avg": 0.59
+  }
+}

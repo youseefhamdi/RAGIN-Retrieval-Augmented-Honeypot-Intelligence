@@ -39,8 +39,8 @@
 
 | Item | File | Status |
 |------|------|--------|
-| OpenRouter API key | `.env` | ✅ `OPENROUTER_API_KEY` set |
-| Free model configured | `ragin/config/settings.yaml` | ✅ `inclusionai/ling-3.0-flash:free` |
+| TokenRouter API key | `.env` | ✅ `OPENROUTER_API_KEY` set |
+| Free model configured | `ragin/config/settings.yaml` | ✅ `moonshotai/kimi-k3-free` |
 | API authentication | `.env` | ✅ `API_KEY=ragin-test-key-2024` |
 | Monthly budget cap | `.env` | ✅ `$500/month`, `$20/day` |
 | Internal network isolation | `docker-compose.yml` | ✅ `ragin-internal: internal: true` |

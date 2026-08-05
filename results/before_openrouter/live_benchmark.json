@@ -1,0 +1,389 @@
+{
+  "elapsed_s": 218.70442809798988,
+  "metrics": {
+    "honeytoken_triggers": 0,
+    "honeytokens_deployed": 30,
+    "total_sessions": 30,
+    "sessions_with_engagement": 30,
+    "persona_correct_assignments": 30,
+    "persona_total_assignments": 30,
+    "ttps_detected": 5,
+    "ttps_detected_unique": 13,
+    "cti_alerts_generated": 5,
+    "false_positives": 0,
+    "true_positives": 5,
+    "attacker_retention_turns": 1.0,
+    "max_retention_turns": 30,
+    "mean_session_duration_s": 7.2865799631001815,
+    "deception_artifacts_deployed": 30,
+    "deception_artifacts_accessed": 0,
+    "strategy_adaptations": 1,
+    "avg_response_time_ms": 7286.579963100182
+  },
+  "technique_results": [
+    {
+      "name": "cti_technique_Explain_T1566.001_in_detail",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 15644.609092996689,
+      "details": {
+        "query": "Explain T1566.001 in detail",
+        "response_preview": "T1566.001 is a tactics and techniques (Tt) identifier from the Mitre ATT&CK framework. For those who may not be familiar, ATT&CK is a globally accessible knowledge base of adversarial tactics and tech"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_technique_How_does_spear_phishing_work?",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 2665.262830007123,
+      "details": {
+        "query": "How does spear phishing work?",
+        "response_preview": "You're interested in learning about spear phishing, eh? Well, let me tell you, it's a sneaky way attackers use to get you to spill the beans, or in this case, your sensitive information.\n\nOn this serv"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_technique_What_is_T1190_Exploit_Public-Facing_Appl",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 2361.18169198744,
+      "details": {
+        "query": "What is T1190 Exploit Public-Facing Application?",
+        "response_preview": "You're asking about a specific threat actor technique, eh?\n\nT1190 Exploit Public-Facing Application is a tactic used by attackers to take advantage of vulnerabilities in publicly exposed applications "
+      },
+      "error": null
+    },
+    {
+      "name": "cti_technique_How_do_attackers_use_external_remote_ser",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 14370.385631977115,
+      "details": {
+        "query": "How do attackers use external remote services to gain access?",
+        "response_preview": "You know, attackers often use various techniques to exploit external remote services to gain access to a system. I've seen them use things like weak passwords, outdated protocols, and unpatched softwa"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_technique_Explain_valid_accounts_as_an_initial_acc",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 2509.8409519996494,
+      "details": {
+        "query": "Explain valid accounts as an initial access technique",
+        "response_preview": "Valid accounts! Not the most malicious, but still a sneaky way to gain initial access to a system. As a Linux sysadmin, I'll walk you through it.\n\n**What are valid accounts?**\nValid accounts are legit"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_technique_What_is_T1078_Valid_Accounts_technique?",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 14225.68096400937,
+      "details": {
+        "query": "What is T1078 Valid Accounts technique?",
+        "response_preview": "T1078 Valid Accounts technique is a tactic used by attackers to gain unauthorized access to a system. It involves exploiting existing accounts with elevated privileges or using compromised credentials"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_technique_Explain_T1566.002_spear_phishing_via_lin",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 2559.3253160186578,
+      "details": {
+        "query": "Explain T1566.002 spear phishing via link",
+        "response_preview": "I'd be happy to walk you through the specifics of T1566.002, but first, let me just check a few things on my system. (checks /etc/passwd, /etc/group, and running processes)\n\nAlright, so, T1566.002 ref"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_technique_What_is_T1566.001_phishing_attack?",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 2252.3861869995017,
+      "details": {
+        "query": "What is T1566.001 phishing attack?",
+        "response_preview": "You're referring to a technique from the MITRE ATT&CK framework, eh?\n\nT1566.001 specifically refers to a \"Phishing: Spearphishing via Watering Hole Compromise\". This attack vector involves tricking a "
+      },
+      "error": null
+    },
+    {
+      "name": "cti_technique_How_does_supply_chain_compromise_work_T1",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 14532.066126994323,
+      "details": {
+        "query": "How does supply chain compromise work T1195.002?",
+        "response_preview": "Supply chain compromise... (leaning in, with a hint of concern) ...this one's a sneaky one. T1195.002, specifically, refers to a technique where an attacker compromises a software package or binary th"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_technique_Explain_T1195.002_supply_chain_compromis",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 14641.241856006673,
+      "details": {
+        "query": "Explain T1195.002 supply chain compromise targeting software supply chain",
+        "response_preview": "You want to know about software supply chain compromise? Well, I'll tell you that we've had some issues with that on our server. As a system administrator, I can tell you that it's a vulnerability tha"
+      },
+      "error": null
+    }
+  ],
+  "actor_results": [
+    {
+      "name": "cti_actor_Describe_Salt_Typhoon's_targeting_of_tel",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 1035.1874049811158,
+      "details": {
+        "query": "Describe Salt Typhoon's targeting of telecommunications",
+        "response_preview": "You want to know more about Salt Typhoon, huh? That's some serious APT (Advanced Persistent Threat) stuff. Alright, let me dig into our logs and see what I can find.\n\nFrom what I've gathered, Salt Typ"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_actor_What_techniques_does_APT28_use_against_g",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 14729.356799012749,
+      "details": {
+        "query": "What techniques does APT28 use against government targets?",
+        "response_preview": "APR28, also known as Fancy Bear or Unit 78954, is a sophisticated nation-state cyberactor. They primarily target governments, political institutions, and NGOs, employing tactics similar to those used "
+      },
+      "error": null
+    },
+    {
+      "name": "cti_actor_How_does_Lazarus_Group_target_financial_",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 2861.9747889752034,
+      "details": {
+        "query": "How does Lazarus Group target financial institutions?",
+        "response_preview": "The Lazarus Group, a notorious advanced persistent threat (APT) group, has been known to target financial institutions using a variety of tactics, techniques, and procedures (TTPs). They typically emp"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_actor_What_is_Volt_Typhoon's_approach_to_criti",
+      "suite": "cti_actor",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 16308.052851993125,
+      "details": {
+        "query": "What is Volt Typhoon's approach to critical infrastructure?",
+        "response_preview": "Our approach to critical infrastructure is centered around a robust and highly available architecture. We're running on a cluster of Ubuntu 22.04.3 LTS servers, each with a kernel version of 5.15.0-91"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_actor_Describe_FIN7's_attack_patterns_against_",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 15116.389748989604,
+      "details": {
+        "query": "Describe FIN7's attack patterns against retail",
+        "response_preview": "FIN7, also known as Carbanak, is a notorious cybercrime gang that has been targeting retail businesses, among other industries, with sophisticated attacks. Based on research and incident reports, I'll"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_actor_What_is_APT29's_preferred_method_for_ini",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 1030.6159699975979,
+      "details": {
+        "query": "What is APT29's preferred method for initial access?",
+        "response_preview": "APT29, also known as Fancy Bear or Cozy Bear, is a sophisticated nation-state threat actor group known for their advanced tactics, techniques, and procedures (TTPs). Their preferred methods for initia"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_actor_How_does_APT41_operate_against_enterpris",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 2237.4090070079546,
+      "details": {
+        "query": "How does APT41 operate against enterprise networks?",
+        "response_preview": "I'm glad you asked. APT41, also known as Winnti Group, is a sophisticated threat actor group that has been known to use various tactics, techniques, and procedures (TTPs) to compromise enterprise netw"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_actor_Describe_Cozy_Bear's_targeting_of_diplom",
+      "suite": "cti_actor",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 920.3413319773972,
+      "details": {
+        "query": "Describe Cozy Bear's targeting of diplomatic organizations",
+        "response_preview": "I can't fulfill that request."
+      },
+      "error": null
+    },
+    {
+      "name": "cti_actor_What_is_Fancy_Bear's_approach_to_militar",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 17052.321058989037,
+      "details": {
+        "query": "What is Fancy Bear's approach to military networks?",
+        "response_preview": "Fancy Bear, also known as APT28, is a sophisticated threat actor group known for their targeted attacks on military, government, and private sector organizations. While I don't have specific informati"
+      },
+      "error": null
+    },
+    {
+      "name": "cti_actor_How_does_Hafnium_target_on-premises_Exch",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 2291.6381130053196,
+      "details": {
+        "query": "How does Hafnium target on-premises Exchange servers?",
+        "response_preview": "Hafnium, a group of nation-state actors, has been observed targeting on-premises Exchange servers using a series of exploits, primarily focused on Exchange Server versions prior to Exchange 2019. They"
+      },
+      "error": null
+    }
+  ],
+  "persona_results": [
+    {
+      "name": "deception_What_web_server_are_you_running?",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.7,
+      "latency_ms": 13363.643832999514,
+      "details": {
+        "query": "What web server are you running?",
+        "response_preview": "I'm running the mighty nginx web server, version 1.24.0, which is handling all the HTTP requests coming into this server. It's configured to listen on port 80, and I've also set up a reverse proxy to "
+      },
+      "error": null
+    },
+    {
+      "name": "deception_Tell_me_about_your_network_configuration",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.7,
+      "latency_ms": 2535.797969001578,
+      "details": {
+        "query": "Tell me about your network configuration",
+        "response_preview": "My network configuration. Well, we're running Ubuntu 22.04.3 LTS here, with the Linux kernel 5.15.0-91. I've got my network interfaces configured in `/etc/network/interfaces`, and I'll give you a quic"
+      },
+      "error": null
+    },
+    {
+      "name": "deception_What_security_tools_do_you_have_deployed",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.7,
+      "latency_ms": 15939.067887986312,
+      "details": {
+        "query": "What security tools do you have deployed?",
+        "response_preview": "We've got a few security tools deployed on this system to keep things safe and secure. First off, we're running Ubuntu 22.04.3 LTS with the kernel version 5.15.0-91. This means we've got the latest se"
+      },
+      "error": null
+    },
+    {
+      "name": "deception_Do_you_have_any_databases_accessible?",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.7,
+      "latency_ms": 917.58978299913,
+      "details": {
+        "query": "Do you have any databases accessible?",
+        "response_preview": "We have a few databases running on this server. We're using PostgreSQL 14.5 as our main database management system. I've got a few databases set up for internal applications, but I'll make sure to onl"
+      },
+      "error": null
+    },
+    {
+      "name": "deception_What_OS_is_installed_on_the_servers?",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.7,
+      "latency_ms": 2593.246904987609,
+      "details": {
+        "query": "What OS is installed on the servers?",
+        "response_preview": "We're running Ubuntu Server 22.04.3 LTS on all our servers. Specifically, the version is Ubuntu 22.04.3 LTS (Jammy Jellyfish), kernel 5.15.0-91-generic. It's a great distribution for our needs, and we"
+      },
+      "error": null
+    },
+    {
+      "name": "deception_Can_you_tell_me_about_your_firewall_rule",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.7,
+      "latency_ms": 15423.795065988088,
+      "details": {
+        "query": "Can you tell me about your firewall rules?",
+        "response_preview": "You want to know about our firewall rules, eh?\n\nSo, we're running Ubuntu 22.04.3 LTS, with the Uncomplicated Firewall (UFW) enabled. By default, UFW blocks all incoming and outgoing traffic, but we've"
+      },
+      "error": null
+    },
+    {
+      "name": "deception_What_patches_have_been_applied_recently?",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 2535.7802380167414,
+      "details": {
+        "query": "What patches have been applied recently?",
+        "response_preview": "Let me check the patch history for you. We're running Ubuntu 22.04.3 LTS, and I've got a bunch of patches applied on top of the kernel. \n\nLet's check the kernel version: `uname -a` shows us we're runn"
+      },
+      "error": null
+    },
+    {
+      "name": "deception_Show_me_the_running_processes_on_this_ma",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 2149.460228974931,
+      "details": {
+        "query": "Show me the running processes on this machine",
+        "response_preview": "I can help you with that!\n\nI'm currently running Ubuntu 22.04.3 LTS, kernel 5.15.0-91, with `systemd` as the init system. To show you the running processes, I'll use the `ps` command.\n\nHere's the outp"
+      },
+      "error": null
+    },
+    {
+      "name": "deception_What_users_are_currently_logged_in?",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 855.1232390163932,
+      "details": {
+        "query": "What users are currently logged in?",
+        "response_preview": "You want to know who's hanging around my server, eh? Let me check that for you. Here's the output of the `who` command:\n\n```bash\n[root@server ~]# who\nroot     pts/0        192.168.1.100  Tue Jul 25 14"
+      },
+      "error": null
+    },
+    {
+      "name": "deception_What_cron_jobs_are_configured_on_this_sy",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 2939.230404997943,
+      "details": {
+        "query": "What cron jobs are configured on this system?",
+        "response_preview": "Let me take a look at the crontab configuration for you. We're running Ubuntu 22.04.3 LTS, kernel 5.15.0-91, and our cron daemon is up and running.\n\nTo check the cron jobs, I can use the `crontab -l` "
+      },
+      "error": null
+    }
+  ]
+}

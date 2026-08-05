@@ -156,7 +156,9 @@ class TestSessionLog:
             source_ip="::1",
             start_time=NOW,
         )
-        assert s.source_ip == "::1"
+        # IPs are hashed for privacy — check we get a 64-char hex digest
+        assert len(s.source_ip) == 64
+        assert all(c in "0123456789abcdef" for c in s.source_ip)
 
     def test_raw_log_not_sanitized(self):
         s = _make_session(raw_log="log\x00\x01data")

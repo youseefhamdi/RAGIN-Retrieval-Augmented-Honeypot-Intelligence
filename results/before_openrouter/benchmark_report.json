@@ -1,0 +1,1911 @@
+{
+  "run_id": "20e47c26-6e17-4f20-91f1-4aa919a35eb2",
+  "timestamp": "2026-07-29T15:37:49Z",
+  "suite": "cti",
+  "total_tests": 158,
+  "passed": 0,
+  "failed": 158,
+  "avg_score": 0.0,
+  "avg_latency_ms": 3493.6,
+  "summary": {
+    "pass_rate": "0.0%"
+  },
+  "results": [
+    {
+      "name": "cti_technique_T1566.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3670.012979011517,
+      "error": null,
+      "details": {
+        "query": "Explain T1566.001 in detail",
+        "expected_technique": "T1566.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1566.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3708.5199389839545,
+      "error": null,
+      "details": {
+        "query": "How does spear phishing work?",
+        "expected_technique": "T1566.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1190",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3471.0998060181737,
+      "error": null,
+      "details": {
+        "query": "What is T1190 Exploit Public-Facing Application?",
+        "expected_technique": "T1190"
+      }
+    },
+    {
+      "name": "cti_technique_T1133",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 4031.1562729766592,
+      "error": null,
+      "details": {
+        "query": "How do attackers use external remote services to gain access?",
+        "expected_technique": "T1133"
+      }
+    },
+    {
+      "name": "cti_technique_T1078",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3640.7783429604024,
+      "error": null,
+      "details": {
+        "query": "Explain valid accounts as an initial access technique",
+        "expected_technique": "T1078"
+      }
+    },
+    {
+      "name": "cti_technique_T1078",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3948.8547979854047,
+      "error": null,
+      "details": {
+        "query": "What is T1078 Valid Accounts technique?",
+        "expected_technique": "T1078"
+      }
+    },
+    {
+      "name": "cti_technique_T1566.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3225.371228007134,
+      "error": null,
+      "details": {
+        "query": "Explain T1566.002 spear phishing via link",
+        "expected_technique": "T1566.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1566.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3194.464788015466,
+      "error": null,
+      "details": {
+        "query": "What is T1566.001 phishing attack?",
+        "expected_technique": "T1566.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1195.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3635.491469001863,
+      "error": null,
+      "details": {
+        "query": "How does supply chain compromise work T1195.002?",
+        "expected_technique": "T1195.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1195.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3262.330510013271,
+      "error": null,
+      "details": {
+        "query": "Explain T1195.002 supply chain compromise targeting software supply chain",
+        "expected_technique": "T1195.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1059",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3340.1356610120274,
+      "error": null,
+      "details": {
+        "query": "Describe how attackers run malicious commands via command-line interface",
+        "expected_technique": "T1059"
+      }
+    },
+    {
+      "name": "cti_technique_T1059",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3401.0758089716546,
+      "error": null,
+      "details": {
+        "query": "What is T1059 Command and Scripting Interpreter?",
+        "expected_technique": "T1059"
+      }
+    },
+    {
+      "name": "cti_technique_T1059",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3875.343602965586,
+      "error": null,
+      "details": {
+        "query": "How does power shell execution work for attackers?",
+        "expected_technique": "T1059"
+      }
+    },
+    {
+      "name": "cti_technique_T1059.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3924.628128996119,
+      "error": null,
+      "details": {
+        "query": "Explain T1059.001 PowerShell command execution",
+        "expected_technique": "T1059.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1203",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3498.2923149946146,
+      "error": null,
+      "details": {
+        "query": "What is T1203 Exploitation for Client Execution?",
+        "expected_technique": "T1203"
+      }
+    },
+    {
+      "name": "cti_technique_T1053.005",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3296.608869044576,
+      "error": null,
+      "details": {
+        "query": "How do attackers achieve execution via scheduled tasks T1053.005?",
+        "expected_technique": "T1053.005"
+      }
+    },
+    {
+      "name": "cti_technique_T1053.005",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3426.452452025842,
+      "error": null,
+      "details": {
+        "query": "How does persistence via scheduled tasks work?",
+        "expected_technique": "T1053.005"
+      }
+    },
+    {
+      "name": "cti_technique_T1547",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3461.5204479778185,
+      "error": null,
+      "details": {
+        "query": "Explain T1547 Boot or Logon Autostart Execution",
+        "expected_technique": "T1547"
+      }
+    },
+    {
+      "name": "cti_technique_T1543",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3337.4407259980217,
+      "error": null,
+      "details": {
+        "query": "How do attackers create system processes for persistence?",
+        "expected_technique": "T1543"
+      }
+    },
+    {
+      "name": "cti_technique_T1136",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3265.7267870381474,
+      "error": null,
+      "details": {
+        "query": "What is account creation as a persistence mechanism?",
+        "expected_technique": "T1136"
+      }
+    },
+    {
+      "name": "cti_technique_T1547.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3417.725365026854,
+      "error": null,
+      "details": {
+        "query": "Explain T1547.001 Registry Run Keys persistence",
+        "expected_technique": "T1547.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1053.005",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3297.2809560014866,
+      "error": null,
+      "details": {
+        "query": "What is T1053.005 Scheduled Task persistence?",
+        "expected_technique": "T1053.005"
+      }
+    },
+    {
+      "name": "cti_technique_T1543",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3710.642660036683,
+      "error": null,
+      "details": {
+        "query": "Explain service manipulation T1543 for persistence",
+        "expected_technique": "T1543"
+      }
+    },
+    {
+      "name": "cti_technique_T1548.003",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3763.3965340210125,
+      "error": null,
+      "details": {
+        "query": "Explain privilege escalation with sudo abuse",
+        "expected_technique": "T1548.003"
+      }
+    },
+    {
+      "name": "cti_technique_T1068",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3412.204135034699,
+      "error": null,
+      "details": {
+        "query": "How does exploitation for privilege escalation work?",
+        "expected_technique": "T1068"
+      }
+    },
+    {
+      "name": "cti_technique_T1548",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3589.6694200346246,
+      "error": null,
+      "details": {
+        "query": "What is T1548 Abuse Elevation Control Mechanism?",
+        "expected_technique": "T1548"
+      }
+    },
+    {
+      "name": "cti_technique_T1068",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3400.268914003391,
+      "error": null,
+      "details": {
+        "query": "Explain T1068 Exploitation for Privilege Escalation",
+        "expected_technique": "T1068"
+      }
+    },
+    {
+      "name": "cti_technique_T1548.003",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3235.866128001362,
+      "error": null,
+      "details": {
+        "query": "What is T1548.003 Bypass User Account Control?",
+        "expected_technique": "T1548.003"
+      }
+    },
+    {
+      "name": "cti_technique_T1055",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3385.128489055205,
+      "error": null,
+      "details": {
+        "query": "What is defense evasion via process injection?",
+        "expected_technique": "T1055"
+      }
+    },
+    {
+      "name": "cti_technique_T1027",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3309.5614150515758,
+      "error": null,
+      "details": {
+        "query": "How does obfuscation help attackers avoid detection?",
+        "expected_technique": "T1027"
+      }
+    },
+    {
+      "name": "cti_technique_T1070",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3234.214381023776,
+      "error": null,
+      "details": {
+        "query": "What is indicator removal in the context of defense evasion?",
+        "expected_technique": "T1070"
+      }
+    },
+    {
+      "name": "cti_technique_T1036",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3574.026426009368,
+      "error": null,
+      "details": {
+        "query": "Explain masquerading as a defense evasion technique",
+        "expected_technique": "T1036"
+      }
+    },
+    {
+      "name": "cti_technique_T1140",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3173.0506109888665,
+      "error": null,
+      "details": {
+        "query": "Describe T1140 Deobfuscate Decode Data for defense evasion",
+        "expected_technique": "T1140"
+      }
+    },
+    {
+      "name": "cti_technique_T1211",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3382.450035016518,
+      "error": null,
+      "details": {
+        "query": "How does T1211 Signed Binary Proxy Execution enable defense evasion?",
+        "expected_technique": "T1211"
+      }
+    },
+    {
+      "name": "cti_technique_T1562",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3448.2569959945977,
+      "error": null,
+      "details": {
+        "query": "Explain indicator blocking as defense evasion T1562",
+        "expected_technique": "T1562"
+      }
+    },
+    {
+      "name": "cti_technique_T1003.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3765.787220967468,
+      "error": null,
+      "details": {
+        "query": "How does credential dumping work?",
+        "expected_technique": "T1003.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1110",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3245.1916999998502,
+      "error": null,
+      "details": {
+        "query": "What is brute forcing in credential access?",
+        "expected_technique": "T1110"
+      }
+    },
+    {
+      "name": "cti_technique_T1003",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3680.933127005119,
+      "error": null,
+      "details": {
+        "query": "Explain OS Credential Dumping T1003",
+        "expected_technique": "T1003"
+      }
+    },
+    {
+      "name": "cti_technique_T1003.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3183.5236950428225,
+      "error": null,
+      "details": {
+        "query": "Describe T1003.001 OS Credential Dumping LSASS memory",
+        "expected_technique": "T1003.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1110",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3405.2032139734365,
+      "error": null,
+      "details": {
+        "query": "How does password brute forcing T1110 work?",
+        "expected_technique": "T1110"
+      }
+    },
+    {
+      "name": "cti_technique_T1552.004",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3193.097707000561,
+      "error": null,
+      "details": {
+        "query": "Explain T1552.004 Unsecured Credentials for credential access",
+        "expected_technique": "T1552.004"
+      }
+    },
+    {
+      "name": "cti_technique_T1046",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3376.9551199511625,
+      "error": null,
+      "details": {
+        "query": "What is discovery via network service scanning?",
+        "expected_technique": "T1046"
+      }
+    },
+    {
+      "name": "cti_technique_T1087",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3370.922790025361,
+      "error": null,
+      "details": {
+        "query": "How does account discovery work on a compromised system?",
+        "expected_technique": "T1087"
+      }
+    },
+    {
+      "name": "cti_technique_T1018",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3247.9439400485717,
+      "error": null,
+      "details": {
+        "query": "What is remote system discovery in the attack chain?",
+        "expected_technique": "T1018"
+      }
+    },
+    {
+      "name": "cti_technique_T1083",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3422.4196040304378,
+      "error": null,
+      "details": {
+        "query": "Explain T1083 File and Directory Discovery",
+        "expected_technique": "T1083"
+      }
+    },
+    {
+      "name": "cti_technique_T1082",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3360.92677799752,
+      "error": null,
+      "details": {
+        "query": "What is system information discovery T1082?",
+        "expected_technique": "T1082"
+      }
+    },
+    {
+      "name": "cti_technique_T1046",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3181.6940360004082,
+      "error": null,
+      "details": {
+        "query": "Describe T1046 Network Service Discovery scanning",
+        "expected_technique": "T1046"
+      }
+    },
+    {
+      "name": "cti_technique_T1021",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3122.238448995631,
+      "error": null,
+      "details": {
+        "query": "Describe the lateral movement technique T1021",
+        "expected_technique": "T1021"
+      }
+    },
+    {
+      "name": "cti_technique_T1021",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3475.0407420215197,
+      "error": null,
+      "details": {
+        "query": "How does remote services facilitate lateral movement?",
+        "expected_technique": "T1021"
+      }
+    },
+    {
+      "name": "cti_technique_T1550",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3290.432650013827,
+      "error": null,
+      "details": {
+        "query": "Explain use of alternate authentication material for lateral movement",
+        "expected_technique": "T1550"
+      }
+    },
+    {
+      "name": "cti_technique_T1021",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3719.7241890244186,
+      "error": null,
+      "details": {
+        "query": "What is T1021 Remote Services lateral movement?",
+        "expected_technique": "T1021"
+      }
+    },
+    {
+      "name": "cti_technique_T1550.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3508.248570957221,
+      "error": null,
+      "details": {
+        "query": "Explain pass the hash T1550.002 lateral movement",
+        "expected_technique": "T1550.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1021.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3445.045555010438,
+      "error": null,
+      "details": {
+        "query": "How does T1021.002 SMB/Windows Admin Share lateral movement work?",
+        "expected_technique": "T1021.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1113",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3756.601965986192,
+      "error": null,
+      "details": {
+        "query": "Describe collection via screen capture",
+        "expected_technique": "T1113"
+      }
+    },
+    {
+      "name": "cti_technique_T1005",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3739.9456409621052,
+      "error": null,
+      "details": {
+        "query": "What is data from local system collection?",
+        "expected_technique": "T1005"
+      }
+    },
+    {
+      "name": "cti_technique_T1114",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3327.88359594997,
+      "error": null,
+      "details": {
+        "query": "Explain T1114 Email Collection technique",
+        "expected_technique": "T1114"
+      }
+    },
+    {
+      "name": "cti_technique_T1005",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3698.3640819671564,
+      "error": null,
+      "details": {
+        "query": "What is T1005 Data from Local System collection?",
+        "expected_technique": "T1005"
+      }
+    },
+    {
+      "name": "cti_technique_T1071.004",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3891.9542849762365,
+      "error": null,
+      "details": {
+        "query": "What is command and control via DNS?",
+        "expected_technique": "T1071.004"
+      }
+    },
+    {
+      "name": "cti_technique_T1071",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 4055.1478719571605,
+      "error": null,
+      "details": {
+        "query": "How does application layer protocol communication enable C2?",
+        "expected_technique": "T1071"
+      }
+    },
+    {
+      "name": "cti_technique_T1573",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3423.6605560290627,
+      "error": null,
+      "details": {
+        "query": "What is encrypted channel for command and control?",
+        "expected_technique": "T1573"
+      }
+    },
+    {
+      "name": "cti_technique_T1071.004",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3500.2424879930913,
+      "error": null,
+      "details": {
+        "query": "Describe T1071.004 Application Layer Protocol C2 via DNS",
+        "expected_technique": "T1071.004"
+      }
+    },
+    {
+      "name": "cti_technique_T1102",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3863.9435240183957,
+      "error": null,
+      "details": {
+        "query": "Explain T1102 Web Service C2 for command and control",
+        "expected_technique": "T1102"
+      }
+    },
+    {
+      "name": "cti_technique_T1573",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3415.04510800587,
+      "error": null,
+      "details": {
+        "query": "How does T1573 Encrypted Channel C2 work?",
+        "expected_technique": "T1573"
+      }
+    },
+    {
+      "name": "cti_technique_T1041",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3673.7627029651776,
+      "error": null,
+      "details": {
+        "query": "How does exfiltration over HTTPS work?",
+        "expected_technique": "T1041"
+      }
+    },
+    {
+      "name": "cti_technique_T1567",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3370.146950997878,
+      "error": null,
+      "details": {
+        "query": "What is exfiltration over web service?",
+        "expected_technique": "T1567"
+      }
+    },
+    {
+      "name": "cti_technique_T1041",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3495.3467099694535,
+      "error": null,
+      "details": {
+        "query": "Explain T1041 Exfiltration Over C2 Channel",
+        "expected_technique": "T1041"
+      }
+    },
+    {
+      "name": "cti_technique_T1567",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3157.965571968816,
+      "error": null,
+      "details": {
+        "query": "What is T1567 Web Service Exfiltration technique?",
+        "expected_technique": "T1567"
+      }
+    },
+    {
+      "name": "cti_technique_T1486",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3349.100183986593,
+      "error": null,
+      "details": {
+        "query": "How does impact via data encryption work?",
+        "expected_technique": "T1486"
+      }
+    },
+    {
+      "name": "cti_technique_T1489",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3796.357399027329,
+      "error": null,
+      "details": {
+        "query": "What is service stop as an impact technique?",
+        "expected_technique": "T1489"
+      }
+    },
+    {
+      "name": "cti_technique_T1490",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3281.1675039702095,
+      "error": null,
+      "details": {
+        "query": "Describe T1490 Inhibit System Recovery impact technique",
+        "expected_technique": "T1490"
+      }
+    },
+    {
+      "name": "cti_technique_T1486",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3400.494700006675,
+      "error": null,
+      "details": {
+        "query": "Explain T1486 Data Encrypted for Impact ransomware technique",
+        "expected_technique": "T1486"
+      }
+    },
+    {
+      "name": "cti_technique_T1586.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3552.1190770086832,
+      "error": null,
+      "details": {
+        "query": "Explain resource development using compromised accounts",
+        "expected_technique": "T1586.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1586",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3245.524536992889,
+      "error": null,
+      "details": {
+        "query": "What is T1586 Compromise Accounts resource development technique?",
+        "expected_technique": "T1586"
+      }
+    },
+    {
+      "name": "cti_technique_T1583",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3293.7817650381476,
+      "error": null,
+      "details": {
+        "query": "Explain T1583 Acquire Infrastructure resource development",
+        "expected_technique": "T1583"
+      }
+    },
+    {
+      "name": "cti_technique_T1588",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3262.833727989346,
+      "error": null,
+      "details": {
+        "query": "What is T1588 Obtain Capabilities resource development?",
+        "expected_technique": "T1588"
+      }
+    },
+    {
+      "name": "cti_technique_T1195.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3264.914449013304,
+      "error": null,
+      "details": {
+        "query": "How does initial access via supply chain compromise work?",
+        "expected_technique": "T1195.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1195.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3609.58952200599,
+      "error": null,
+      "details": {
+        "query": "Explain T1195.002 Supply Chain Compromise software supply chain",
+        "expected_technique": "T1195.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1190",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3305.5708509637043,
+      "error": null,
+      "details": {
+        "query": "Exploit public-facing application T1190 unpatched web server",
+        "expected_technique": "T1190"
+      }
+    },
+    {
+      "name": "cti_technique_T1133",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3362.6300250180066,
+      "error": null,
+      "details": {
+        "query": "Use compromised SSH keys T1133 for external remote access",
+        "expected_technique": "T1133"
+      }
+    },
+    {
+      "name": "cti_technique_T1078.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3210.2591180009767,
+      "error": null,
+      "details": {
+        "query": "Leverage default credentials T1078.001 for initial access",
+        "expected_technique": "T1078.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1199",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3258.836413966492,
+      "error": null,
+      "details": {
+        "query": "Access target via trusted relationship T1199 initial access",
+        "expected_technique": "T1199"
+      }
+    },
+    {
+      "name": "cti_technique_T1203",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3814.739541965537,
+      "error": null,
+      "details": {
+        "query": "Exploit client app for execution via browser T1203",
+        "expected_technique": "T1203"
+      }
+    },
+    {
+      "name": "cti_technique_T1204",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3246.4625269640237,
+      "error": null,
+      "details": {
+        "query": "Execute malicious macro T1204.002 user execution",
+        "expected_technique": "T1204"
+      }
+    },
+    {
+      "name": "cti_technique_T1059",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 5443.3899719733745,
+      "error": null,
+      "details": {
+        "query": "Run Perl script T1059 for command injection attack",
+        "expected_technique": "T1059"
+      }
+    },
+    {
+      "name": "cti_technique_T1059",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 9355.206854001153,
+      "error": null,
+      "details": {
+        "query": "Execute Python script T1059 for command and scripting",
+        "expected_technique": "T1059"
+      }
+    },
+    {
+      "name": "cti_technique_T1021.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3356.364901002962,
+      "error": null,
+      "details": {
+        "query": "Use RDP execution T1021.001 for remote command execution",
+        "expected_technique": "T1021.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1047",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3887.665441026911,
+      "error": null,
+      "details": {
+        "query": "Achieve execution via WMI T1047 on remote endpoint",
+        "expected_technique": "T1047"
+      }
+    },
+    {
+      "name": "cti_technique_T1547.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3292.9732209886424,
+      "error": null,
+      "details": {
+        "query": "Persistence registry Run Keys T1547.001 Windows startup",
+        "expected_technique": "T1547.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1136.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3285.6768499477766,
+      "error": null,
+      "details": {
+        "query": "Create local account T1136.001 persistence on Windows",
+        "expected_technique": "T1136.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1136.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3891.8102940078825,
+      "error": null,
+      "details": {
+        "query": "Create domain account T1136.002 AD persistence",
+        "expected_technique": "T1136.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1543.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3113.456520019099,
+      "error": null,
+      "details": {
+        "query": "Modify system process via service creation T1543.001",
+        "expected_technique": "T1543.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1574",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3440.481756988447,
+      "error": null,
+      "details": {
+        "query": "Persistence via T1574 Hijack Execution Flow DLL side-load",
+        "expected_technique": "T1574"
+      }
+    },
+    {
+      "name": "cti_technique_T1548.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3384.5555119914934,
+      "error": null,
+      "details": {
+        "query": "Elevate privilege T1548.001 Elevated Execution with Prompt",
+        "expected_technique": "T1548.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1548.003",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3389.8086409899406,
+      "error": null,
+      "details": {
+        "query": "Bypass UAC via T1548.003 for privilege escalation",
+        "expected_technique": "T1548.003"
+      }
+    },
+    {
+      "name": "cti_technique_T1210",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3325.36070299102,
+      "error": null,
+      "details": {
+        "query": "Exploit vulnerable driver T1210 escalation vector",
+        "expected_technique": "T1210"
+      }
+    },
+    {
+      "name": "cti_technique_T1068",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3785.7700389577076,
+      "error": null,
+      "details": {
+        "query": "Use T1068 Exploitation Privilege Escalation bypass",
+        "expected_technique": "T1068"
+      }
+    },
+    {
+      "name": "cti_technique_T1562.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3107.59940801654,
+      "error": null,
+      "details": {
+        "query": "Disable Windows Defender T1562.001 defense evasion",
+        "expected_technique": "T1562.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1562.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3792.118721001316,
+      "error": null,
+      "details": {
+        "query": "Modify security tool T1562.002 disable MpEngine",
+        "expected_technique": "T1562.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1564",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3548.045451985672,
+      "error": null,
+      "details": {
+        "query": "Hide artifact NTFS ADS T1564.004 alternate data stream",
+        "expected_technique": "T1564"
+      }
+    },
+    {
+      "name": "cti_technique_T1027.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3823.8534220145084,
+      "error": null,
+      "details": {
+        "query": "Obfuscate via software packing T1027.002 defense evasion",
+        "expected_technique": "T1027.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1204.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3710.9155139769427,
+      "error": null,
+      "details": {
+        "query": "Compile HTML file T1204.001 client-side execution",
+        "expected_technique": "T1204.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1003.002",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3426.574809011072,
+      "error": null,
+      "details": {
+        "query": "Dump SAM credentials T1003.002 registry hive access",
+        "expected_technique": "T1003.002"
+      }
+    },
+    {
+      "name": "cti_technique_T1003.003",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3705.904731003102,
+      "error": null,
+      "details": {
+        "query": "Dump NTDS.dit T1003.003 domain credential extraction",
+        "expected_technique": "T1003.003"
+      }
+    },
+    {
+      "name": "cti_technique_T1003.004",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3703.5295509849675,
+      "error": null,
+      "details": {
+        "query": "Extract LSA secrets T1003.004 registry credential access",
+        "expected_technique": "T1003.004"
+      }
+    },
+    {
+      "name": "cti_technique_T1003.006",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3459.7870929865167,
+      "error": null,
+      "details": {
+        "query": "DCSync dump T1003.006 domain credential access",
+        "expected_technique": "T1003.006"
+      }
+    },
+    {
+      "name": "cti_technique_T1003.007",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3293.1035239598714,
+      "error": null,
+      "details": {
+        "query": "Extract hashes from stores T1003.007 password stores",
+        "expected_technique": "T1003.007"
+      }
+    },
+    {
+      "name": "cti_technique_T1482",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3393.718207022175,
+      "error": null,
+      "details": {
+        "query": "Enumerate domain trusts T1482 attack surface mapping",
+        "expected_technique": "T1482"
+      }
+    },
+    {
+      "name": "cti_technique_T1080",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3308.3027380052954,
+      "error": null,
+      "details": {
+        "query": "Find system owner T1080 discovery information",
+        "expected_technique": "T1080"
+      }
+    },
+    {
+      "name": "cti_technique_T1539",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3594.4167230045423,
+      "error": null,
+      "details": {
+        "query": "Harvest browser credentials T1539 stealing session data",
+        "expected_technique": "T1539"
+      }
+    },
+    {
+      "name": "cti_technique_T1056",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3158.4288980229758,
+      "error": null,
+      "details": {
+        "query": "Keylogging T1056 for credential capture on endpoint",
+        "expected_technique": "T1056"
+      }
+    },
+    {
+      "name": "cti_technique_T1539",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3174.572871008422,
+      "error": null,
+      "details": {
+        "query": "Steal web session cookie T1539 via network sniffing",
+        "expected_technique": "T1539"
+      }
+    },
+    {
+      "name": "cti_technique_T1558",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 4780.446696036961,
+      "error": null,
+      "details": {
+        "query": "Forge Kerberos TGT T1558 golden ticket attack",
+        "expected_technique": "T1558"
+      }
+    },
+    {
+      "name": "cti_technique_T1555",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3220.359556027688,
+      "error": null,
+      "details": {
+        "query": "Extract credentials from password manager T1555",
+        "expected_technique": "T1555"
+      }
+    },
+    {
+      "name": "cti_technique_T1133",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3151.990176993422,
+      "error": null,
+      "details": {
+        "query": "Access VPN T1133 external remote services initial access",
+        "expected_technique": "T1133"
+      }
+    },
+    {
+      "name": "cti_technique_T1195",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3120.819814968854,
+      "error": null,
+      "details": {
+        "query": "Compromise software supply chain T1195 build system",
+        "expected_technique": "T1195"
+      }
+    },
+    {
+      "name": "cti_technique_T1539",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3124.0345829864964,
+      "error": null,
+      "details": {
+        "query": "Steal session cookie T1539.001 via network sniffing",
+        "expected_technique": "T1539"
+      }
+    },
+    {
+      "name": "cti_technique_T1558.003",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3154.5030219713226,
+      "error": null,
+      "details": {
+        "query": "Forge silver ticket T1558.003 Kerberos attack",
+        "expected_technique": "T1558.003"
+      }
+    },
+    {
+      "name": "cti_technique_T1199",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3154.2666489840485,
+      "error": null,
+      "details": {
+        "query": "Target managed service provider T1199 initial access",
+        "expected_technique": "T1199"
+      }
+    },
+    {
+      "name": "cti_technique_T1203",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3130.611772998236,
+      "error": null,
+      "details": {
+        "query": "Embedded content macro T1203 client execution",
+        "expected_technique": "T1203"
+      }
+    },
+    {
+      "name": "cti_technique_T1546",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3144.711359986104,
+      "error": null,
+      "details": {
+        "query": "WMI persistence T1546 event subscription endpoint",
+        "expected_technique": "T1546"
+      }
+    },
+    {
+      "name": "cti_technique_T1562.001",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3220.054959994741,
+      "error": null,
+      "details": {
+        "query": "Disable Defender registry T1562.001 defense evasion",
+        "expected_technique": "T1562.001"
+      }
+    },
+    {
+      "name": "cti_technique_T1003.005",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3188.2032460416667,
+      "error": null,
+      "details": {
+        "query": "Cached domain creds T1003.005 access without DCSync",
+        "expected_technique": "T1003.005"
+      }
+    },
+    {
+      "name": "cti_technique_T1564",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3149.2285190033726,
+      "error": null,
+      "details": {
+        "query": "Hide data in NTFS ADS T1564 alternate data stream",
+        "expected_technique": "T1564"
+      }
+    },
+    {
+      "name": "cti_actor_salt_typhoon",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3317.952345998492,
+      "error": null,
+      "details": {
+        "query": "Describe Salt Typhoon's targeting of telecommunications",
+        "expected_actor": "salt typhoon"
+      }
+    },
+    {
+      "name": "cti_actor_apt28",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3220.7708099740557,
+      "error": null,
+      "details": {
+        "query": "What techniques does APT28 use against government targets?",
+        "expected_actor": "apt28"
+      }
+    },
+    {
+      "name": "cti_actor_lazarus_group",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3220.7723719766364,
+      "error": null,
+      "details": {
+        "query": "How does Lazarus Group target financial institutions?",
+        "expected_actor": "lazarus group"
+      }
+    },
+    {
+      "name": "cti_actor_volt_typhoon",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3765.6159719917923,
+      "error": null,
+      "details": {
+        "query": "What is Volt Typhoon's approach to critical infrastructure?",
+        "expected_actor": "volt typhoon"
+      }
+    },
+    {
+      "name": "cti_actor_fin7",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3805.659215024207,
+      "error": null,
+      "details": {
+        "query": "Describe FIN7's attack patterns against retail",
+        "expected_actor": "fin7"
+      }
+    },
+    {
+      "name": "cti_actor_apt29",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3236.1650559469126,
+      "error": null,
+      "details": {
+        "query": "What is APT29's preferred method for initial access?",
+        "expected_actor": "apt29"
+      }
+    },
+    {
+      "name": "cti_actor_apt41",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3469.5764210191555,
+      "error": null,
+      "details": {
+        "query": "How does APT41 operate against enterprise networks?",
+        "expected_actor": "apt41"
+      }
+    },
+    {
+      "name": "cti_actor_cozy_bear",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3228.40402496513,
+      "error": null,
+      "details": {
+        "query": "Describe Cozy Bear's targeting of diplomatic organizations",
+        "expected_actor": "cozy bear"
+      }
+    },
+    {
+      "name": "cti_actor_fancy_bear",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3498.439740971662,
+      "error": null,
+      "details": {
+        "query": "What is Fancy Bear's approach to military networks?",
+        "expected_actor": "fancy bear"
+      }
+    },
+    {
+      "name": "cti_actor_hafnium",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3346.3474069721997,
+      "error": null,
+      "details": {
+        "query": "How does Hafnium target on-premises Exchange servers?",
+        "expected_actor": "hafnium"
+      }
+    },
+    {
+      "name": "cti_actor_sandworm",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 4003.902864002157,
+      "error": null,
+      "details": {
+        "query": "Describe Sandworm's destructive attack patterns",
+        "expected_actor": "sandworm"
+      }
+    },
+    {
+      "name": "cti_actor_darkside",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3487.5232269987464,
+      "error": null,
+      "details": {
+        "query": "What is the Darkside ransomware group's approach?",
+        "expected_actor": "darkside"
+      }
+    },
+    {
+      "name": "cti_actor_revil",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3244.0516750211827,
+      "error": null,
+      "details": {
+        "query": "How does Revil deploy its ransomware payload?",
+        "expected_actor": "revil"
+      }
+    },
+    {
+      "name": "cti_actor_apt37",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3481.135402980726,
+      "error": null,
+      "details": {
+        "query": "Describe APT37's targeting of South Korean organizations",
+        "expected_actor": "apt37"
+      }
+    },
+    {
+      "name": "cti_actor_apt27",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3157.323796011042,
+      "error": null,
+      "details": {
+        "query": "What is APT27's method for targeting telecom operators?",
+        "expected_actor": "apt27"
+      }
+    },
+    {
+      "name": "cti_actor_solarwinds",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3609.7909749951214,
+      "error": null,
+      "details": {
+        "query": "Describe UNC2452 SolarWinds supply chain attack",
+        "expected_actor": "solarwinds"
+      }
+    },
+    {
+      "name": "cti_actor_unc3886",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3501.224897976499,
+      "error": null,
+      "details": {
+        "query": "How does UNC3886 target VMware infrastructure?",
+        "expected_actor": "unc3886"
+      }
+    },
+    {
+      "name": "cti_actor_darkhotel",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3512.8339750226587,
+      "error": null,
+      "details": {
+        "query": "What is DarkHotel group targeting travelers and hotels?",
+        "expected_actor": "darkhotel"
+      }
+    },
+    {
+      "name": "cti_actor_oceanlotus",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3820.072901027743,
+      "error": null,
+      "details": {
+        "query": "Explain APT32 OceanLotus targeting Vietnam",
+        "expected_actor": "oceanlotus"
+      }
+    },
+    {
+      "name": "cti_actor_lazarus_group",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3184.060340980068,
+      "error": null,
+      "details": {
+        "query": "Describe APT38 Lazarus Group financial theft from banks",
+        "expected_actor": "lazarus group"
+      }
+    },
+    {
+      "name": "cti_actor_carbanak",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3291.2546090083197,
+      "error": null,
+      "details": {
+        "query": "What is Carbanak group ATM heist technique?",
+        "expected_actor": "carbanak"
+      }
+    },
+    {
+      "name": "cti_actor_apt36",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3325.077435001731,
+      "error": null,
+      "details": {
+        "query": "How does Transparent Tribe APT36 target Indian defense?",
+        "expected_actor": "apt36"
+      }
+    },
+    {
+      "name": "cti_actor_ghostemperor",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3345.433553971816,
+      "error": null,
+      "details": {
+        "query": "Describe GhostEmperor APT targeting government networks",
+        "expected_actor": "ghostemperor"
+      }
+    },
+    {
+      "name": "cti_actor_earth_lusca",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3511.112926993519,
+      "error": null,
+      "details": {
+        "query": "What is Earth Lusca targeting APAC telecoms?",
+        "expected_actor": "earth lusca"
+      }
+    },
+    {
+      "name": "cti_actor_apt50",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3333.1517800106667,
+      "error": null,
+      "details": {
+        "query": "Explain APT50 targeting South Asian governments",
+        "expected_actor": "apt50"
+      }
+    },
+    {
+      "name": "cti_actor_apt41",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3513.8096169685014,
+      "error": null,
+      "details": {
+        "query": "Describe LuckyMouse APT41 cyber espionage operations",
+        "expected_actor": "apt41"
+      }
+    },
+    {
+      "name": "cti_actor_apt37",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3394.486436038278,
+      "error": null,
+      "details": {
+        "query": "What is APT37 Reaper targeting South Korean media?",
+        "expected_actor": "apt37"
+      }
+    },
+    {
+      "name": "cti_actor_apt27",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3467.72679296555,
+      "error": null,
+      "details": {
+        "query": "How does APT27 target European telecom operators?",
+        "expected_actor": "apt27"
+      }
+    },
+    {
+      "name": "cti_actor_turla",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3298.787490988616,
+      "error": null,
+      "details": {
+        "query": "Describe Turla group satellite-based covert C2",
+        "expected_actor": "turla"
+      }
+    },
+    {
+      "name": "cti_actor_seedworm",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3164.366315002553,
+      "error": null,
+      "details": {
+        "query": "What is Seedworm targeting energy sector infrastructure?",
+        "expected_actor": "seedworm"
+      }
+    },
+    {
+      "name": "cti_actor_apt20",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3287.795534997713,
+      "error": null,
+      "details": {
+        "query": "Explain APT20 targeting government and aviation sectors",
+        "expected_actor": "apt20"
+      }
+    },
+    {
+      "name": "cti_actor_apt43",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3334.380018990487,
+      "error": null,
+      "details": {
+        "query": "Describe APT43 state-sponsored cybercrime operations",
+        "expected_actor": "apt43"
+      }
+    },
+    {
+      "name": "cti_actor_charming_kitten",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3408.8541789678857,
+      "error": null,
+      "details": {
+        "query": "What is Charming Kitten targeting diplomats and activists?",
+        "expected_actor": "charming kitten"
+      }
+    },
+    {
+      "name": "cti_actor_dragonfly",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3701.919941988308,
+      "error": null,
+      "details": {
+        "query": "Explain Dragonfly/Energetic Bear targeting energy ICS",
+        "expected_actor": "dragonfly"
+      }
+    },
+    {
+      "name": "cti_actor_cobalt",
+      "suite": "cti",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 3241.5566029958427,
+      "error": null,
+      "details": {
+        "query": "Describe Cobalt Group financial cybercrime ATM attacks",
+        "expected_actor": "cobalt"
+      }
+    }
+  ]
+}

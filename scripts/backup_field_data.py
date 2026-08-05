@@ -91,7 +91,7 @@ def backup_configs(backup_path: Path) -> int:
         ROOT / "ragin" / "config" / "settings.yaml",
         ROOT / "ragin" / "config" / "prometheus.yml",
         ROOT / "ragin" / "config" / "alert_rules.yml",
-        ROOT / "ragin" / "config" / "nginx.conf",
+        ROOT / "ragin" / "config" / "nginx.conf.template",
     ]
 
     count = 0

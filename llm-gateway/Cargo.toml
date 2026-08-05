@@ -11,7 +11,7 @@ tokio = { version = "1.38", features = ["full", "rt-multi-thread", "macros", "sy
 async-trait = "0.1.76"
 
 # HTTP client
-reqwest = { version = "0.12", features = ["json", "stream", "rustls-tls", "gzip", "brotli", "cookies", "multipart"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "rustls-tls", "gzip", "brotli", "cookies", "multipart", "http2"] }
 
 # Web framework
 axum = { version = "0.7", features = ["json", "multipart"] }

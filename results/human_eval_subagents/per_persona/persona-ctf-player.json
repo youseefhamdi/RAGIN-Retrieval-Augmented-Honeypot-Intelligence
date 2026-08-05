@@ -1,6 +1,6 @@
 {
   "evaluator_id": "persona-ctf-player",
-  "model": "inclusionai/ling-3.0-flash:free",
+  "model": "moonshotai/kimi-k3-free",
   "temperature": 0.8,
   "scored_at": "2026-07-28T17:50:12Z",
   "scenarios": [

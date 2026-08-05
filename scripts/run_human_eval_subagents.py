@@ -42,7 +42,7 @@ from ragin.benchmark.human_eval_personas import (
     build_user_prompt_persona,
 )
 
-OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+OPENROUTER_URL = "https://api.tokenrouter.com/v1/chat/completions"
 DEFAULT_PER_CALL_TIMEOUT = 30.0
 SCORE_DIMS = ("deception", "persona", "ttp_accuracy", "engagement", "artifact_safety")
 SCORE_KEYS = tuple(f"{d}_score" for d in SCORE_DIMS)
@@ -459,9 +459,9 @@ async def run_pipeline(args):
         print(f"[dry-run] stubbed {len(personas)} per-persona files + consensus.json")
         return
 
-    api_key = os.environ.get("OPENROUTER_API_KEY", "")
+    api_key = os.environ.get("TOKENROUTER_API_KEY", os.environ.get("OPENROUTER_API_KEY", ""))
     if not api_key:
-        print("FATAL: OPENROUTER_API_KEY not set (use --dry-run to skip network)")
+        print("FATAL: TOKENROUTER_API_KEY/OPENROUTER_API_KEY not set (use --dry-run to skip network)")
         sys.exit(1)
 
     sem = asyncio.Semaphore(args.max_concurrency)

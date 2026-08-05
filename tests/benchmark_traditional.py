@@ -32,7 +32,7 @@ TRADITIONAL_TARGETS = {
     },
     "kippo": {
         "image": "kwart/kippo:latest",
-        "ports": {"ssh": 2222},
+        "ports": {"ssh": 2223},
         "description": "SSH honeypot",
     },
 }

@@ -110,8 +110,8 @@ class CircuitBreaker:
 
 # Approximate token cost per 1M tokens (input, output)
 _PRICING: dict[str, tuple[float, float]] = {
-    "inclusionai/ling-3.0-flash:free": (0.0, 0.0),
-    "inclusionai/ling-3.0-flash:via-openrouter": (0.0, 0.0),
+    "moonshotai/kimi-k3-free": (0.0, 0.0),
+    "moonshotai/kimi-k3-free:via-openrouter": (0.0, 0.0),
     "meta-llama/llama-3.1-8b-instruct": (0.10, 0.10),
     "meta-llama/llama-3.1-70b-instruct": (0.60, 0.80),
     "qwen/qwen-32b": (0.50, 1.00),

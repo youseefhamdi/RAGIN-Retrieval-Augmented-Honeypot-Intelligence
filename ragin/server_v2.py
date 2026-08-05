@@ -16,6 +16,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import asyncio
 import logging
 import os
 import time
@@ -112,7 +113,8 @@ async def session_command(request: web.Request) -> web.Response:
     if not command:
         return web.json_response({"error": "command required"}, status=400)
 
-    resp = _sandbox.handle_command(
+    resp = await asyncio.to_thread(
+        _sandbox.handle_command,
         source_ip="_",
         command=command,
         session_id=session_id,
@@ -140,7 +142,8 @@ async def session_wake(request: web.Request) -> web.Response:
     if not session_id:
         return web.json_response({"error": "session_id required"}, status=400)
 
-    session, context = Harness.wake(
+    session, context = await asyncio.to_thread(
+        Harness.wake,
         session_id,
         classifier=_harness._classifier if _harness else None,
         cti_engine=_harness._cti_engine if _harness else None,
@@ -183,7 +186,7 @@ async def session_replay(request: web.Request) -> web.Response:
     if not session_id:
         return web.json_response({"error": "session_id required"}, status=400)
 
-    session = Session.wake(session_id)
+    session = await asyncio.to_thread(Session.wake, session_id)
     events = session.replay_since(after_event_id) if after_event_id else list(session.replay())
 
     return web.json_response(
@@ -220,7 +223,7 @@ async def classify(request: web.Request) -> web.Response:
             duration_seconds=data.get("duration_seconds", 0),
             features=data.get("features", {}),
         )
-        result = _component.classify(session_log)
+        result = await asyncio.to_thread(_component.classify, session_log)
         return web.json_response(
             {
                 "skill_level": result.skill_level.value,
@@ -268,7 +271,7 @@ async def analyze(request: web.Request) -> web.Response:
             gateway_url=os.environ.get("GATEWAY_URL"),
             api_key=os.environ.get("OPENROUTER_API_KEY"),
         )
-        result = da.analyze(attacker_input, session_context)
+        result = await asyncio.to_thread(da.analyze, attacker_input, session_context)
         return web.json_response(result)
     except Exception as e:
         logger.exception("analyze error")
@@ -292,7 +295,7 @@ async def deceive(request: web.Request) -> web.Response:
             "skill_level": data.get("skill_level", "novice"),
             "context": data.get("context", ""),
         }
-        result = _component.generate_response(attacker_input, session_context)
+        result = await asyncio.to_thread(_component.generate_response, attacker_input, session_context)
         return web.json_response(
             {
                 "session_id": result.session_id,

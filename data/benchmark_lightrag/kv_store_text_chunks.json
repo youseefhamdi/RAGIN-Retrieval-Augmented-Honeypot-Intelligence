@@ -1,0 +1,408 @@
+{
+  "doc-f269c3950337a3add2edd11ff7f84b1f-chunk-000": {
+    "tokens": 45,
+    "content": "****\n\nOne variant of [CloudDuke](https://attack.mitre.org/software/S0054) uses a Microsoft OneDrive account to exchange commands and stolen data with its operators.(Citation: F-Secure The Dukes)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-f269c3950337a3add2edd11ff7f84b1f",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:80d2513c868219dfca6909f5410c9861",
+      "default:extract:5b82efcf77a70e6c653edc88a70c192b"
+    ],
+    "create_time": 1785333628,
+    "update_time": 1785333641,
+    "_id": "doc-f269c3950337a3add2edd11ff7f84b1f-chunk-000"
+  },
+  "doc-2c57d21b104b2a9dd295f90302eda9d6-chunk-000": {
+    "tokens": 56,
+    "content": "****\n\nDuring [C0017](https://attack.mitre.org/campaigns/C0017), [APT41](https://attack.mitre.org/groups/G0096) used `whoami` to gather information from victim machines.(Citation: Mandiant APT41)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-2c57d21b104b2a9dd295f90302eda9d6",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:6ff30db7270ad411f6d23aa40e238200",
+      "default:extract:219f814b869ee09f177f7250893642a7"
+    ],
+    "create_time": 1785333630,
+    "update_time": 1785333643,
+    "_id": "doc-2c57d21b104b2a9dd295f90302eda9d6-chunk-000"
+  },
+  "doc-e2be91b54ac7f9164e01cdcdd0e0ca18-chunk-000": {
+    "tokens": 35,
+    "content": "****\n\nDuring [Operation Dust Storm](https://attack.mitre.org/campaigns/C0016), the threat actors used Visual Basic scripts.(Citation: Cylance Dust Storm)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-e2be91b54ac7f9164e01cdcdd0e0ca18",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:ff8b8d175fd3915b71bcaf8f142693fb",
+      "default:extract:63f3a9684c97b9f495a6a5c0a89576af"
+    ],
+    "create_time": 1785333631,
+    "update_time": 1785333643,
+    "_id": "doc-e2be91b54ac7f9164e01cdcdd0e0ca18-chunk-000"
+  },
+  "doc-92504962a78bdf15b15e1fa23fe0a757-chunk-000": {
+    "tokens": 45,
+    "content": "****\n\n[Aria-body](https://attack.mitre.org/software/S0456) has the ability to execute a process using <code>runas</code>.(Citation: CheckPoint Naikon May 2020)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-92504962a78bdf15b15e1fa23fe0a757",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:0bd1dc37b82b23abf6eb34e9ffe2e869",
+      "default:extract:dc7bde279c61584e15c2fb91061cd49a"
+    ],
+    "create_time": 1785333668,
+    "update_time": 1785333678,
+    "_id": "doc-92504962a78bdf15b15e1fa23fe0a757-chunk-000"
+  },
+  "doc-3cfe139a8b26e62eb02e97a9cdff72b7-chunk-000": {
+    "tokens": 41,
+    "content": "****\n\n[Kessel](https://attack.mitre.org/software/S0487) can use a proxy during exfiltration if set in the configuration.(Citation: ESET ForSSHe December 2018)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-3cfe139a8b26e62eb02e97a9cdff72b7",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:8a44fcabd3123bff6519638b24bd3b54",
+      "default:extract:68f80163debecb5e3c64fa19e034e124"
+    ],
+    "create_time": 1785333671,
+    "update_time": 1785333681,
+    "_id": "doc-3cfe139a8b26e62eb02e97a9cdff72b7-chunk-000"
+  },
+  "doc-fe1f7f93ff69300548be35cb2985da08-chunk-000": {
+    "tokens": 41,
+    "content": "****\n\n[Imminent Monitor](https://attack.mitre.org/software/S0434) has a module for performing remote desktop access.(Citation: QiAnXin APT-C-36 Feb2019)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-fe1f7f93ff69300548be35cb2985da08",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:47d37f648ec5557f80cb5f3cd48e7b85",
+      "default:extract:6b522730e72e4972043baa5321090dac"
+    ],
+    "create_time": 1785333671,
+    "update_time": 1785333683,
+    "_id": "doc-fe1f7f93ff69300548be35cb2985da08-chunk-000"
+  },
+  "doc-22f6d7d6716e8b9b8a5deea93877eb08-chunk-000": {
+    "tokens": 36,
+    "content": "**Analytic 0508**\n\nDetection of group enumeration using commands like 'id', 'groups', or 'getent group', often followed by privilege escalation or SSH lateral movement.",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-22f6d7d6716e8b9b8a5deea93877eb08",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:e74f2260c36399a0b42165684121fd6e",
+      "default:extract:6c22306ba22a7d6d5cfa68b64ea00644"
+    ],
+    "create_time": 1785333698,
+    "update_time": 1785333707,
+    "_id": "doc-22f6d7d6716e8b9b8a5deea93877eb08-chunk-000"
+  },
+  "doc-57f911ee0a91b879c36af1dfb8a90d5f-chunk-000": {
+    "tokens": 53,
+    "content": "****\n\n[RDAT](https://attack.mitre.org/software/S0495) can use HTTP communications for C2, as well as using the WinHTTP library to make requests to the Exchange Web Services API.(Citation: Unit42 RDAT July 2020)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-57f911ee0a91b879c36af1dfb8a90d5f",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:4acae632b2bdb6a5bab787121b5e33f0",
+      "default:extract:f13bbe572ebe0e910962c29c9ac54844"
+    ],
+    "create_time": 1785334927,
+    "update_time": 1785334979,
+    "_id": "doc-57f911ee0a91b879c36af1dfb8a90d5f-chunk-000"
+  },
+  "doc-d6d410f475318a0da766d5c27800216b-chunk-000": {
+    "tokens": 71,
+    "content": "****\n\n[APT28](https://attack.mitre.org/groups/G0007) registered domains imitating NATO, OSCE security websites, Caucasus information resources, and other organizations.(Citation: FireEye APT28)(Citation: US District Court Indictment GRU Oct 2018)(Citation: Google TAG Ukraine Threat Landscape March 2022)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-d6d410f475318a0da766d5c27800216b",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:eeec1ef949df3c83f22f9af79fa03066",
+      "default:extract:f3c3f019dcc0c51ceedf42ed12e7735a"
+    ],
+    "create_time": 1785334946,
+    "update_time": 1785334995,
+    "_id": "doc-d6d410f475318a0da766d5c27800216b-chunk-000"
+  },
+  "doc-c38f59926d84ecfd0f01d4d6eaa3e865-chunk-000": {
+    "tokens": 77,
+    "content": "**Analytic 1593**\n\nUnexpected modification of the KernelCallbackTable in a process’s PEB followed by invocation of modified callback functions (e.g., fnCOPYDATA) through Windows messages. Defender observes suspicious API call chains such as NtQueryInformationProcess → WriteProcessMemory → abnormal GUI callback execution, often correlating to anomalous process behavior such as network activity or code injection.",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-c38f59926d84ecfd0f01d4d6eaa3e865",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:8000aee4d962733504ecc70bac23141a",
+      "default:extract:acee9c021e9fdab5dfd8c278ecc948ee"
+    ],
+    "create_time": 1785334953,
+    "update_time": 1785334993,
+    "_id": "doc-c38f59926d84ecfd0f01d4d6eaa3e865-chunk-000"
+  },
+  "doc-3ac4cb6a0d25c9c96fc1b9b44e5a938e-chunk-000": {
+    "tokens": 37,
+    "content": "****\n\n[SLOWDRIFT](https://attack.mitre.org/software/S0218) uses cloud based services for C2.(Citation: FireEye APT37 Feb 2018)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-3ac4cb6a0d25c9c96fc1b9b44e5a938e",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:4eea8afa109203fb8991f9ebf76a2ed3",
+      "default:extract:d998586296b575d18656886ad3b8fa48"
+    ],
+    "create_time": 1785335002,
+    "update_time": 1785335039,
+    "_id": "doc-3ac4cb6a0d25c9c96fc1b9b44e5a938e-chunk-000"
+  },
+  "doc-a534b7bfaa362c42c9cf3fd89fac4702-chunk-000": {
+    "tokens": 41,
+    "content": "****\n\n[Moses Staff](https://attack.mitre.org/groups/G1009) has exploited known vulnerabilities in public-facing infrastructure such as Microsoft Exchange Servers.(Citation: Checkpoint MosesStaff Nov 2021)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-a534b7bfaa362c42c9cf3fd89fac4702",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:bd400f5287a17870fa082d58dcd43c64",
+      "default:extract:26ea82060c0c2637e9e5827ffcbf228a"
+    ],
+    "create_time": 1785335024,
+    "update_time": 1785335064,
+    "_id": "doc-a534b7bfaa362c42c9cf3fd89fac4702-chunk-000"
+  },
+  "doc-53611bae8205eca097033ef6abba6905-chunk-000": {
+    "tokens": 107,
+    "content": "****\n\nAudit domain and local accounts as well as their permission levels routinely to look for situations that could allow an adversary to gain wide access by obtaining credentials of a privileged account. (Citation: TechNet Credential Theft) (Citation: TechNet Least Privilege) These audits should also include if default accounts have been enabled, or if new local accounts are created that have not been authorized. Follow best practices for design and administration of an enterprise network to limit privileged account use across administrative tiers. (Citation: Microsoft Securing Privileged Access)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-53611bae8205eca097033ef6abba6905",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:2cb5b244fd10cfad337a787a93f47009",
+      "default:extract:a1201214e404863f3149acdde064ba90"
+    ],
+    "create_time": 1785335024,
+    "update_time": 1785335073,
+    "_id": "doc-53611bae8205eca097033ef6abba6905-chunk-000"
+  },
+  "doc-c03fdae93adfb047d289a7de3d36f0a5-chunk-000": {
+    "tokens": 38,
+    "content": "****\n\n[BoomBox](https://attack.mitre.org/software/S0635) can enumerate the username on a compromised host.(Citation: MSTIC Nobelium Toolset May 2021)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-c03fdae93adfb047d289a7de3d36f0a5",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:ee5f681f95f478447f6ea2e7b16ed2c9",
+      "default:extract:2bb593d45311a10fa853a2c85036bd97"
+    ],
+    "create_time": 1785335299,
+    "update_time": 1785335373,
+    "_id": "doc-c03fdae93adfb047d289a7de3d36f0a5-chunk-000"
+  },
+  "doc-2d29b38d2e44a35b1b47b9066b3f4ac3-chunk-000": {
+    "tokens": 38,
+    "content": "****\n\n[Cryptoistic](https://attack.mitre.org/software/S0498) has the ability to send and receive files.(Citation: SentinelOne Lazarus macOS July 2020)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-2d29b38d2e44a35b1b47b9066b3f4ac3",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:a2920724429fb781acc6a674ff50348b",
+      "default:extract:a9ea5ae13874966b16c53938417172da"
+    ],
+    "create_time": 1785335315,
+    "update_time": 1785335384,
+    "_id": "doc-2d29b38d2e44a35b1b47b9066b3f4ac3-chunk-000"
+  },
+  "doc-bd29aa7252e438687380d07906f3a16d-chunk-000": {
+    "tokens": 34,
+    "content": "****\n\n(Citation: Forbes Dyre May 2017)(Citation: CrowdStrike Wizard Spider March 2019)(Citation: Malwarebytes TrickBot Sep 2019)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-bd29aa7252e438687380d07906f3a16d",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:f62f723802554857b1aaf81ab19aa348",
+      "default:extract:d2476b69d4cca6697d6053ee458b1303"
+    ],
+    "create_time": 1785335323,
+    "update_time": 1785335409,
+    "_id": "doc-bd29aa7252e438687380d07906f3a16d-chunk-000"
+  },
+  "doc-521a7e1f0a0bc10a46b0538a2d26c57d-chunk-000": {
+    "tokens": 59,
+    "content": "****\n\n[VIRTUALPIE](https://attack.mitre.org/software/S1218) can use a custom RC4 encrypted protocol for C2 communications.(Citation: Google Cloud Threat Intelligence ESXi VIBs 2022)(Citation: Google Cloud Mandiant UNC3886 2024)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-521a7e1f0a0bc10a46b0538a2d26c57d",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:0cc7cd6658f0a74d57e97cddd7b297d6",
+      "default:extract:8f974e6bfed74efe24b3df747c84b278"
+    ],
+    "create_time": 1785335404,
+    "update_time": 1785335451,
+    "_id": "doc-521a7e1f0a0bc10a46b0538a2d26c57d-chunk-000"
+  },
+  "doc-92ed6ffd91fddac3fe243478a8b71d49-chunk-000": {
+    "tokens": 48,
+    "content": "**Analytic 1390**\n\nDetects command-line utilities or scripts using encryption libraries or symmetric algorithms (e.g., OpenSSL AES, GPG, Python + PyCrypto) in conjunction with outbound file transfers or traffic to external destinations.",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-92ed6ffd91fddac3fe243478a8b71d49",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:ae6ef08b291377fa7eb4647aa656a006",
+      "default:extract:9c0aad48f338e6f5d12090b7ed8a3343"
+    ],
+    "create_time": 1785335414,
+    "update_time": 1785335505,
+    "_id": "doc-92ed6ffd91fddac3fe243478a8b71d49-chunk-000"
+  },
+  "doc-7a19501ffbef4014b0415c174c647dbc-chunk-000": {
+    "tokens": 50,
+    "content": "****\n\n(Citation: Secureworks IRON LIBERTY July 2019)(Citation: US-CERT TA18-074A)(Citation: Symantec Dragonfly Sept 2017)(Citation: Gigamon Berserk Bear October 2021)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-7a19501ffbef4014b0415c174c647dbc",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:87766383f65d906d69882b8b523ea5ff",
+      "default:extract:be4c2d4a74e2f22c1635249e7a8aae8b"
+    ],
+    "create_time": 1785335443,
+    "update_time": 1785335505,
+    "_id": "doc-7a19501ffbef4014b0415c174c647dbc-chunk-000"
+  },
+  "doc-3be859b2f69901fd3e9bc95dc7a83733-chunk-000": {
+    "tokens": 40,
+    "content": "****\n\n[Pisloader](https://attack.mitre.org/software/S0124) has a command to collect victim system information, including the system name and OS version.(Citation: Palo Alto DNS Requests)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-3be859b2f69901fd3e9bc95dc7a83733",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:c40ae0a893afb7203ab632d3ce1f0a52",
+      "default:extract:22d76e48f7df1287e69df89cf7a2570b"
+    ],
+    "create_time": 1785335486,
+    "update_time": 1785335565,
+    "_id": "doc-3be859b2f69901fd3e9bc95dc7a83733-chunk-000"
+  },
+  "doc-bf31adfd0389b07e5125aecae6be910b-chunk-000": {
+    "tokens": 67,
+    "content": "****\n\nThe [LODEINFO](https://attack.mitre.org/software/S9020) loader module contains XOR-encrypted shellcode.(Citation: Kaspersky LODEINFO OCT 2022)(Citation: Kaspersky LODEINFO Part II OCT 2022)(Citation: ITOCHU LODEINFO JAN 2024)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-bf31adfd0389b07e5125aecae6be910b",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:ed45dedae72402ada9b0bf3f9ee88419",
+      "default:extract:7cef256d9c3da8ec111927b8fb6bc2a3"
+    ],
+    "create_time": 1785335545,
+    "update_time": 1785335613,
+    "_id": "doc-bf31adfd0389b07e5125aecae6be910b-chunk-000"
+  },
+  "doc-088b19e66515d2908f9ff2ca7c06f22c-chunk-000": {
+    "tokens": 141,
+    "content": "****\n\n[Mustang Panda](https://attack.mitre.org/groups/G0129) has used names like `adobeupdate.dat` and `PotPlayerDB.dat` to disguise [PlugX](https://attack.mitre.org/software/S0013), and a file named `OneDrive.exe` to load a [Cobalt Strike](https://attack.mitre.org/software/S0154) payload.(Citation: Recorded Future REDDELTA July 2020) [Mustang Panda](https://attack.mitre.org/groups/G0129) has also masqueraded legitimate browser plugin updates to include AdobePlugins.exe.(Citation: Google Threat Intelligence Group MUSTANG PANDA PLUGX August 2025)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-088b19e66515d2908f9ff2ca7c06f22c",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:ffd74ae6dc50a4b226de69287828793b",
+      "default:extract:fac4dd8aba5ad289eeb5b43f0c116067"
+    ],
+    "create_time": 1785335546,
+    "update_time": 1785335613,
+    "_id": "doc-088b19e66515d2908f9ff2ca7c06f22c-chunk-000"
+  },
+  "doc-a84c009c18589543a5ec5aaa687e7be9-chunk-000": {
+    "tokens": 37,
+    "content": "****\n\n[TDTESS](https://attack.mitre.org/software/S0164) provides a reverse shell on the victim.(Citation: ClearSky Wilted Tulip July 2017)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-a84c009c18589543a5ec5aaa687e7be9",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:a6e6624a2e7694c415ed3a65700a0508",
+      "default:extract:b57eb674183396770a76a23b44a3c735"
+    ],
+    "create_time": 1785335596,
+    "update_time": 1785335622,
+    "_id": "doc-a84c009c18589543a5ec5aaa687e7be9-chunk-000"
+  },
+  "doc-0e02e70f9427068d8ba55774b1b55dd9-chunk-000": {
+    "tokens": 13,
+    "content": "**Detection Strategy for Debugger Evasion (T1622)**",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-0e02e70f9427068d8ba55774b1b55dd9",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:3b239a8c875dc8f0be5f02edce2c45ce",
+      "default:extract:36cf22d7a179ab3c4313a7afba0489bd"
+    ],
+    "create_time": 1785335639,
+    "update_time": 1785335693,
+    "_id": "doc-0e02e70f9427068d8ba55774b1b55dd9-chunk-000"
+  },
+  "doc-1724c31e0c85f9c584c100f17048c982-chunk-000": {
+    "tokens": 36,
+    "content": "****\n\n[Machete](https://attack.mitre.org/software/S0409)’s downloaded data is decrypted using AES.(Citation: ESET Machete July 2019)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-1724c31e0c85f9c584c100f17048c982",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:5cc53cd4d7cbe1fe981389146f1ef03b",
+      "default:extract:b011c65fd4357bc27480d85649089683"
+    ],
+    "create_time": 1785335639,
+    "update_time": 1785335694,
+    "_id": "doc-1724c31e0c85f9c584c100f17048c982-chunk-000"
+  },
+  "doc-a2fe8098b2f14ff1e4b418ff071ebc5f-chunk-000": {
+    "tokens": 49,
+    "content": "****\n\n[BlackByte](https://attack.mitre.org/groups/G1043) used [Arp](https://attack.mitre.org/software/S0099) to identify connected hosts in victim networks.(Citation: FBI BlackByte 2022)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-a2fe8098b2f14ff1e4b418ff071ebc5f",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:8fc367e2cb9f26be7a49ab5f6a3aff6c",
+      "default:extract:994a193df1dd03893d4d3e70b8133f30"
+    ],
+    "create_time": 1785335651,
+    "update_time": 1785335693,
+    "_id": "doc-a2fe8098b2f14ff1e4b418ff071ebc5f-chunk-000"
+  },
+  "doc-23259a83ffb0041f7037dfa83a941c8d-chunk-000": {
+    "tokens": 39,
+    "content": "****\n\n[BISCUIT](https://attack.mitre.org/software/S0017) has a command to enumerate running processes and identify their owners.(Citation: Mandiant APT1 Appendix)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-23259a83ffb0041f7037dfa83a941c8d",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:f28ee3455284f7d5fe03a326e41cf266",
+      "default:extract:2f9f9168d127b9c8886b3a4980366b37"
+    ],
+    "create_time": 1785335721,
+    "update_time": 1785335754,
+    "_id": "doc-23259a83ffb0041f7037dfa83a941c8d-chunk-000"
+  },
+  "doc-86edbc531e32703cb7dc7ff2e7745f84-chunk-000": {
+    "tokens": 150,
+    "content": "# Malware: Clop\n\n[Clop](https://attack.mitre.org/software/S0611) is a ransomware family that was first observed in February 2019 and has been used against retail, transportation and logistics, education, manufacturing, engineering, automotive, energy, financial, aerospace, telecommunications, professional and legal services, healthcare, and high tech industries. [Clop](https://attack.mitre.org/software/S0611) is a variant of the CryptoMix ransomware.(Citation: Mcafee Clop Aug 2019)(Citation: Cybereason Clop Dec 2020)(Citation: Unit42 Clop April 2021) \n\n**Aliases:** Clop\n\n**Platforms:** Windows\n\n**Malware Family:** No",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-86edbc531e32703cb7dc7ff2e7745f84",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:cc4045131b1445977f7843456d736ca4",
+      "default:extract:27da6b73e807be357123ecc08f2b4c7a"
+    ],
+    "create_time": 1785335726,
+    "update_time": 1785335761,
+    "_id": "doc-86edbc531e32703cb7dc7ff2e7745f84-chunk-000"
+  },
+  "doc-d90cb68d54e9f7af0b738f0dd04392a1-chunk-000": {
+    "tokens": 45,
+    "content": "****\n\n[Lazarus Group](https://attack.mitre.org/groups/G0032) persistence mechanisms have used <code>forfiles.exe</code> to execute .htm files.(Citation: Qualys LolZarus)",
+    "chunk_order_index": 0,
+    "full_doc_id": "doc-d90cb68d54e9f7af0b738f0dd04392a1",
+    "file_path": "unknown_source",
+    "llm_cache_list": [
+      "default:extract:e3a545e2adb62c5f9be77c5b04ef9492",
+      "default:extract:314f3fac07a01a9041530f8c83b2fc29"
+    ],
+    "create_time": 1785335730,
+    "update_time": 1785335761,
+    "_id": "doc-d90cb68d54e9f7af0b738f0dd04392a1-chunk-000"
+  }
+}

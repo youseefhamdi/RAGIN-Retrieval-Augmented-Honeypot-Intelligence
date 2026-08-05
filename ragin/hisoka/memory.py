@@ -44,7 +44,7 @@ class HisokaMemory:
     ) -> None:
         self._gateway_url = (gateway_url or _DEFAULT_GATEWAY_URL).rstrip("/")
         self._qdrant_path = qdrant_path or _DEFAULT_QDRANT_PATH
-        self._llm_model = llm_model or os.environ.get("RAGIN_HISOKA_MODEL", "inclusionai/ling-3.0-flash:free")
+        self._llm_model = llm_model or os.environ.get("RAGIN_HISOKA_MODEL", "moonshotai/kimi-k3-free")
         self._embedder_model = embedder_model or "all-MiniLM-L6-v2"
         self._embedding_dims = embedding_dims
         self._custom_instructions = custom_instructions

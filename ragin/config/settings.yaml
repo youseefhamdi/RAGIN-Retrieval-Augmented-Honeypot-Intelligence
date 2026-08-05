@@ -2,7 +2,7 @@
 
 # OpenRouter Configuration
 OPENROUTER_API_KEY: "${OPENROUTER_API_KEY}"
-OPENROUTER_BASE_URL: "https://openrouter.ai/api/v1"
+OPENROUTER_BASE_URL: "https://api.tokenrouter.com/v1"
 OPENROUTER_APP_NAME: "RAGIN-Cyber-Deception"
 OPENROUTER_APP_URL: "https://github.com/elaref/RAGIN"
 
@@ -10,34 +10,34 @@ OPENROUTER_APP_URL: "https://github.com/elaref/RAGIN"
 MODEL_ROUTER:
   # Default models by capability
   default_models:
-    reasoning: "inclusionai/ling-3.0-flash:free"
-    coding: "inclusionai/ling-3.0-flash:free"
-    fast: "inclusionai/ling-3.0-flash:free"
-    cheap: "inclusionai/ling-3.0-flash:free"
+    reasoning: "moonshotai/kimi-k3-free"
+    coding: "moonshotai/kimi-k3-free"
+    fast: "moonshotai/kimi-k3-free"
+    cheap: "moonshotai/kimi-k3-free"
     local_fallback: "local/qwen2.5-32b"
 
   # Routing rules by task type
   routing_rules:
     chrollo_inference:
-      model: "inclusionai/ling-3.0-flash:free"
+      model: "moonshotai/kimi-k3-free"
       max_latency_ms: 500
-      fallback: "inclusionai/ling-3.0-flash:free"
+      fallback: "moonshotai/kimi-k3-free"
 
     don_retrieval:
-      model: "inclusionai/ling-3.0-flash:free"
+      model: "moonshotai/kimi-k3-free"
       max_latency_ms: 500
-      fallback: "inclusionai/ling-3.0-flash:free"
+      fallback: "moonshotai/kimi-k3-free"
 
     hisoka_deception:
-      model: "inclusionai/ling-3.0-flash:free"
+      model: "moonshotai/kimi-k3-free"
       max_latency_ms: 1000
       fallback_chain:
-        - "inclusionai/ling-3.0-flash:free"
+        - "moonshotai/kimi-k3-free"
 
     hisoka_skill_profiling:
-      model: "inclusionai/ling-3.0-flash:free"
+      model: "moonshotai/kimi-k3-free"
       max_latency_ms: 500
-      fallback: "inclusionai/ling-3.0-flash:free"
+      fallback: "moonshotai/kimi-k3-free"
 
   # Cost optimization
   cost_optimization:
@@ -190,7 +190,7 @@ COST_TRACKING:
 
   # Pricing (per 1M tokens)
   pricing_usd_per_million:
-    "inclusionai/ling-3.0-flash:free": {input: 0.00, output: 0.00}
+    "moonshotai/kimi-k3-free": {input: 0.00, output: 0.00}
     "qwen/qwen-32b": {input: 0.50, output: 1.00}
     "qwen/qwen-2.5-72b-instruct": {input: 0.80, output: 1.60}
     "meta-llama/llama-3.1-8b-instruct": {input: 0.10, output: 0.10}

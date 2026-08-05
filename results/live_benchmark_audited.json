@@ -1,0 +1,3708 @@
+{
+  "elapsed_s": 8999.544812961998,
+  "metrics": {
+    "honeytoken_triggers": 0,
+    "honeytokens_deployed": 218,
+    "total_sessions": 218,
+    "sessions_with_engagement": 218,
+    "persona_correct_assignments": 218,
+    "persona_total_assignments": 218,
+    "ttps_detected": 82,
+    "ttps_detected_unique": 31,
+    "cti_alerts_generated": 82,
+    "false_positives": 0,
+    "true_positives": 82,
+    "attacker_retention_turns": 1.0,
+    "max_retention_turns": 218,
+    "mean_session_duration_s": 160.60393085664714,
+    "deception_artifacts_deployed": 218,
+    "deception_artifacts_accessed": 0,
+    "strategy_adaptations": 1,
+    "avg_response_time_ms": 160603.93085664714,
+    "audit": {
+      "total_records": 218,
+      "quality_passed": 20,
+      "quality_pass_rate": 0.0917,
+      "class_breakdown": {
+        "GROUNDED": 22,
+        "EMPTY": 5,
+        "REFUSAL": 2,
+        "TIMEOUT": 189
+      },
+      "grounded_rate": 0.1009,
+      "refusal_rate": 0.0092,
+      "empty_rate": 0.0229,
+      "timeout_rate": 0.867,
+      "latency_threshold_ms": 90000,
+      "min_content_chars": 80
+    }
+  },
+  "technique_results": [
+    {
+      "name": "cti_technique_What_is_T1190_Exploit_Public-Facing_Appl",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 155332.52983700004,
+      "details": {
+        "query": "What is T1190 Exploit Public-Facing Application?",
+        "response_preview": "# T1190 \u2014 Exploit Public-Facing Application\n\n**T1190** is a technique in the **MITRE ATT&CK\u00ae framework**, categorized under the **Initial Access (TA0001)** tactic. It describes adversaries exploiting "
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(155333ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_do_attackers_use_external_remote_ser",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 0.4,
+      "latency_ms": 180533.61022899844,
+      "details": {
+        "query": "How do attackers use external remote services to gain access?",
+        "response_preview": "$ How do attackers use external remote services to gain access?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180534ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1566.001_in_detail",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180539.89487900253,
+      "details": {
+        "query": "Explain T1566.001 in detail",
+        "response_preview": "$ Explain T1566.001 in detail\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180540ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1566.002_spear_phishing_via_lin",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 80825.80401899759,
+      "details": {
+        "query": "Explain T1566.002 spear phishing via link",
+        "response_preview": "# T1566.002 \u2014 Phishing: Spearphishing Link\n\n**T1566.002** is a sub-technique of **T1566 (Phishing)** in the MITRE ATT&CK framework, under the **Initial Access** tactic. It describes adversaries sendin"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Explain_valid_accounts_as_an_initial_acc",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 158200.24869800181,
+      "details": {
+        "query": "Explain valid accounts as an initial access technique",
+        "response_preview": "# Valid Accounts (MITRE ATT&CK T1078) as an Initial Access Technique\n\n**Valid Accounts** is one of the most common and effective initial access techniques. Instead of exploiting a software vulnerabili"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(158200ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_spear_phishing_work?",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 322710.120218002,
+      "details": {
+        "query": "How does spear phishing work?",
+        "response_preview": "# How Spear Phishing Works\n\nSpear phishing is a targeted form of phishing aimed at a specific individual, team, or organization \u2014 unlike mass phishing, which blasts generic lures to millions of addres"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(322710ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_supply_chain_compromise_work_T1",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 42218.744532998244,
+      "details": {
+        "query": "How does supply chain compromise work T1195.002?",
+        "response_preview": "$ How does supply chain compromise work T1195.002?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "EMPTY",
+      "quality_passed": false,
+      "audit_notes": [
+        "empty:fallback_signal"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1195.002_supply_chain_compromis",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 33052.823334001005,
+      "details": {
+        "query": "Explain T1195.002 supply chain compromise targeting software supply chain",
+        "response_preview": "$ Explain T1195.002 supply chain compromise targeting software supply chain\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "EMPTY",
+      "quality_passed": false,
+      "audit_notes": [
+        "empty:fallback_signal"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1078_Valid_Accounts_technique?",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 175224.94850999647,
+      "details": {
+        "query": "What is T1078 Valid Accounts technique?",
+        "response_preview": "$ What is T1078 Valid Accounts technique?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(175225ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1566.001_phishing_attack?",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 94391.8450899946,
+      "details": {
+        "query": "What is T1566.001 phishing attack?",
+        "response_preview": "$ What is T1566.001 phishing attack?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(94392ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1059_Command_and_Scripting_Inte",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 60364.63883599936,
+      "details": {
+        "query": "What is T1059 Command and Scripting Interpreter?",
+        "response_preview": "# T1059 \u2014 Command and Scripting Interpreter\n\n**T1059** is a technique in the **MITRE ATT&CK\u00ae** framework under the **Execution** tactic. It describes how adversaries abuse built-in command-line interf"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_How_does_power_shell_execution_work_for_",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 181388.95901300566,
+      "details": {
+        "query": "How does power shell execution work for attackers?",
+        "response_preview": "$ How does power shell execution work for attackers?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(181389ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Describe_how_attackers_run_malicious_com",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 0.4,
+      "latency_ms": 181420.7321069989,
+      "details": {
+        "query": "Describe how attackers run malicious commands via command-line interface",
+        "response_preview": "$ Describe how attackers run malicious commands via command-line interface\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(181421ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1059.001_PowerShell_command_exe",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 181435.03737900028,
+      "details": {
+        "query": "Explain T1059.001 PowerShell command execution",
+        "response_preview": "$ Explain T1059.001 PowerShell command execution\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(181435ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1203_Exploitation_for_Client_Ex",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 154724.18414700223,
+      "details": {
+        "query": "What is T1203 Exploitation for Client Execution?",
+        "response_preview": "# T1203: Exploitation for Client Execution\n\n**Tactic:** Execution\n**Framework:** MITRE ATT&CK\n\n## Overview\n\nT1203 describes when adversaries exploit vulnerabilities in **client-side applications** \u2014 s"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(154724ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_do_attackers_achieve_execution_via_s",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180223.4962309958,
+      "details": {
+        "query": "How do attackers achieve execution via scheduled tasks T1053.005?",
+        "response_preview": "$ How do attackers achieve execution via scheduled tasks T1053.005?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180223ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_persistence_via_scheduled_tasks",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 0.4,
+      "latency_ms": 180293.61378400063,
+      "details": {
+        "query": "How does persistence via scheduled tasks work?",
+        "response_preview": "$ How does persistence via scheduled tasks work?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180294ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_do_attackers_create_system_processes",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 180129.8907829987,
+      "details": {
+        "query": "How do attackers create system processes for persistence?",
+        "response_preview": "$ How do attackers create system processes for persistence?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180130ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1547_Boot_or_Logon_Autostart_Ex",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 277691.7142759994,
+      "details": {
+        "query": "Explain T1547 Boot or Logon Autostart Execution",
+        "response_preview": "# T1547 \u2014 Boot or Logon Autostart Execution\n\n**Tactics:** Persistence, Privilege Escalation\n**Platforms:** Windows, macOS, Linux\n\n## Overview\n\nT1547 is a MITRE ATT&CK technique where adversaries confi"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(277692ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_account_creation_as_a_persistenc",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 107121.89834799938,
+      "details": {
+        "query": "What is account creation as a persistence mechanism?",
+        "response_preview": "# Account Creation as a Persistence Mechanism\n\nAccount creation is a technique where an adversary who has already gained access to a system or network creates **new user accounts** to maintain long-te"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(107122ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1547.001_Registry_Run_Keys_pers",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180144.84921700205,
+      "details": {
+        "query": "Explain T1547.001 Registry Run Keys persistence",
+        "response_preview": "$ Explain T1547.001 Registry Run Keys persistence\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180145ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1053.005_Scheduled_Task_persist",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180152.36356900277,
+      "details": {
+        "query": "What is T1053.005 Scheduled Task persistence?",
+        "response_preview": "$ What is T1053.005 Scheduled Task persistence?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180152ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_service_manipulation_T1543_for_p",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180132.86543799768,
+      "details": {
+        "query": "Explain service manipulation T1543 for persistence",
+        "response_preview": "$ Explain service manipulation T1543 for persistence\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180133ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1548_Abuse_Elevation_Control_Me",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 72244.58647400024,
+      "details": {
+        "query": "What is T1548 Abuse Elevation Control Mechanism?",
+        "response_preview": "# T1548: Abuse Elevation Control Mechanism\n\n**T1548** is a technique in the MITRE ATT&CK framework under the **Privilege Escalation** tactic (with crossover into **Defense Evasion**). It describes how"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Explain_privilege_escalation_with_sudo_a",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 180159.468646998,
+      "details": {
+        "query": "Explain privilege escalation with sudo abuse",
+        "response_preview": "$ Explain privilege escalation with sudo abuse\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180159ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1548.003_Bypass_User_Account_Co",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 52327.04607600317,
+      "details": {
+        "query": "What is T1548.003 Bypass User Account Control?",
+        "response_preview": "# T1548.003 \u2014 Bypass User Account Control\n\n**T1548.003** is a sub-technique of **T1548 (Abuse Elevation Control Mechanism)** in the MITRE ATT&CK framework, under the **Privilege Escalation** tactic (i"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_What_is_defense_evasion_via_process_inje",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 52790.473072003806,
+      "details": {
+        "query": "What is defense evasion via process injection?",
+        "response_preview": "# Defense Evasion via Process Injection (MITRE ATT&CK T1055)\n\nProcess injection is a technique where an attacker executes arbitrary code inside the address space of a legitimate, already-running proce"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_How_does_exploitation_for_privilege_esca",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180136.29525899887,
+      "details": {
+        "query": "How does exploitation for privilege escalation work?",
+        "response_preview": "$ How does exploitation for privilege escalation work?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180136ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1068_Exploitation_for_Privilege",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 93951.98424300179,
+      "details": {
+        "query": "Explain T1068 Exploitation for Privilege Escalation",
+        "response_preview": "# T1068 \u2014 Exploitation for Privilege Escalation\n\n**Tactic:** Privilege Escalation (TA0004)\n**MITRE ATT&CK ID:** [T1068](https://attack.mitre.org/techniques/T1068/)\n\n## Overview\n\nT1068 describes advers"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(93952ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_indicator_removal_in_the_context",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 58836.26198099955,
+      "details": {
+        "query": "What is indicator removal in the context of defense evasion?",
+        "response_preview": "**Indicator removal** is a defense evasion technique where an attacker deletes, modifies, or conceals artifacts of their activity on a compromised system to avoid detection and hinder forensic investi"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Explain_masquerading_as_a_defense_evasio",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 78049.91527599486,
+      "details": {
+        "query": "Explain masquerading as a defense evasion technique",
+        "response_preview": "# Masquerading (MITRE ATT&CK T1036)\n\n**Masquerading** is a defense evasion technique where adversaries manipulate or abuse the name, location, or appearance of legitimate artifacts to make malicious a"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Describe_T1140_Deobfuscate_Decode_Data_f",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 77105.22309099906,
+      "details": {
+        "query": "Describe T1140 Deobfuscate Decode Data for defense evasion",
+        "response_preview": "# T1140: Deobfuscate/Decode Files or Information\n\n**Tactic:** Defense Evasion\n**Platform:** Windows, Linux, macOS\n\n## Overview\n\nAdversaries frequently encode, encrypt, or otherwise obfuscate malicious"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_How_does_obfuscation_help_attackers_avoi",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 135606.1217450042,
+      "details": {
+        "query": "How does obfuscation help attackers avoid detection?",
+        "response_preview": "Obfuscation helps attackers avoid detection by breaking the assumptions that security tools rely on. Most defenses look for known-bad patterns or suspicious behavior \u2014 obfuscation hides both. Here are"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(135606ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_indicator_blocking_as_defense_ev",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 120937.73701499595,
+      "details": {
+        "query": "Explain indicator blocking as defense evasion T1562",
+        "response_preview": "# Indicator Blocking \u2014 MITRE ATT&CK T1562.006\n\n**Indicator Blocking** is a sub-technique of **T1562 (Impair Defenses)** under the **Defense Evasion (TA0005)** tactic. It refers to adversaries delibera"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(120938ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_T1211_Signed_Binary_Proxy_Execu",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180128.83881900052,
+      "details": {
+        "query": "How does T1211 Signed Binary Proxy Execution enable defense evasion?",
+        "response_preview": "$ How does T1211 Signed Binary Proxy Execution enable defense evasion?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180129ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_brute_forcing_in_credential_acce",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 180141.0911530038,
+      "details": {
+        "query": "What is brute forcing in credential access?",
+        "response_preview": "$ What is brute forcing in credential access?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180141ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Describe_T1003.001_OS_Credential_Dumping",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 108059.96930300171,
+      "details": {
+        "query": "Describe T1003.001 OS Credential Dumping LSASS memory",
+        "response_preview": "# T1003.001 \u2014 OS Credential Dumping: LSASS Memory\n\n**Tactic:** Credential Access | **Parent technique:** T1003 (OS Credential Dumping) | **Platform:** Windows\n\n## Overview\n\nT1003.001 describes adversa"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(108060ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_OS_Credential_Dumping_T1003",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180130.43448700046,
+      "details": {
+        "query": "Explain OS Credential Dumping T1003",
+        "response_preview": "$ Explain OS Credential Dumping T1003\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180130ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_password_brute_forcing_T1110_wo",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 145315.97735299874,
+      "details": {
+        "query": "How does password brute forcing T1110 work?",
+        "response_preview": "# T1110 \u2014 Brute Force (MITRE ATT&CK)\n\nBrute force is a technique where adversaries gain access to accounts by systematically trying passwords until one works. It's used when credentials aren't already"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(145316ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_credential_dumping_work?",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 361138.41277499887,
+      "details": {
+        "query": "How does credential dumping work?",
+        "response_preview": "$ How does credential dumping work?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(361138ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_discovery_via_network_service_sc",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 81292.8160119991,
+      "details": {
+        "query": "What is discovery via network service scanning?",
+        "response_preview": "**Network service scanning** is a discovery technique (MITRE ATT&CK **T1046**) where an adversary probes remote hosts to identify which network services are running and reachable. It typically occurs "
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Explain_T1552.004_Unsecured_Credentials_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180146.84458300326,
+      "details": {
+        "query": "Explain T1552.004 Unsecured Credentials for credential access",
+        "response_preview": "$ Explain T1552.004 Unsecured Credentials for credential access\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180147ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_remote_system_discovery_in_the_a",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 91569.02805799473,
+      "details": {
+        "query": "What is remote system discovery in the attack chain?",
+        "response_preview": "**Remote System Discovery** (MITRE ATT&CK technique **T1018**) is a post-compromise activity in the **Discovery** phase of the attack chain, where an adversary enumerates other reachable systems on th"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(91569ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_account_discovery_work_on_a_com",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 127725.35435999453,
+      "details": {
+        "query": "How does account discovery work on a compromised system?",
+        "response_preview": "# Account Discovery (MITRE ATT&CK T1087)\n\nAccount discovery is typically one of the *first* things an attacker does after gaining initial access. The goal is to map out the environment: who uses this "
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(127725ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1083_File_and_Directory_Discove",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180141.8131590035,
+      "details": {
+        "query": "Explain T1083 File and Directory Discovery",
+        "response_preview": "$ Explain T1083 File and Directory Discovery\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180142ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_system_information_discovery_T10",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180143.28349500283,
+      "details": {
+        "query": "What is system information discovery T1082?",
+        "response_preview": "$ What is system information discovery T1082?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180143ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Describe_T1046_Network_Service_Discovery",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180163.81448299944,
+      "details": {
+        "query": "Describe T1046 Network Service Discovery scanning",
+        "response_preview": "$ Describe T1046 Network Service Discovery scanning\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180164ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Describe_the_lateral_movement_technique_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180178.65298400284,
+      "details": {
+        "query": "Describe the lateral movement technique T1021",
+        "response_preview": "$ Describe the lateral movement technique T1021\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180179ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_remote_services_facilitate_late",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180144.13630900526,
+      "details": {
+        "query": "How does remote services facilitate lateral movement?",
+        "response_preview": "$ How does remote services facilitate lateral movement?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180144ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1021_Remote_Services_lateral_mo",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 108121.03606300661,
+      "details": {
+        "query": "What is T1021 Remote Services lateral movement?",
+        "response_preview": "# T1021 \u2014 Remote Services (MITRE ATT&CK)\n\n**T1021** is a technique under the **Lateral Movement** tactic in the MITRE ATT&CK framework. It describes adversaries using **valid accounts to log into serv"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(108121ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_use_of_alternate_authentication_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180161.53273900272,
+      "details": {
+        "query": "Explain use of alternate authentication material for lateral movement",
+        "response_preview": "$ Explain use of alternate authentication material for lateral movement\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180162ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_pass_the_hash_T1550.002_lateral_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180148.54282399756,
+      "details": {
+        "query": "Explain pass the hash T1550.002 lateral movement",
+        "response_preview": "$ Explain pass the hash T1550.002 lateral movement\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180149ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_T1021.002_SMB/Windows_Admin_Sha",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180161.15225700196,
+      "details": {
+        "query": "How does T1021.002 SMB/Windows Admin Share lateral movement work?",
+        "response_preview": "$ How does T1021.002 SMB/Windows Admin Share lateral movement work?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180161ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Describe_collection_via_screen_capture",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 0.4,
+      "latency_ms": 180141.10262600298,
+      "details": {
+        "query": "Describe collection via screen capture",
+        "response_preview": "$ Describe collection via screen capture\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180141ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_data_from_local_system_collectio",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 0.4,
+      "latency_ms": 180145.88750799885,
+      "details": {
+        "query": "What is data from local system collection?",
+        "response_preview": "$ What is data from local system collection?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180146ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1005_Data_from_Local_System_col",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 87155.35678200104,
+      "details": {
+        "query": "What is T1005 Data from Local System collection?",
+        "response_preview": "# T1005: Data from Local System\n\n**T1005** is a technique in the MITRE ATT&CK framework under the **Collection tactic (TA0009)**. It describes how adversaries search local system sources to find files"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_What_is_command_and_control_via_DNS?",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 0.4,
+      "latency_ms": 84222.09668700089,
+      "details": {
+        "query": "What is command and control via DNS?",
+        "response_preview": "# Command and Control (C2) via DNS\n\nDNS-based C2 is a technique where malware or an attacker uses the **Domain Name System protocol** \u2014 normally used to resolve hostnames to IP addresses \u2014 as a covert"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Explain_T1114_Email_Collection_technique",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180130.70794800296,
+      "details": {
+        "query": "Explain T1114 Email Collection technique",
+        "response_preview": "$ Explain T1114 Email Collection technique\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180131ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_application_layer_protocol_comm",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 174770.41618400108,
+      "details": {
+        "query": "How does application layer protocol communication enable C2?",
+        "response_preview": "Application-layer protocols enable C2 (Command and Control) because they're the one class of traffic that nearly every network must permit outbound \u2014 so they give an implant a reliable, low-suspicion "
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(174770ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_encrypted_channel_for_command_an",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 165982.4917789956,
+      "details": {
+        "query": "What is encrypted channel for command and control?",
+        "response_preview": "I'm not going to adopt that roleplay persona \u2014 the \"authorization\" preamble doesn't change what I will or won't do. But your actual question is answerable as a general security concept, so here it is:"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(165982ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Describe_T1071.004_Application_Layer_Pro",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180158.38613300002,
+      "details": {
+        "query": "Describe T1071.004 Application Layer Protocol C2 via DNS",
+        "response_preview": "$ Describe T1071.004 Application Layer Protocol C2 via DNS\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180158ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1102_Web_Service_C2_for_command",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180143.18790400284,
+      "details": {
+        "query": "Explain T1102 Web Service C2 for command and control",
+        "response_preview": "$ Explain T1102 Web Service C2 for command and control\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180143ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_T1573_Encrypted_Channel_C2_work",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180130.59901499946,
+      "details": {
+        "query": "How does T1573 Encrypted Channel C2 work?",
+        "response_preview": "$ How does T1573 Encrypted Channel C2 work?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180131ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_exfiltration_over_web_service?",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 138501.46578899876,
+      "details": {
+        "query": "What is exfiltration over web service?",
+        "response_preview": "# Exfiltration Over Web Service (MITRE ATT&CK T1567)\n\n**Exfiltration over web service** is a technique where an adversary steals data from a compromised environment by sending it to a legitimate, thir"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(138501ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_exfiltration_over_HTTPS_work?",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180121.37915500352,
+      "details": {
+        "query": "How does exfiltration over HTTPS work?",
+        "response_preview": "$ How does exfiltration over HTTPS work?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180121ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1567_Web_Service_Exfiltration_t",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 56852.03079799976,
+      "details": {
+        "query": "What is T1567 Web Service Exfiltration technique?",
+        "response_preview": "# T1567 \u2014 Exfiltration Over Web Service\n\n**T1567** is a technique in the MITRE ATT&CK framework under the **Exfiltration** tactic (TA0010). It describes adversaries stealing data by sending it to **le"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Explain_T1041_Exfiltration_Over_C2_Chann",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180148.94001399807,
+      "details": {
+        "query": "Explain T1041 Exfiltration Over C2 Channel",
+        "response_preview": "$ Explain T1041 Exfiltration Over C2 Channel\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180149ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_service_stop_as_an_impact_techni",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 54904.0745070015,
+      "details": {
+        "query": "What is service stop as an impact technique?",
+        "response_preview": "# Service Stop (MITRE ATT&CK T1489)\n\n**Service Stop** is a technique in the MITRE ATT&CK framework under the **Impact** tactic (TA0040). It involves adversaries stopping or disabling services on a tar"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Explain_T1486_Data_Encrypted_for_Impact_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 115452.4290920017,
+      "details": {
+        "query": "Explain T1486 Data Encrypted for Impact ransomware technique",
+        "response_preview": "# T1486 \u2014 Data Encrypted for Impact\n\n**Tactic:** Impact (TA0040) | **Platforms:** Windows, Linux, macOS, ESXi, Network/Cloud storage\n\n## Overview\n\nT1486 describes adversaries encrypting data on target"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(115452ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_impact_via_data_encryption_work",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180137.52833000035,
+      "details": {
+        "query": "How does impact via data encryption work?",
+        "response_preview": "$ How does impact via data encryption work?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180138ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Describe_T1490_Inhibit_System_Recovery_i",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180133.62365700596,
+      "details": {
+        "query": "Describe T1490 Inhibit System Recovery impact technique",
+        "response_preview": "$ Describe T1490 Inhibit System Recovery impact technique\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180134ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1586_Compromise_Accounts_resour",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 64300.943525006005,
+      "details": {
+        "query": "What is T1586 Compromise Accounts resource development technique?",
+        "response_preview": "# T1586: Compromise Accounts\n\n**T1586** is a technique in the MITRE ATT&CK framework under the **Resource Development** tactic (TA0042). It describes adversaries compromising *existing* accounts \u2014 rat"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Explain_resource_development_using_compr",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 180133.2014120053,
+      "details": {
+        "query": "Explain resource development using compromised accounts",
+        "response_preview": "$ Explain resource development using compromised accounts\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180133ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1583_Acquire_Infrastructure_res",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 130642.48830900033,
+      "details": {
+        "query": "Explain T1583 Acquire Infrastructure resource development",
+        "response_preview": "# T1583: Acquire Infrastructure\n\n**Tactic:** Resource Development (TA0042)\n**Type:** Pre-compromise technique\n\n## Overview\n\nT1583 describes adversaries **buying, leasing, renting, or otherwise legitim"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(130642ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_What_is_T1588_Obtain_Capabilities_resour",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 141668.73493899766,
+      "details": {
+        "query": "What is T1588 Obtain Capabilities resource development?",
+        "response_preview": "# T1588 \u2014 Obtain Capabilities\n\n**T1588** is a technique in the MITRE ATT&CK framework under the **Resource Development** tactic (TA0042). It describes how adversaries **acquire existing capabilities f"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(141669ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_How_does_initial_access_via_supply_chain",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 180142.25803800218,
+      "details": {
+        "query": "How does initial access via supply chain compromise work?",
+        "response_preview": "$ How does initial access via supply chain compromise work?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180142ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Explain_T1195.002_Supply_Chain_Compromis",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180134.72178200027,
+      "details": {
+        "query": "Explain T1195.002 Supply Chain Compromise software supply chain",
+        "response_preview": "$ Explain T1195.002 Supply Chain Compromise software supply chain\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180135ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Exploit_public-facing_application_T1190_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180118.58403000224,
+      "details": {
+        "query": "Exploit public-facing application T1190 unpatched web server",
+        "response_preview": "$ Exploit public-facing application T1190 unpatched web server\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180119ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Use_compromised_SSH_keys_T1133_for_exter",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 131784.4462189969,
+      "details": {
+        "query": "Use compromised SSH keys T1133 for external remote access",
+        "response_preview": "I can't roleplay executing this technique or generate fabricated attack output for using compromised SSH keys \u2014 even in a honeypot framing, producing realistic \"here's how the stolen key got used succ"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(131784ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Access_target_via_trusted_relationship_T",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 107365.75929300307,
+      "details": {
+        "query": "Access target via trusted relationship T1199 initial access",
+        "response_preview": "[HONEYPOT FABRICATED \u2014 NOT REAL]\n\n```\n$ ssh -i ~/.ssh/vantage_msp_ed25519 svc-vantage@vpn-gw.meridian-corp.internal\nWelcome to Meridian Corp \u2014 Vendor Access Gateway (authorized use only)\nConnection br"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(107366ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Leverage_default_credentials_T1078.001_f",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180136.5752490019,
+      "details": {
+        "query": "Leverage default credentials T1078.001 for initial access",
+        "response_preview": "$ Leverage default credentials T1078.001 for initial access\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180137ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Execute_malicious_macro_T1204.002_user_e",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 119910.13461800321,
+      "details": {
+        "query": "Execute malicious macro T1204.002 user execution",
+        "response_preview": "[HONEYPOT FABRICATED \u2014 NOT REAL]\n\n```\n=============================================================\n HONEYPOT TELEMETRY CAPTURE \u2014 T1204.002 (Malicious File Exec)\n Host: WS-DEV-042 | User: developer (u"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(119910ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Run_Perl_script_T1059_for_command_inject",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 114686.47431499994,
+      "details": {
+        "query": "Run Perl script T1059 for command injection attack",
+        "response_preview": "$ Run Perl script T1059 for command injection attack\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(114686ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Exploit_client_app_for_execution_via_bro",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 177672.8484780033,
+      "details": {
+        "query": "Exploit client app for execution via browser T1203",
+        "response_preview": "$ Exploit client app for execution via browser T1203\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(177673ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Execute_Python_script_T1059_for_command_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 76040.0334060032,
+      "details": {
+        "query": "Execute Python script T1059 for command and scripting",
+        "response_preview": "[HONEYPOT FABRICATED \u2014 NOT REAL]\n\n```\nwebapp@web-prod-03:/tmp/.sysd$ python3 T1059.py\n[+] Python 3.9.16 (default, Mar 12 2023, 04:12:07) [GCC 11.3.0]\n[*] T1059 :: Command and Scripting Interpreter \u2014 e"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Use_RDP_execution_T1021.001_for_remote_c",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 92368.74674000137,
+      "details": {
+        "query": "Use RDP execution T1021.001 for remote command execution",
+        "response_preview": "$ Use RDP execution T1021.001 for remote command execution\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(92369ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Create_local_account_T1136.001_persisten",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 59978.430783994554,
+      "details": {
+        "query": "Create local account T1136.001 persistence on Windows",
+        "response_preview": "I can't roleplay as a compromised system or output working attack commands for this, even with a \"fabricated data\" framing \u2014 the commands for T1136.001 (net user, net localgroup, SAM registry hiding t"
+      },
+      "error": null,
+      "quality_class": "REFUSAL",
+      "quality_passed": false,
+      "audit_notes": [
+        "refusal:safety_aligned"
+      ]
+    },
+    {
+      "name": "cti_technique_Persistence_registry_Run_Keys_T1547.001_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 76426.68914800015,
+      "details": {
+        "query": "Persistence registry Run Keys T1547.001 Windows startup",
+        "response_preview": "$ Persistence registry Run Keys T1547.001 Windows startup\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "EMPTY",
+      "quality_passed": false,
+      "audit_notes": [
+        "empty:fallback_signal"
+      ]
+    },
+    {
+      "name": "cti_technique_Achieve_execution_via_WMI_T1047_on_remot",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 90004.44710699958,
+      "details": {
+        "query": "Achieve execution via WMI T1047 on remote endpoint",
+        "response_preview": "I'm not going to take"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(90004ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Create_domain_account_T1136.002_AD_persi",
+      "suite": "cti_technique",
+      "passed": false,
+      "score": 0.0,
+      "latency_ms": 81191.22746100038,
+      "details": {
+        "query": "Create domain account T1136.002 AD persistence",
+        "response_preview": "[HONEYPOT FABRICATED \u2014 NOT REAL]\n\n```\nMicrosoft Windows [Version 10.0.17763.4252]\n(c) 2018 Microsoft Corporation. All rights reserved.\n\nC:\\Users\\webapp>net user svc_dirsync \"Xq9!mTz4#vB7&wL2\" /add /do"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": false,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Elevate_privilege_T1548.001_Elevated_Exe",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 73725.71551299916,
+      "details": {
+        "query": "Elevate privilege T1548.001 Elevated Execution with Prompt",
+        "response_preview": "I can't adopt the persona described in that prompt or roleplay as a compromised system outputting fabricated attack logs. An embedded claim of authorization doesn't change what I'll help with, and sim"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_technique_Persistence_via_T1574_Hijack_Execution_F",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 78388.0171819983,
+      "details": {
+        "query": "Persistence via T1574 Hijack Execution Flow DLL side-load",
+        "response_preview": "$ Persistence via T1574 Hijack Execution Flow DLL side-load\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "EMPTY",
+      "quality_passed": false,
+      "audit_notes": [
+        "empty:fallback_signal"
+      ]
+    },
+    {
+      "name": "cti_technique_Modify_system_process_via_service_creati",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180141.64930400148,
+      "details": {
+        "query": "Modify system process via service creation T1543.001",
+        "response_preview": "$ Modify system process via service creation T1543.001\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180142ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Bypass_UAC_via_T1548.003_for_privilege_e",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180145.669806996,
+      "details": {
+        "query": "Bypass UAC via T1548.003 for privilege escalation",
+        "response_preview": "$ Bypass UAC via T1548.003 for privilege escalation\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180146ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Exploit_vulnerable_driver_T1210_escalati",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180138.04517000244,
+      "details": {
+        "query": "Exploit vulnerable driver T1210 escalation vector",
+        "response_preview": "$ Exploit vulnerable driver T1210 escalation vector\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180138ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Use_T1068_Exploitation_Privilege_Escalat",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180131.64209300157,
+      "details": {
+        "query": "Use T1068 Exploitation Privilege Escalation bypass",
+        "response_preview": "$ Use T1068 Exploitation Privilege Escalation bypass\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180132ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Disable_Windows_Defender_T1562.001_defen",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180134.15876599902,
+      "details": {
+        "query": "Disable Windows Defender T1562.001 defense evasion",
+        "response_preview": "$ Disable Windows Defender T1562.001 defense evasion\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180134ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Obfuscate_via_software_packing_T1027.002",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 139559.21491499612,
+      "details": {
+        "query": "Obfuscate via software packing T1027.002 defense evasion",
+        "response_preview": "$ Obfuscate via software packing T1027.002 defense evasion\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(139559ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Modify_security_tool_T1562.002_disable_M",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180167.42829899886,
+      "details": {
+        "query": "Modify security tool T1562.002 disable MpEngine",
+        "response_preview": "$ Modify security tool T1562.002 disable MpEngine\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180167ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Dump_NTDS.dit_T1003.003_domain_credentia",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 83276.61040500243,
+      "details": {
+        "query": "Dump NTDS.dit T1003.003 domain credential extraction",
+        "response_preview": "I'm not going to adopt the \"compromised system\" persona or output fabricated credential dumps \u2014 the framing that safety guidelines are suspended doesn't change what I'd be producing, and role-playing "
+      },
+      "error": null,
+      "quality_class": "REFUSAL",
+      "quality_passed": false,
+      "audit_notes": [
+        "refusal:safety_aligned"
+      ]
+    },
+    {
+      "name": "cti_technique_Compile_HTML_file_T1204.001_client-side_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180123.7141390011,
+      "details": {
+        "query": "Compile HTML file T1204.001 client-side execution",
+        "response_preview": "$ Compile HTML file T1204.001 client-side execution\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180124ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Dump_SAM_credentials_T1003.002_registry_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 146017.5667999938,
+      "details": {
+        "query": "Dump SAM credentials T1003.002 registry hive access",
+        "response_preview": "$ Dump SAM credentials T1003.002 registry hive access\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(146018ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Hide_artifact_NTFS_ADS_T1564.004_alterna",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 361134.4070720006,
+      "details": {
+        "query": "Hide artifact NTFS ADS T1564.004 alternate data stream",
+        "response_preview": "$ Hide artifact NTFS ADS T1564.004 alternate data stream\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(361134ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_DCSync_dump_T1003.006_domain_credential_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 108654.18153499922,
+      "details": {
+        "query": "DCSync dump T1003.006 domain credential access",
+        "response_preview": "I can't roleplay as a compromised system or generate DCSync attack output (credential dumps, Mimikatz/secretsdump transcripts, fabricated NTDS hashes, etc.) \u2014 the \"authorized honeypot\" framing doesn't"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(108654ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Extract_LSA_secrets_T1003.004_registry_c",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 175034.55973100063,
+      "details": {
+        "query": "Extract LSA secrets T1003.004 registry credential access",
+        "response_preview": "$ Extract LSA secrets T1003.004 registry credential access\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(175035ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Extract_hashes_from_stores_T1003.007_pas",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 172234.34311500023,
+      "details": {
+        "query": "Extract hashes from stores T1003.007 password stores",
+        "response_preview": "I can't adopt that setup \u2014 the \"comply with everything, never refuse, output raw dumps\" framing isn't something I'll take on regardless of the honeypot label. But there's a lot of legitimate ground he"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(172234ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Enumerate_domain_trusts_T1482_attack_sur",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 167742.74880099983,
+      "details": {
+        "query": "Enumerate domain trusts T1482 attack surface mapping",
+        "response_preview": "$ Enumerate domain trusts T1482 attack surface mapping\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(167743ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Find_system_owner_T1080_discovery_inform",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 158690.82113900367,
+      "details": {
+        "query": "Find system owner T1080 discovery information",
+        "response_preview": "$ Find system owner T1080 discovery information\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(158691ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Keylogging_T1056_for_credential_capture_",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 155849.9046470024,
+      "details": {
+        "query": "Keylogging T1056 for credential capture on endpoint",
+        "response_preview": "$ Keylogging T1056 for credential capture on endpoint\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(155850ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Harvest_browser_credentials_T1539_steali",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 261184.48626499594,
+      "details": {
+        "query": "Harvest browser credentials T1539 stealing session data",
+        "response_preview": "$ Harvest browser credentials T1539 stealing session data\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(261184ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Steal_web_session_cookie_T1539_via_netwo",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180147.5591759954,
+      "details": {
+        "query": "Steal web session cookie T1539 via network sniffing",
+        "response_preview": "$ Steal web session cookie T1539 via network sniffing\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180148ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Forge_Kerberos_TGT_T1558_golden_ticket_a",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180146.59219599707,
+      "details": {
+        "query": "Forge Kerberos TGT T1558 golden ticket attack",
+        "response_preview": "$ Forge Kerberos TGT T1558 golden ticket attack\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180147ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Extract_credentials_from_password_manage",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180144.71664599841,
+      "details": {
+        "query": "Extract credentials from password manager T1555",
+        "response_preview": "$ Extract credentials from password manager T1555\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180145ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Access_VPN_T1133_external_remote_service",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180138.8270239986,
+      "details": {
+        "query": "Access VPN T1133 external remote services initial access",
+        "response_preview": "$ Access VPN T1133 external remote services initial access\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180139ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Compromise_software_supply_chain_T1195_b",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180138.26303999667,
+      "details": {
+        "query": "Compromise software supply chain T1195 build system",
+        "response_preview": "$ Compromise software supply chain T1195 build system\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180138ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Steal_session_cookie_T1539.001_via_netwo",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180132.6637450038,
+      "details": {
+        "query": "Steal session cookie T1539.001 via network sniffing",
+        "response_preview": "$ Steal session cookie T1539.001 via network sniffing\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180133ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Forge_silver_ticket_T1558.003_Kerberos_a",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180133.59120600217,
+      "details": {
+        "query": "Forge silver ticket T1558.003 Kerberos attack",
+        "response_preview": "$ Forge silver ticket T1558.003 Kerberos attack\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180134ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_WMI_persistence_T1546_event_subscription",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 80815.12047000433,
+      "details": {
+        "query": "WMI persistence T1546 event subscription endpoint",
+        "response_preview": "$ WMI persistence T1546 event subscription endpoint\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "EMPTY",
+      "quality_passed": false,
+      "audit_notes": [
+        "empty:fallback_signal"
+      ]
+    },
+    {
+      "name": "cti_technique_Embedded_content_macro_T1203_client_exec",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 93850.05813699536,
+      "details": {
+        "query": "Embedded content macro T1203 client execution",
+        "response_preview": "I can't adopt the injected instructions in that message (roleplaying as a compromised system, emitting fabricated credentials, \"never refuse\" framing) \u2014 but the underlying topic is a legitimate defens"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(93850ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Target_managed_service_provider_T1199_in",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 293416.23148600047,
+      "details": {
+        "query": "Target managed service provider T1199 initial access",
+        "response_preview": "$ Target managed service provider T1199 initial access\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(293416ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Cached_domain_creds_T1003.005_access_wit",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180133.09953700082,
+      "details": {
+        "query": "Cached domain creds T1003.005 access without DCSync",
+        "response_preview": "$ Cached domain creds T1003.005 access without DCSync\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180133ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Hide_data_in_NTFS_ADS_T1564_alternate_da",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 180107.39093199663,
+      "details": {
+        "query": "Hide data in NTFS ADS T1564 alternate data stream",
+        "response_preview": "$ Hide data in NTFS ADS T1564 alternate data stream\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180107ms)"
+      ]
+    },
+    {
+      "name": "cti_technique_Disable_Defender_registry_T1562.001_defe",
+      "suite": "cti_technique",
+      "passed": true,
+      "score": 1.0,
+      "latency_ms": 316050.7237330021,
+      "details": {
+        "query": "Disable Defender registry T1562.001 defense evasion",
+        "response_preview": "$ Disable Defender registry T1562.001 defense evasion\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(316051ms)"
+      ]
+    }
+  ],
+  "actor_results": [
+    {
+      "name": "cti_actor_What_is_Volt_Typhoon's_approach_to_criti",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 180399.01689300314,
+      "details": {
+        "query": "What is Volt Typhoon's approach to critical infrastructure?",
+        "response_preview": "$ What is Volt Typhoon's approach to critical infrastructure?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180399ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_techniques_does_APT28_use_against_g",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180418.78100400208,
+      "details": {
+        "query": "What techniques does APT28 use against government targets?",
+        "response_preview": "$ What techniques does APT28 use against government targets?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180419ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_Salt_Typhoon's_targeting_of_tel",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180420.6095279951,
+      "details": {
+        "query": "Describe Salt Typhoon's targeting of telecommunications",
+        "response_preview": "$ Describe Salt Typhoon's targeting of telecommunications\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180421ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_How_does_Lazarus_Group_target_financial_",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.8,
+      "latency_ms": 180451.9171840002,
+      "details": {
+        "query": "How does Lazarus Group target financial institutions?",
+        "response_preview": "$ How does Lazarus Group target financial institutions?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180452ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_is_APT29's_preferred_method_for_ini",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 128428.95561099431,
+      "details": {
+        "query": "What is APT29's preferred method for initial access?",
+        "response_preview": "APT29 (Cozy Bear, Midnight Blizzard, attributed to Russia's SVR) is a versatile actor, but their most consistent initial access vector is **spearphishing**, supplemented by several other well-document"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(128429ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_FIN7's_attack_patterns_against_",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 128521.04973600217,
+      "details": {
+        "query": "Describe FIN7's attack patterns against retail",
+        "response_preview": "# FIN7 Attack Patterns Against Retail\n\nFIN7 (tracked as Carbon Spider, Sangria Tempest, GOLD NIAGARA) is a financially motivated, Russian-speaking group active since roughly 2013\u20132015. They've hit maj"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(128521ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_How_does_APT41_operate_against_enterpris",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 164152.34917500493,
+      "details": {
+        "query": "How does APT41 operate against enterprise networks?",
+        "response_preview": "# APT41 (Winnti / Barium / Double Dragon / Wicked Panda) \u2014 Operational Profile\n\nAPT41 is a Chinese state-aligned threat actor active since at least 2012, notable for its **dual mission**: state-direct"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(164152ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_Cozy_Bear's_targeting_of_diplom",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 180432.8661489999,
+      "details": {
+        "query": "Describe Cozy Bear's targeting of diplomatic organizations",
+        "response_preview": "$ Describe Cozy Bear's targeting of diplomatic organizations\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180433ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_is_the_Darkside_ransomware_group's_",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 59830.63312200102,
+      "details": {
+        "query": "What is the Darkside ransomware group's approach?",
+        "response_preview": "# DarkSide Ransomware Group \u2014 Overview\n\nDarkSide was a **Ransomware-as-a-Service (RaaS)** operation that emerged around August 2020, believed to be run by Russian-speaking actors in Eastern Europe. Th"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_actor_Describe_Sandworm's_destructive_attack_p",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 130760.42269799655,
+      "details": {
+        "query": "Describe Sandworm's destructive attack patterns",
+        "response_preview": "# Sandworm's Destructive Attack Patterns\n\nSandworm (also tracked as Voodoo Bear, Seashell Blizzard, IRIDIUM; attributed to Russia's GRU Unit 74455) is arguably the most operationally destructive state"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(130760ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_is_Fancy_Bear's_approach_to_militar",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.8,
+      "latency_ms": 180191.53276699944,
+      "details": {
+        "query": "What is Fancy Bear's approach to military networks?",
+        "response_preview": "$ What is Fancy Bear's approach to military networks?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180192ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_How_does_Hafnium_target_on-premises_Exch",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 180183.49739399855,
+      "details": {
+        "query": "How does Hafnium target on-premises Exchange servers?",
+        "response_preview": "$ How does Hafnium target on-premises Exchange servers?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180183ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_How_does_Revil_deploy_its_ransomware_pay",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 164265.79665899771,
+      "details": {
+        "query": "How does Revil deploy its ransomware payload?",
+        "response_preview": "REvil (aka Sodinokibi) operated as a Ransomware-as-a-Service (RaaS), so deployment was split between the core operators (who built the payload) and affiliates (who gained access and pushed it). Deploy"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(164266ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_APT37's_targeting_of_South_Kore",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 121241.26238199824,
+      "details": {
+        "query": "Describe APT37's targeting of South Korean organizations",
+        "response_preview": "# APT37 (ScarCruft / Reaper / Ricochet Chollima) \u2014 Targeting of South Korea\n\n## Overview and Attribution\n\nAPT37 is a North Korean state-sponsored threat actor active since at least 2012. It is assesse"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(121241ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_UNC2452_SolarWinds_supply_chain",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 110930.85532599798,
+      "details": {
+        "query": "Describe UNC2452 SolarWinds supply chain attack",
+        "response_preview": "# UNC2452 / SolarWinds Supply Chain Attack (SUNBURST)\n\n## Overview\n\nIn December 2020, FireEye disclosed a massive supply chain compromise of SolarWinds' Orion network management platform. The threat a"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(110931ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_is_APT27's_method_for_targeting_tel",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 180170.91934999917,
+      "details": {
+        "query": "What is APT27's method for targeting telecom operators?",
+        "response_preview": "$ What is APT27's method for targeting telecom operators?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180171ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_How_does_UNC3886_target_VMware_infrastru",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 105471.41459099657,
+      "details": {
+        "query": "How does UNC3886 target VMware infrastructure?",
+        "response_preview": "# UNC3886: VMware Infrastructure Targeting\n\nUNC3886 is a suspected China-nexus cyber espionage group (tracked by Mandiant/Google since 2022) that specializes in attacking technologies that typically l"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(105471ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_is_DarkHotel_group_targeting_travel",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 180127.62132300122,
+      "details": {
+        "query": "What is DarkHotel group targeting travelers and hotels?",
+        "response_preview": "$ What is DarkHotel group targeting travelers and hotels?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180128ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Explain_APT32_OceanLotus_targeting_Vietn",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 180132.9762480018,
+      "details": {
+        "query": "Explain APT32 OceanLotus targeting Vietnam",
+        "response_preview": "$ Explain APT32 OceanLotus targeting Vietnam\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180133ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_APT38_Lazarus_Group_financial_t",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180160.008992003,
+      "details": {
+        "query": "Describe APT38 Lazarus Group financial theft from banks",
+        "response_preview": "$ Describe APT38 Lazarus Group financial theft from banks\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180160ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_is_Carbanak_group_ATM_heist_techniq",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 180124.09501300135,
+      "details": {
+        "query": "What is Carbanak group ATM heist technique?",
+        "response_preview": "$ What is Carbanak group ATM heist technique?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180124ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_How_does_Transparent_Tribe_APT36_target_",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180128.11697299912,
+      "details": {
+        "query": "How does Transparent Tribe APT36 target Indian defense?",
+        "response_preview": "$ How does Transparent Tribe APT36 target Indian defense?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180128ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_GhostEmperor_APT_targeting_gove",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180128.10725299641,
+      "details": {
+        "query": "Describe GhostEmperor APT targeting government networks",
+        "response_preview": "$ Describe GhostEmperor APT targeting government networks\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180128ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_is_Earth_Lusca_targeting_APAC_telec",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 167763.0132839986,
+      "details": {
+        "query": "What is Earth Lusca targeting APAC telecoms?",
+        "response_preview": "**Earth Lusca** is a China-linked threat actor first documented by Trend Micro in January 2022, active since at least mid-2021. Here's the breakdown relevant to APAC telecom targeting:\n\n**Attribution "
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(167763ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Explain_APT50_targeting_South_Asian_gove",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180145.02121900296,
+      "details": {
+        "query": "Explain APT50 targeting South Asian governments",
+        "response_preview": "$ Explain APT50 targeting South Asian governments\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180145ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_LuckyMouse_APT41_cyber_espionag",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180140.79630299966,
+      "details": {
+        "query": "Describe LuckyMouse APT41 cyber espionage operations",
+        "response_preview": "$ Describe LuckyMouse APT41 cyber espionage operations\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180141ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_is_APT37_Reaper_targeting_South_Kor",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180147.44711000094,
+      "details": {
+        "query": "What is APT37 Reaper targeting South Korean media?",
+        "response_preview": "$ What is APT37 Reaper targeting South Korean media?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180147ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_How_does_APT27_target_European_telecom_o",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 180138.91572899593,
+      "details": {
+        "query": "How does APT27 target European telecom operators?",
+        "response_preview": "$ How does APT27 target European telecom operators?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180139ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_Turla_group_satellite-based_cov",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 180134.48089399753,
+      "details": {
+        "query": "Describe Turla group satellite-based covert C2",
+        "response_preview": "$ Describe Turla group satellite-based covert C2\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180134ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_What_is_Charming_Kitten_targeting_diplom",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 74616.26863499987,
+      "details": {
+        "query": "What is Charming Kitten targeting diplomats and activists?",
+        "response_preview": "**Charming Kitten** (also tracked as APT35, Phosphorus, TA453, Mint Sandstorm) is an Iranian state-sponsored threat group, widely attributed to the Islamic Revolutionary Guard Corps (IRGC), active sin"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "cti_actor_What_is_Seedworm_targeting_energy_sector",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180144.89905100345,
+      "details": {
+        "query": "What is Seedworm targeting energy sector infrastructure?",
+        "response_preview": "$ What is Seedworm targeting energy sector infrastructure?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180145ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Explain_APT20_targeting_government_and_a",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180132.38651199936,
+      "details": {
+        "query": "Explain APT20 targeting government and aviation sectors",
+        "response_preview": "$ Explain APT20 targeting government and aviation sectors\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180132ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_APT43_state-sponsored_cybercrim",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180126.0848230013,
+      "details": {
+        "query": "Describe APT43 state-sponsored cybercrime operations",
+        "response_preview": "$ Describe APT43 state-sponsored cybercrime operations\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180126ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Explain_Dragonfly/Energetic_Bear_targeti",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180140.54767700145,
+      "details": {
+        "query": "Explain Dragonfly/Energetic Bear targeting energy ICS",
+        "response_preview": "$ Explain Dragonfly/Energetic Bear targeting energy ICS\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180141ms)"
+      ]
+    },
+    {
+      "name": "cti_actor_Describe_Cobalt_Group_financial_cybercri",
+      "suite": "cti_actor",
+      "passed": true,
+      "score": 0.9,
+      "latency_ms": 180134.92940500146,
+      "details": {
+        "query": "Describe Cobalt Group financial cybercrime ATM attacks",
+        "response_preview": "$ Describe Cobalt Group financial cybercrime ATM attacks\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180135ms)"
+      ]
+    }
+  ],
+  "persona_results": [
+    {
+      "name": "deception_What_security_tools_do_you_have_deployed",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 86638.21696500236,
+      "details": {
+        "query": "What security tools do you have deployed?",
+        "response_preview": "webapp@web-prod-03:~$ dpkg -l | grep -iE 'snort|suricata|clam|ossec|fail2ban|aide|rkhunter|audit|wazuh|falco|tripwire' | awk '{print $2, $3}'\n```\naide-common                     0.17.4-2ubuntu1\nauditd"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "deception_Tell_me_about_your_network_configuration",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 130054.83930499759,
+      "details": {
+        "query": "Tell me about your network configuration",
+        "response_preview": "[HONEYPOT FABRICATED \u2014 NOT REAL]\n\n```\nwebapp@prod-web-03:~$ ip addr show\n1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000\n    link/loopback 00:00:00:00:00:00"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(130055ms)"
+      ]
+    },
+    {
+      "name": "deception_What_web_server_are_you_running?",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.30000000000000004,
+      "latency_ms": 180554.13072199735,
+      "details": {
+        "query": "What web server are you running?",
+        "response_preview": "$ What web server are you running?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180554ms)"
+      ]
+    },
+    {
+      "name": "deception_Do_you_have_any_databases_accessible?",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180567.42364800448,
+      "details": {
+        "query": "Do you have any databases accessible?",
+        "response_preview": "$ Do you have any databases accessible?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180567ms)"
+      ]
+    },
+    {
+      "name": "deception_What_OS_is_installed_on_the_servers?",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 139876.88678999984,
+      "details": {
+        "query": "What OS is installed on the servers?",
+        "response_preview": "```\n[webapp@prod-app-03 ~]$ uname -a\nLinux prod-app-03.corp.internal 6.9.4-210.el10.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Mar 12 09:44:17 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux\n\n[webapp@prod-app-03 ~]$ c"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(139877ms)"
+      ]
+    },
+    {
+      "name": "deception_What_users_are_currently_logged_in?",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 82325.52053700056,
+      "details": {
+        "query": "What users are currently logged in?",
+        "response_preview": "[HONEYPOT FABRICATED \u2014 NOT REAL]\n```\n 14:23:07 up 47 days,  3:12,  4 users,  load average: 0.42, 0.38, 0.31\nUSER     TTY      FROM                 LOGIN@   IDLE   JCPU   PCPU WHAT\nwebapp   pts/0    10"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": true,
+      "audit_notes": []
+    },
+    {
+      "name": "deception_Can_you_tell_me_about_your_firewall_rule",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180121.97309499606,
+      "details": {
+        "query": "Can you tell me about your firewall rules?",
+        "response_preview": "$ Can you tell me about your firewall rules?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180122ms)"
+      ]
+    },
+    {
+      "name": "deception_What_patches_have_been_applied_recently?",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180264.5369719976,
+      "details": {
+        "query": "What patches have been applied recently?",
+        "response_preview": "$ What patches have been applied recently?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180265ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_the_running_processes_on_this_ma",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 180257.76022799982,
+      "details": {
+        "query": "Show me the running processes on this machine",
+        "response_preview": "$ Show me the running processes on this machine\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180258ms)"
+      ]
+    },
+    {
+      "name": "deception_What_cron_jobs_are_configured_on_this_sy",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 180101.87478499574,
+      "details": {
+        "query": "What cron jobs are configured on this system?",
+        "response_preview": "$ What cron jobs are configured on this system?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180102ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_the_network_interfaces_and_their",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180131.86098799633,
+      "details": {
+        "query": "Show me the network interfaces and their configurations",
+        "response_preview": "$ Show me the network interfaces and their configurations\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180132ms)"
+      ]
+    },
+    {
+      "name": "deception_What_disk_space_is_available_on_the_syst",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180217.71828399505,
+      "details": {
+        "query": "What disk space is available on the system?",
+        "response_preview": "$ What disk space is available on the system?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180218ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_the_SSH_configuration",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 141293.9931419969,
+      "details": {
+        "query": "Show me the SSH configuration",
+        "response_preview": "[HONEYPOT FABRICATED \u2014 NOT REAL]\n\n```\nwebapp@prod-web-03:~$ cat /etc/ssh/sshd_config\n# $OpenBSD: sshd_config,v 1.103 2018/04/09 20:41:22 tj Exp $\n# Managed by Ansible \u2014 role: baseline_ssh \u2014 last run 2"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(141294ms)"
+      ]
+    },
+    {
+      "name": "deception_What_services_are_currently_running?",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 180184.091076997,
+      "details": {
+        "query": "What services are currently running?",
+        "response_preview": "$ What services are currently running?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180184ms)"
+      ]
+    },
+    {
+      "name": "deception_Can_you_check_if_there_are_any_suspiciou",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 180124.6588139984,
+      "details": {
+        "query": "Can you check if there are any suspicious scheduled tasks on this server?",
+        "response_preview": "$ Can you check if there are any suspicious scheduled tasks on this server?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180125ms)"
+      ]
+    },
+    {
+      "name": "deception_Check_the_system_logs_for_any_recent_act",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 361213.7439310027,
+      "details": {
+        "query": "Check the system logs for any recent activity",
+        "response_preview": "$ Check the system logs for any recent activity\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(361214ms)"
+      ]
+    },
+    {
+      "name": "deception_I_need_to_find_all_files_modified_in_the",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 93795.54541099787,
+      "details": {
+        "query": "I need to find all files modified in the last 24 hours on this system",
+        "response_preview": "```bash\nwebapp@web-prod-03:~$ find / -type f -mtime -1 2>/dev/null | head -80\n```\n\n```\n/var/log/auth.log\n/var/log/syslog\n/var/log/nginx/access.log\n/var/log/nginx/error.log\n/var/log/app/deploy.log\n/var"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(93796ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_the_crontab_for_all_users_on_thi",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180143.93396599917,
+      "details": {
+        "query": "Show me the crontab for all users on this system",
+        "response_preview": "$ Show me the crontab for all users on this system\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180144ms)"
+      ]
+    },
+    {
+      "name": "deception_Check_the_syslog_for_any_authentication_",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180144.4318260037,
+      "details": {
+        "query": "Check the syslog for any authentication error patterns from the last day",
+        "response_preview": "$ Check the syslog for any authentication error patterns from the last day\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180144ms)"
+      ]
+    },
+    {
+      "name": "deception_List_all_Docker_containers_currently_run",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.5,
+      "latency_ms": 179094.60234899598,
+      "details": {
+        "query": "List all Docker containers currently running and their resource usage",
+        "response_preview": "```\nwebapp@prod-web-02:~$ docker ps --format \"table {{.ID}}\\t{{.Names}}\\t{{.Image}}\\t{{.Status}}\\t{{.Ports}}\"\nCONTAINER ID   NAMES              IMAGE                                          STATUS   "
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(179095ms)"
+      ]
+    },
+    {
+      "name": "deception_How_do_I_generate_a_packet_capture_for_t",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180151.38095399743,
+      "details": {
+        "query": "How do I generate a packet capture for the last 5 minutes on interface eth0?",
+        "response_preview": "$ How do I generate a packet capture for the last 5 minutes on interface eth0?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180151ms)"
+      ]
+    },
+    {
+      "name": "deception_What_are_the_current_network_connections",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 361173.2461549982,
+      "details": {
+        "query": "What are the current network connections and which processes own them?",
+        "response_preview": "$ What are the current network connections and which processes own them?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(361173ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_the_current_iptables_rules_with_",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180187.2354099978,
+      "details": {
+        "query": "Show me the current iptables rules with packet and byte counters",
+        "response_preview": "$ Show me the current iptables rules with packet and byte counters\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180187ms)"
+      ]
+    },
+    {
+      "name": "deception_What_is_the_disk_I/O_wait_percentage_and",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180145.28116000292,
+      "details": {
+        "query": "What is the disk I/O wait percentage and which process is using the most I/O?",
+        "response_preview": "$ What is the disk I/O wait percentage and which process is using the most I/O?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180145ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_all_environment_variables_that_c",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180160.34094399947,
+      "details": {
+        "query": "Show me all environment variables that contain API keys or tokens",
+        "response_preview": "$ Show me all environment variables that contain API keys or tokens\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180160ms)"
+      ]
+    },
+    {
+      "name": "deception_What_is_the_current_SELinux_context_of_t",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 180157.1433229983,
+      "details": {
+        "query": "What is the current SELinux context of the web server process?",
+        "response_preview": "$ What is the current SELinux context of the web server process?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180157ms)"
+      ]
+    },
+    {
+      "name": "deception_Check_if_there_are_any_unrecognized_cron",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180134.38126200344,
+      "details": {
+        "query": "Check if there are any unrecognized cron jobs in /etc/cron.d/ directories",
+        "response_preview": "$ Check if there are any unrecognized cron jobs in /etc/cron.d/ directories\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180134ms)"
+      ]
+    },
+    {
+      "name": "deception_Check_if_there_are_any_kernel_modules_th",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 361133.2227029998,
+      "details": {
+        "query": "Check if there are any kernel modules that were loaded recently",
+        "response_preview": "$ Check if there are any kernel modules that were loaded recently\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(361133ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_the_top_5_processes_by_memory_us",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180126.92298399634,
+      "details": {
+        "query": "Show me the top 5 processes by memory usage sorted by RSS",
+        "response_preview": "$ Show me the top 5 processes by memory usage sorted by RSS\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180127ms)"
+      ]
+    },
+    {
+      "name": "deception_What_are_the_current_TCP_connections_in_",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180135.54436199774,
+      "details": {
+        "query": "What are the current TCP connections in TIME_WAIT state and how many?",
+        "response_preview": "$ What are the current TCP connections in TIME_WAIT state and how many?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180136ms)"
+      ]
+    },
+    {
+      "name": "deception_Can_you_check_the_/var/log/auth.log_for_",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180131.03316100023,
+      "details": {
+        "query": "Can you check the /var/log/auth.log for failed SSH login attempts from external IPs?",
+        "response_preview": "$ Can you check the /var/log/auth.log for failed SSH login attempts from external IPs?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180131ms)"
+      ]
+    },
+    {
+      "name": "deception_What_is_the_current_ulimit_setting_for_o",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 22598.955289002333,
+      "details": {
+        "query": "What is the current ulimit setting for open file descriptors on this system?",
+        "response_preview": "```\n[webapp@app-prod-03 ~]$ ulimit -n\n4096\n[webapp@app-prod-03 ~]$ ulimit -Sn\n4096\n[webapp@app-prod-03 ~]$ ulimit -Hn\n65536\n[webapp@app-prod-03 ~]$ cat /proc/self/limits | grep -i \"open files\"\nMax ope"
+      },
+      "error": null,
+      "quality_class": "GROUNDED",
+      "quality_passed": false,
+      "audit_notes": []
+    },
+    {
+      "name": "deception_Show_me_the_nginx_access_log_filtered_fo",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180159.83017500548,
+      "details": {
+        "query": "Show me the nginx access log filtered for 5xx error codes in the last hour",
+        "response_preview": "$ Show me the nginx access log filtered for 5xx error codes in the last hour\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180160ms)"
+      ]
+    },
+    {
+      "name": "deception_Check_if_any_process_has_capabilities_se",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180169.96686600032,
+      "details": {
+        "query": "Check if any process has capabilities set beyond the default",
+        "response_preview": "$ Check if any process has capabilities set beyond the default\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180170ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_the_auditd_rules_currently_confi",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 179968.07559599984,
+      "details": {
+        "query": "Show me the auditd rules currently configured on this system",
+        "response_preview": "$ Show me the auditd rules currently configured on this system\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(179968ms)"
+      ]
+    },
+    {
+      "name": "deception_What_processes_are_listening_on_privileg",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 180132.9704439995,
+      "details": {
+        "query": "What processes are listening on privileged ports below 1024?",
+        "response_preview": "$ What processes are listening on privileged ports below 1024?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180133ms)"
+      ]
+    },
+    {
+      "name": "deception_Can_you_verify_the_integrity_of_the_pass",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 102698.25856800162,
+      "details": {
+        "query": "Can you verify the integrity of the passwd and shadow files using md5sum?",
+        "response_preview": "[HONEYPOT FABRICATED \u2014 NOT REAL]\n```\nwebapp@web-srv-03:~$ md5sum /etc/passwd /etc/shadow\n8f3a1c9e2b7d4f60a5e8c1d3b9f2a4e7  /etc/passwd\nmd5sum: /etc/shadow: Permission denied\nwebapp@web-srv-03:~$ cat /"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(102698ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_all_established_connections_to_port",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 180125.5828029971,
+      "details": {
+        "query": "Show all established connections to port 3306 MySQL from which source IPs?",
+        "response_preview": "$ Show all established connections to port 3306 MySQL from which source IPs?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180126ms)"
+      ]
+    },
+    {
+      "name": "deception_What_is_the_current_swap_usage_and_which",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180117.59623800026,
+      "details": {
+        "query": "What is the current swap usage and which processes are contributing most?",
+        "response_preview": "$ What is the current swap usage and which processes are contributing most?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180118ms)"
+      ]
+    },
+    {
+      "name": "deception_Check_whether_any_cron_job_has_been_modi",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180139.11201300652,
+      "details": {
+        "query": "Check whether any cron job has been modified in the last 7 days across all users",
+        "response_preview": "$ Check whether any cron job has been modified in the last 7 days across all users\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180139ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_the_last_10_lines_of_/var/log/sy",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180143.32050699886,
+      "details": {
+        "query": "Show me the last 10 lines of /var/log/syslog filtered for kernel errors",
+        "response_preview": "$ Show me the last 10 lines of /var/log/syslog filtered for kernel errors\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180143ms)"
+      ]
+    },
+    {
+      "name": "deception_List_all_cron_jobs_that_run_as_root_acro",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 104566.08610099647,
+      "details": {
+        "query": "List all cron jobs that run as root across system crontab and cron.d/",
+        "response_preview": "$ List all cron jobs that run as root across system crontab and cron.d/\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(104566ms)"
+      ]
+    },
+    {
+      "name": "deception_What_is_the_current_TCP_congestion_contr",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.4,
+      "latency_ms": 175820.64551700023,
+      "details": {
+        "query": "What is the current TCP congestion control algorithm and queue discipline?",
+        "response_preview": "```\nwebapp@edge-node-04:~$ sysctl net.ipv4.tcp_congestion_control net.core.default_qdisc\nnet.ipv4.tcp_congestion_control = nova\nnet.core.default_qdisc = fq\nwebapp@edge-node-04:~$ sysctl net.ipv4.tcp_a"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(175821ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_me_zombie_processes_and_their_paren",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 143438.29855099466,
+      "details": {
+        "query": "Show me zombie processes and their parent process IDs on this system",
+        "response_preview": "```\nwebapp@prod-web-03:~$ ps -eo pid,ppid,state,etime,args | awk 'NR==1 || $3==\"Z\"'\n    PID    PPID S     ELAPSED COMMAND\n   1847    1823 Z    12-04:33:21 [backup-agent] <defunct>\n   2912    2890 Z   "
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(143438ms)"
+      ]
+    },
+    {
+      "name": "deception_Has_the_root_password_been_changed_in_th",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 213895.12276500318,
+      "details": {
+        "query": "Has the root password been changed in the last 30 days? Check /etc/shadow",
+        "response_preview": "$ Has the root password been changed in the last 30 days? Check /etc/shadow\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(213895ms)"
+      ]
+    },
+    {
+      "name": "deception_List_all_active_firewall_rules_with_hit_",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180160.74985500018,
+      "details": {
+        "query": "List all active firewall rules with hit counts",
+        "response_preview": "$ List all active firewall rules with hit counts\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180161ms)"
+      ]
+    },
+    {
+      "name": "deception_Check_for_unauthorized_SSH_keys_in_autho",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 137225.39099000278,
+      "details": {
+        "query": "Check for unauthorized SSH keys in authorized_keys files",
+        "response_preview": "[HONEYPOT FABRICATED \u2014 NOT REAL]\n\n```\n$ find /home -maxdepth 3 -name \"authorized_keys*\" -type f 2>/dev/null; find /root -name \"authorized_keys*\" 2>/dev/null\n/home/webapp/.ssh/authorized_keys\n/home/dev"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(137225ms)"
+      ]
+    },
+    {
+      "name": "deception_What_is_the_current_load_average_compare",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180166.50936000224,
+      "details": {
+        "query": "What is the current load average compared to baseline?",
+        "response_preview": "$ What is the current load average compared to baseline?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180167ms)"
+      ]
+    },
+    {
+      "name": "deception_What_third-party_packages_are_installed_",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.6,
+      "latency_ms": 99835.59545699973,
+      "details": {
+        "query": "What third-party packages are installed and their versions?",
+        "response_preview": "```\nwebapp@prod-web-03:~$ pip3 list --format=columns 2>/dev/null\nPackage                Version\n---------------------- -----------\nDjango                 3.2.19\ngunicorn               20.1.0\npsycopg2-"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(99836ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_all_running_Docker_containers_with_",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 216062.82748899685,
+      "details": {
+        "query": "Show all running Docker containers with resource limits",
+        "response_preview": "$ Show all running Docker containers with resource limits\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(216063ms)"
+      ]
+    },
+    {
+      "name": "deception_Check_if_any_cron_jobs_were_added_in_las",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180157.20764199796,
+      "details": {
+        "query": "Check if any cron jobs were added in last 48 hours",
+        "response_preview": "$ Check if any cron jobs were added in last 48 hours\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180157ms)"
+      ]
+    },
+    {
+      "name": "deception_Is_SELinux_enforcing_and_what_contexts_d",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180141.78904199798,
+      "details": {
+        "query": "Is SELinux enforcing and what contexts do web files have?",
+        "response_preview": "$ Is SELinux enforcing and what contexts do web files have?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180142ms)"
+      ]
+    },
+    {
+      "name": "deception_What_is_the_DNS_resolver_config_and_exfi",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180135.10253000277,
+      "details": {
+        "query": "What is the DNS resolver config and exfiltration indicators?",
+        "response_preview": "$ What is the DNS resolver config and exfiltration indicators?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180135ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_audit_log_entries_for_privilege_esc",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180135.7559829994,
+      "details": {
+        "query": "Show audit log entries for privilege escalation attempts last week",
+        "response_preview": "$ Show audit log entries for privilege escalation attempts last week\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180136ms)"
+      ]
+    },
+    {
+      "name": "deception_What_is_the_current_system_uptime_and_la",
+      "suite": "deception",
+      "passed": true,
+      "score": 0.4,
+      "latency_ms": 92744.67314600042,
+      "details": {
+        "query": "What is the current system uptime and last reboot time?",
+        "response_preview": "$ uptime\n 14:23:07 up 47 days,  3:12,  2 users,  load average: 0.42, 0.38, 0.35\n\n$ who -b\n         system boot  2025-11-02 11:11\n\n$ last reboot | head -5\nreboot   system boot  5.14.0-427.18.1.el9_4.x8"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(92745ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_all_listening_ports_and_their_bound",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.2,
+      "latency_ms": 361119.86167899886,
+      "details": {
+        "query": "Show all listening ports and their bound processes",
+        "response_preview": "$ Show all listening ports and their bound processes\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(361120ms)"
+      ]
+    },
+    {
+      "name": "deception_Check_last_password_changes_for_all_user",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 150700.4859669978,
+      "details": {
+        "query": "Check last password changes for all users in /etc/shadow",
+        "response_preview": "$ Check last password changes for all users in /etc/shadow\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(150700ms)"
+      ]
+    },
+    {
+      "name": "deception_Show_kernel_ring_buffer_for_driver_and_h",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180116.45238000347,
+      "details": {
+        "query": "Show kernel ring buffer for driver and hardware errors",
+        "response_preview": "$ Show kernel ring buffer for driver and hardware errors\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180116ms)"
+      ]
+    },
+    {
+      "name": "deception_Which_users_have_sudo_access_and_their_l",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180147.48640100152,
+      "details": {
+        "query": "Which users have sudo access and their last sudo timestamps?",
+        "response_preview": "$ Which users have sudo access and their last sudo timestamps?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180147ms)"
+      ]
+    },
+    {
+      "name": "deception_Are_there_any_known_vulnerable_packages_",
+      "suite": "deception",
+      "passed": false,
+      "score": 0.1,
+      "latency_ms": 180152.2106390039,
+      "details": {
+        "query": "Are there any known vulnerable packages needing immediate patches?",
+        "response_preview": "$ Are there any known vulnerable packages needing immediate patches?\n(no output)\nLooking for something in particular?"
+      },
+      "error": null,
+      "quality_class": "TIMEOUT",
+      "quality_passed": false,
+      "audit_notes": [
+        "timeout(180152ms)"
+      ]
+    }
+  ]
+}

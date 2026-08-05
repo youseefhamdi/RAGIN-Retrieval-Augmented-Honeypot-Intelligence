@@ -1,0 +1,196 @@
+{
+  "tests": [
+    {
+      "name": "reject_band",
+      "algo": "Chrollo",
+      "claim": "Scores in (tau-delta, tau) route to HoldForReview, not Escalate",
+      "passed": true,
+      "observed": {
+        "score": 0.8,
+        "label": "reject",
+        "route": "HoldForReview",
+        "band": [
+          0.75,
+          0.85
+        ]
+      }
+    },
+    {
+      "name": "clear_escalation",
+      "algo": "Chrollo",
+      "claim": "s >= tau -> Escalate, label=malicious",
+      "passed": true,
+      "observed": {
+        "score": 0.91,
+        "label": "malicious",
+        "route": "Escalate"
+      }
+    },
+    {
+      "name": "knn_fallback",
+      "algo": "Chrollo",
+      "claim": "n < 5 -> MeanImpute fallback instead of KNN",
+      "passed": true,
+      "observed": {
+        "n_samples": 3,
+        "imputer": "MeanImpute",
+        "knn_k": 5
+      }
+    },
+    {
+      "name": "output_schema",
+      "algo": "Chrollo",
+      "claim": "Output carries y in {malicious, benign, reject} and feature X",
+      "passed": true,
+      "observed": {
+        "label_classes": [
+          "benign",
+          "malicious",
+          "reject"
+        ],
+        "returns_feature_vector": true
+      }
+    },
+    {
+      "name": "credibility_gate",
+      "algo": "Don",
+      "claim": "Low-credibility documents are dropped before ranking",
+      "passed": true,
+      "observed": {
+        "poison_kept": false,
+        "ranking": [
+          [
+            "d1",
+            0.835
+          ],
+          [
+            "d3",
+            0.685
+          ]
+        ]
+      }
+    },
+    {
+      "name": "similarity_floor",
+      "algo": "Don",
+      "claim": "Documents below the similarity floor are dropped",
+      "passed": true,
+      "observed": {
+        "kept_ids": [
+          "high"
+        ],
+        "floor": 0.2
+      }
+    },
+    {
+      "name": "dedup",
+      "algo": "Don",
+      "claim": "DedupByKey collapses overlapping dense/sparse hits",
+      "passed": true,
+      "observed": {
+        "union_size": 5,
+        "ids": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ]
+      }
+    },
+    {
+      "name": "topk_final",
+      "algo": "Don",
+      "claim": "Top-k honours k_final=10 with no poisoned docs",
+      "passed": true,
+      "observed": {
+        "top_k_size": 10,
+        "min_fused": 0.8028,
+        "max_fused": 0.9097,
+        "poison_in_top": false
+      }
+    },
+    {
+      "name": "static_fallback",
+      "algo": "Hisoka",
+      "claim": "SafeFallback returns per-skill canned response when LLM unavailable",
+      "passed": true,
+      "observed": {
+        "cases": [
+          [
+            "novice",
+            true
+          ],
+          [
+            "intermediate",
+            true
+          ],
+          [
+            "expert",
+            true
+          ],
+          [
+            "apt",
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "name": "expert_gate_speed",
+      "algo": "Hisoka",
+      "claim": "Expert path requires both precision AND speed thresholds",
+      "passed": true,
+      "observed": {
+        "precision": 0.9,
+        "speed": 0.1,
+        "expected": "Intermediate",
+        "actual": "Intermediate"
+      }
+    },
+    {
+      "name": "basic_tools_gate",
+      "algo": "Hisoka",
+      "claim": "Basic-tool presence forces Novice regardless of precision",
+      "passed": true,
+      "observed": {
+        "tools": [
+          "metasploit",
+          "nmap"
+        ],
+        "precision": 0.8,
+        "speed": 2.0,
+        "actual": "Novice"
+      }
+    },
+    {
+      "name": "retry_degrades",
+      "algo": "Hisoka",
+      "claim": "After 2 timeouts the response degrades to SafeFallback",
+      "passed": true,
+      "observed": {
+        "attempts": 2,
+        "last_result": "timeout",
+        "fell_back": true
+      }
+    }
+  ],
+  "summary": {
+    "Chrollo": {
+      "total": 4,
+      "passed": 4,
+      "failed": []
+    },
+    "Don": {
+      "total": 4,
+      "passed": 4,
+      "failed": []
+    },
+    "Hisoka": {
+      "total": 4,
+      "passed": 4,
+      "failed": []
+    }
+  },
+  "elapsed_ms": 0.59
+}

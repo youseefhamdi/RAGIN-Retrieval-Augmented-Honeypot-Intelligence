@@ -128,7 +128,7 @@ Attacker ──► [LLM Gateway :8080] ──► [Chrollo :8081] ──► [Don 
 
 | # | Task | Status | Evidence |
 |---|------|--------|----------|
-| 7.1 | OpenRouter integration | ✅ | Free model: `inclusionai/ling-3.0-flash:free` |
+| 7.1 | OpenRouter integration | ✅ | Free model: `moonshotai/kimi-k3-free` |
 | 7.2 | Provider fallback chain | ✅ | Circuit breaker in Gateway |
 | 7.3 | Cost management | ✅ | $500/month, $20/day caps |
 | 7.4 | Migration plan documented | ✅ | `RAGIN_CLOUD_LLM_MIGRATION_PLAN.md` |
@@ -400,7 +400,7 @@ RAGIN has **three decisive differentiators**:
 
 **What changed:** Old `build_consensus.py` had two bugs — (1) scenario-level means were computed from duplicated evaluator rows, artificially inflating agreement and flattening variance; (2) line 135 hardcoded `key_weaknesses = ["TTP extraction universally failing (score=1...)"]` regardless of actual scores. Both fixed: consensus now reads per-evaluator JSON, and weaknesses are generated dynamically from data.
 
-| B7 | Cowrie baseline comparison | ✅ | **Code done** (`ragin/benchmark/cowrie_adapter.py`: Cowrie JSON log parser → `EffectivenessMetrics`, 30 tests). **Live deployed on VPS** (`i-04727c9a5885c2666`, `docker run -d cowrie/cowrie:latest -p 2222:2222 -v ~/cowrie_logs:/cowrie/cowrie-git/var/log/cowrie`). **Driver** (`scripts/drive_cowrie.py`, 60 attacker scenarios × 8 command categories). **Comparison script** (`scripts/cowrie_comparison.py`): parses Cowrie JSON via adapter + reads `results/live_benchmark.json`, writes `results/cowrie_comparison.json`. **Result** (`results/cowrie_comparison.json`): 30 RAGIN sessions vs 2 Cowrie sessions from real VPS deployment; RAGIN composite **0.697** vs Cowrie **0.450** (Δ=+0.247); RAGIN surfaces **13 unique TTPs** vs Cowrie's **5** (RAGIN corpus 218 queries vs Cowrie 8 commands); 30 honeytokens deployed (RAGIN) vs 0 (Cowrie 3.0.x has no honeytoken engine) — primary RAGIN differentiator. **Honest finding**: Cowrie corpus is small (8 commands across 2 sessions); for higher statistical power, would need 200+ sessions and 2-3 day run. |
+| B7 | Cowrie baseline comparison | ✅ | **Code done** (`ragin/benchmark/cowrie_adapter.py`: Cowrie JSON log parser → `EffectivenessMetrics`, 30 tests). **Deployed via docker-compose** (port **2223** — 2222 now used by nginx deception listener). **Driver** (`scripts/drive_cowrie.py`, 60 attacker scenarios × 8 command categories, default port 2223). **Comparison script** (`scripts/cowrie_comparison.py`): parses Cowrie JSON via adapter + reads `results/live_benchmark.json`, writes `results/cowrie_comparison.json`. **Result** (`results/cowrie_comparison.json`): 30 RAGIN sessions vs 2 Cowrie sessions from real VPS deployment; RAGIN composite **0.697** vs Cowrie **0.450** (Δ=+0.247); RAGIN surfaces **13 unique TTPs** vs Cowrie's **5** (RAGIN corpus 218 queries vs Cowrie 8 commands); 30 honeytokens deployed (RAGIN) vs 0 (Cowrie 3.0.x has no honeytoken engine) — primary RAGIN differentiator. **Honest finding**: Cowrie corpus is small (8 commands across 2 sessions); for higher statistical power, would need 200+ sessions and 2-3 day run. |
 | B8 | Field deployment (3+ months of data) | ✅ | **LIVE**: AWS VPS `ec2-52-207-83-137.compute-1.amazonaws.com`. 7 services healthy via nginx proxy. LLM pipeline verified (gpt-4o-mini, 21 tokens, $0.000003). External access confirmed. EBS expanded to 40GB (26% used). Monitoring needs cron setup. |
 
 ### 8.2 Next: Phase 2 — Agent Loop & Streaming (per HARNESS_LOOP_PLAN.md)

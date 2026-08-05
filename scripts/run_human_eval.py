@@ -65,11 +65,11 @@ def main() -> None:
     from ragin.cycle.session import Session
 
     # --- Build real pipeline -----------------------------------------------
-    api_key = os.environ.get("OPENROUTER_API_KEY", "")
+    api_key = os.environ.get("TOKENROUTER_API_KEY", os.environ.get("OPENROUTER_API_KEY", ""))
     if not api_key:
-        print("WARNING: OPENROUTER_API_KEY not set; LLM stages will fail.")
+        print("WARNING: TOKENROUTER_API_KEY/OPENROUTER_API_KEY not set; LLM stages will fail.")
 
-    gateway = "https://openrouter.ai/api"
+    gateway = "https://api.tokenrouter.com/api"
 
     print("[1/3] Initializing pipeline...")
 

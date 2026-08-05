@@ -291,6 +291,8 @@ class Harness:
         timer=None,
     ):
         """Run STRIDE threat modeling. Returns the threat_model object or None."""
+        if threat_modeler is None:
+            return None
         try:
             if timer:
                 with timer.track("threat_modeling"):

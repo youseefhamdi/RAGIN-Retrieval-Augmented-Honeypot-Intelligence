@@ -188,7 +188,7 @@ class GatewayMessage(BaseModel):
 class GatewayRequest(BaseModel):
     """Request to the LLM Gateway /v1/chat/completions."""
 
-    model: str = "inclusionai/ling-3.0-flash:free"
+    model: str = "moonshotai/kimi-k3-free"
     messages: list[GatewayMessage]
     temperature: float = Field(0.3, ge=0.0, le=2.0)
     max_tokens: int = Field(2048, ge=1, le=8192)

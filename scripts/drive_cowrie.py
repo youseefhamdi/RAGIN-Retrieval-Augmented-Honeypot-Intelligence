@@ -1,8 +1,8 @@
 """Drive Cowrie SSH honeypot with realistic attacker traffic to populate logs.
 
-Connects to Cowrie (port 2222 by default), runs the B6.5 GT scenario commands
-plus variations, repeats across multiple sessions/usernames, and lets Cowrie
-emit its JSON log.
+Connects to Cowrie (port 2223 by default — mapped from host via docker-compose),
+runs the B6.5 GT scenario commands plus variations, repeats across multiple
+sessions/usernames, and lets Cowrie emit its JSON log.
 
 Output: writes to data/cowrie_logs/cowrie.json (Cowrie's native format).
 """
@@ -196,7 +196,7 @@ def drive_cowrie(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Drive Cowrie SSH honeypot with attacker traffic")
     parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, default=2222)
+    parser.add_argument("--port", type=int, default=2223)
     parser.add_argument("--sessions", type=int, default=60)
     parser.add_argument("--pause", type=float, default=0.4)
     parser.add_argument("--output-dir", default="data/cowrie_logs")

@@ -1,0 +1,6 @@
+FROM debian:bookworm-slim
+COPY --chmod=755 llm-gateway/target/release/llm-gateway /usr/local/bin/llm-gateway
+COPY llm-gateway/config.toml /app/config.toml
+EXPOSE 8080
+WORKDIR /app
+CMD ["llm-gateway"]

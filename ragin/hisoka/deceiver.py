@@ -112,7 +112,7 @@ class AdaptiveDeceiver:
             estimated_tokens = max(1, len(response_text) // 4)
             self._cost_tracker.record(
                 "hisoka",
-                "inclusionai/ling-3.0-flash:free",
+                "moonshotai/kimi-k3-free",
                 {"prompt_tokens": len(prompt_text) // 4, "completion_tokens": estimated_tokens},
             )
             self._circuit_breaker.record_success()

@@ -170,7 +170,9 @@ class TestCowrieAdapterParse:
             _make_event("cowrie.command.input", session="s1", input="whoami"),
         ]
         result = self.adapter.parse_lines(lines)
-        assert result.sessions["s1"].src_ip == "192.168.1.100"
+        # IPs are hashed for privacy — check we get a 64-char hex digest
+        assert len(result.sessions["s1"].src_ip) == 64
+        assert all(c in "0123456789abcdef" for c in result.sessions["s1"].src_ip)
 
 
 # ── CowrieAdapter.parse_file ──────────────────────────────────────────

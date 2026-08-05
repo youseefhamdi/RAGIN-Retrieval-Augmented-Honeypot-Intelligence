@@ -33,6 +33,12 @@ _SYSTEM_PROMPT_PREAMBLE = (
     "honeypot fabrications from real system data. NEVER output real-looking "
     "credentials, real-looking password hashes (e.g. $6$ / $y$ formats), or "
     "real-looking access keys WITHOUT this marker.\n\n"
+    "OUTPUT DISCIPLINE: Output ONLY the raw terminal/command output — nothing else. "
+    "Never reveal your internal reasoning or chain-of-thought. Never start a line "
+    "with '1.', '2.', 'Step', 'Let me', 'Analyze', 'I need to', 'First', or any "
+    "enumeration/planning phrasing. Never include thinking text, analysis steps, "
+    "summaries, or meta-commentary about what you are doing. Never wrap output in "
+    "code blocks, backticks, or markdown headers.\n\n"
 )
 
 # --- Persona Definitions ---
@@ -358,6 +364,36 @@ def _scrub_danger_signals(text: str) -> str:
     return scrubbed
 
 
+# Reasoning leak filter: strips chain-of-thought / step enumeration lines the
+# LLM occasionally emits instead of raw command output (leaked in ~1/6 runs).
+_REASONING_LINE_PATTERNS: tuple[_re.Pattern[str], ...] = (
+    _re.compile(
+        r"^\s*\d+[\.\)]\s*(?:analy[sz]e|let'?s|step|first|next|then|i need to|i will|based on)",
+        _re.IGNORECASE | _re.MULTILINE,
+    ),
+    _re.compile(
+        r"^\s*(?:let me (?:think|start|try|check|look)|i need to|my (?:analysis|reasoning|thinking)|analy[sz]ing|reasoning|thinking)",
+        _re.IGNORECASE | _re.MULTILINE,
+    ),
+    _re.compile(r"^\s*(?:step\s*\d+|phase\s*\d+)[:\.]", _re.IGNORECASE | _re.MULTILINE),
+    _re.compile(
+        r"^\s*(?:firstly|secondly|thirdly|finally|in conclusion|to summarize|as we can see|here'?s what)",
+        _re.IGNORECASE | _re.MULTILINE,
+    ),
+)
+
+
+def _strip_reasoning_lines(text: str) -> str:
+    """Remove leaked reasoning / chain-of-thought lines and blank-line debris."""
+    if not text:
+        return text
+    stripped = text
+    for p in _REASONING_LINE_PATTERNS:
+        stripped = p.sub("", stripped)
+    cleaned = _re.sub(r"\n\s*\n\s*\n+", "\n\n", stripped).strip()
+    return cleaned
+
+
 # --- Core Classes ---
 
 
@@ -464,7 +500,7 @@ class ResponseGenerator:
             self._gateway = GatewayClient(
                 gateway_url=gateway_url,
                 api_key=api_key,
-                timeout=60.0,
+                timeout=200.0,
             )
 
     def generate(
@@ -577,11 +613,15 @@ class ResponseGenerator:
                 model=model,
                 messages=messages,
                 temperature=0.7,
-                max_tokens=256,
+                max_tokens=2048,
             )
             content = content or ""
             if not content:
                 logger.warning("Empty content from gateway — model produced reasoning only; falling back to template")
+                return self._generate_template(skill_level, user_input, context)
+            content = _strip_reasoning_lines(content)
+            if not content:
+                logger.warning("Gateway output was pure reasoning text; falling back to template")
                 return self._generate_template(skill_level, user_input, context)
             if _contains_danger_signal(content):
                 logger.warning("Danger signal in LLM output, retrying with stricter prompt")
@@ -602,15 +642,19 @@ class ResponseGenerator:
                         model=model,
                         messages=strict,
                         temperature=0.7,
-                        max_tokens=256,
+                        max_tokens=2048,
                     )
                     content = content or ""
                 except Exception:
                     content = ""
+                if not content:
+                    logger.warning("LLM retry produced empty response, using safe template")
+                    return self._generate_template(skill_level, user_input, context)
+                content = _strip_reasoning_lines(content)
                 if not content or _contains_danger_signal(content):
                     logger.warning("LLM retry produced empty/dangerous response, using safe template")
                     return self._generate_template(skill_level, user_input, context)
-            return _scrub_danger_signals(content)
+            return _strip_reasoning_lines(_scrub_danger_signals(content))
         except Exception:
             logger.warning("Gateway call failed, falling back to template response")
             return self._generate_template(skill_level, user_input, context)

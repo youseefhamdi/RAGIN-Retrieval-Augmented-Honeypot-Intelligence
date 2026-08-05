@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 _DEFAULT_WORKING_DIR = os.environ.get("RAGIN_LIGHTRAG_WORKING_DIR", "data/lightrag_storage")
 _DEFAULT_GATEWAY_URL = os.environ.get("RAGIN_GATEWAY_URL", "http://localhost:8080")
-_DEFAULT_MODEL = os.environ.get("RAGIN_DON_MODEL", "inclusionai/ling-3.0-flash:free")
+_DEFAULT_MODEL = os.environ.get("RAGIN_DON_MODEL", "moonshotai/kimi-k3-free")
 
 
 class LightRAGAdapter:

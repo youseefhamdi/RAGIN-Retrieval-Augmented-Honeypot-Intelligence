@@ -1,16 +1,17 @@
-"""Shared GatewayClient for LLM Gateway /v1/chat/completions.
+"""Shared GatewayClient for LLM Gateway /v1/chat completions.
 
 Consolidates HTTP transport, auth, and response parsing so callers
 (Don's ThreatRAGEngine, Hisoka's ResponseGenerator) don't duplicate
-the raw httpx call.
+the raw HTTP call.
 """
 
 from __future__ import annotations
 
 import logging
+import time
 from typing import Any
 
-import httpx
+import requests
 
 logger = logging.getLogger(__name__)
 
@@ -23,17 +24,20 @@ class GatewayClient:
     breakers, PII redaction, cost tracking, fallback logic, etc.
     """
 
+    _MAX_RETRIES = 1
+    _BASE_BACKOFF = 1.0
+
     def __init__(
         self,
         gateway_url: str = "http://localhost:8080",
         api_key: str | None = None,
-        timeout: float = 30.0,
-        default_model: str = "moonshotai/kimi-k3-free",
+        timeout: float = 20.0,
+        default_model: str = "openai/gpt-4o-mini",
     ) -> None:
         self._gateway_url = gateway_url.rstrip("/")
         self._api_key = api_key
         self._default_model = default_model
-        self._http = httpx.Client(timeout=timeout)
+        self._timeout = timeout
 
     @property
     def gateway_url(self) -> str:
@@ -52,7 +56,7 @@ class GatewayClient:
     ) -> tuple[str, dict[str, int]]:
         """Send a chat-completion request and return (content, usage).
 
-        Raises httpx.HTTPError on transport / server errors so callers
+        Raises requests.RequestException on transport / server errors so callers
         can implement their own retry / fallback / circuit-breaker logic.
         """
         headers = {"Content-Type": "application/json"}
@@ -67,12 +71,9 @@ class GatewayClient:
             "stream": False,
         }
 
-        resp = self._http.post(
-            f"{self._gateway_url}/v1/chat/completions",
-            json=payload,
-            headers=headers,
-        )
-        resp.raise_for_status()
+        url = f"{self._gateway_url}/v1/chat/completions"
+
+        resp = self._post(url, payload, headers)
         data = resp.json()
         choices = data.get("choices", [])
         usage: dict[str, int] = data.get("usage", {})
@@ -92,12 +93,7 @@ class GatewayClient:
             try:
                 retry = dict(payload)
                 retry["max_tokens"] = max(256, max_tokens * 2)
-                resp2 = self._http.post(
-                    f"{self._gateway_url}/v1/chat/completions",
-                    json=retry,
-                    headers=headers,
-                )
-                resp2.raise_for_status()
+                resp2 = self._post(url, retry, headers)
                 data2 = resp2.json()
                 choices2 = data2.get("choices", [])
                 if choices2:
@@ -111,3 +107,40 @@ class GatewayClient:
             # Still null after retry — caller handles safe fallback
             return "", usage
         return "", usage
+
+    def _post(
+        self,
+        url: str,
+        payload: dict[str, Any],
+        headers: dict[str, str],
+    ) -> requests.Response:
+        """POST with retries for transient failures (timeouts, 5xx)."""
+        last_exc: Exception | None = None
+        for attempt in range(self._MAX_RETRIES + 1):
+            if attempt > 0:
+                backoff = self._BASE_BACKOFF * (2 ** (attempt - 1))
+                logger.warning(
+                    "Gateway POST attempt %d/%d, sleeping %.0fs", attempt + 1, self._MAX_RETRIES + 1, backoff
+                )
+                time.sleep(backoff)
+            try:
+                resp = requests.post(url, json=payload, headers=headers, timeout=self._timeout)
+                if resp.status_code in (408, 429, 502, 503, 504):
+                    last_exc = requests.HTTPError(
+                        f"{resp.status_code} {resp.reason}",
+                        response=resp,
+                    )
+                    continue
+                resp.raise_for_status()
+                return resp
+            except (requests.ConnectionError, requests.ReadTimeout) as exc:
+                last_exc = exc
+                continue
+            except requests.HTTPError as exc:
+                if resp is not None and resp.status_code in (408, 429, 502, 503, 504):
+                    last_exc = exc
+                    continue
+                raise
+        raise requests.ReadTimeout(
+            f"Gateway POST failed after {self._MAX_RETRIES + 1} attempts: {last_exc}"
+        ) from last_exc

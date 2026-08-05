@@ -255,7 +255,7 @@ def run_live_benchmark(
 
     def _run_suite(queries, suite_name, score_fn, result_list, extra_fn=None):
         turn_num = 0
-        with ThreadPoolExecutor(max_workers=5) as pool:
+        with ThreadPoolExecutor(max_workers=4) as pool:
             futures = {pool.submit(_process_one, qa, suite_name, score_fn, extra_fn): qa for qa in queries}
             for future in as_completed(futures):
                 res, outcome, query = future.result()

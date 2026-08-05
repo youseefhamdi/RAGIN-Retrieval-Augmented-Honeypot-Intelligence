@@ -3,7 +3,19 @@
 .env.*
 !.env.example
 
-# Python
+# Agent session state / Claude - NEVER commit
+.claude/
+.claw/
+.omc/
+
+# Elsevier journal submission dir - excluded per user
+ESWA-S-26-45224/
+
+# Secrets - NEVER commit
+RAGIN_KEY.pem
+*.pem
+
+# Python caches / generated
 __pycache__/
 *.py[cod]
 *$py.class
@@ -12,7 +24,6 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .coverage
-htmlcov/
 
 # Virtual envs
 venv/
@@ -32,26 +43,8 @@ Thumbs.db
 dist/
 build/
 
-# Logs
-logs/
-*.log
-
-# Rust build artifacts
+# Rust build artifacts (5.5G target dir)
 target/
 **/target/
 
-# Agent session state
-.omc/
-
-# Secrets - NEVER commit
-RAGIN_KEY.pem
-*.pem
-
-# Data and models (large files)
-data/
-models/
-
-# Artifacts
-gateway.tar
-attacker_log.jsonl
-attacker_report.md
+# RAGIN_KEY.pem was already covered above

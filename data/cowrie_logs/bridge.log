@@ -1,0 +1,149 @@
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+
+[20:42:07] 156.196.221.227 (c9f0e3babaa1...) SSH=? dur=0ms  (probe — no login/commands)
+
+[20:42:07] 156.196.221.227 (c9f0e3babaa1...) SSH=root dur=0ms  (probe — no login/commands)
+
+[20:42:07] 156.196.221.227 (c9f0e3babaa1...) SSH=? dur=0ms  (probe — no login/commands)
+
+[20:42:49] 156.196.221.227 (c9f0e3babaa1...) SSH=SSH-2.0-paramiko_4.0.0 dur=4390ms
+  LOGIN OK: admin:
+  Commands (6):
+    > whoami
+    > id
+    > uname -a
+    > cat /etc/passwd
+    > ls -la /tmp
+    > ps aux
+  -> Classify... skill=apt conf=1.0 -> Analyze... severity=medium
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+
+[20:53:25] 156.196.221.227 (c9f0e3babaa1...) SSH=? dur=0ms  (probe — no login/commands)
+
+[20:53:25] 156.196.221.227 (c9f0e3babaa1...) SSH=root dur=0ms  (probe — no login/commands)
+
+[20:53:25] 156.196.221.227 (c9f0e3babaa1...) SSH=? dur=0ms  (probe — no login/commands)
+
+[20:53:25] 156.196.221.227 (c9f0e3babaa1...) SSH=SSH-2.0-paramiko_4.0.0 dur=4390ms
+  LOGIN OK: admin:
+  Commands (6):
+    > whoami
+    > id
+    > uname -a
+    > cat /etc/passwd
+    > ls -la /tmp
+    > ps aux
+  -> Classify... skill=apt conf=1.0 -> Analyze... severity=medium
+
+  [*] Stale session 0e92aa4566e2 (idle 300s) — processing partial
+
+[20:58:26] 156.196.221.227 (c9f0e3babaa1...) SSH=SSH-2.0-paramiko_4.0.0 dur=Nonems
+  LOGIN OK: test:password
+  Commands (2):
+    > cat /etc/shadow
+    > find / -name '*.conf' 2>/dev/null
+  -> Classify... skill=apt conf=1.0 -> Analyze... severity=medium
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+
+[21:05:05] 156.196.221.227 (c9f0e3babaa1...) SSH=? dur=0ms  (probe — no login/commands)
+
+[21:05:05] 156.196.221.227 (c9f0e3babaa1...) SSH=root dur=0ms  (probe — no login/commands)
+
+[21:05:05] 156.196.221.227 (c9f0e3babaa1...) SSH=? dur=0ms  (probe — no login/commands)
+
+[21:05:05] 156.196.221.227 (c9f0e3babaa1...) SSH=SSH-2.0-paramiko_4.0.0 dur=4390ms
+  LOGIN OK: admin:
+  Commands (6):
+    > whoami
+    > id
+    > uname -a
+    > cat /etc/passwd
+    > ls -la /tmp
+    > ps aux
+  -> Classify... skill=apt conf=1.0 -> Analyze... severity=medium
+
+  [*] Stale session 0e92aa4566e2 (idle 300s) — processing partial
+
+[21:10:05] 156.196.221.227 (c9f0e3babaa1...) SSH=SSH-2.0-paramiko_4.0.0 dur=Nonems
+  LOGIN OK: test:password
+  Commands (2):
+    > cat /etc/shadow
+    > find / -name '*.conf' 2>/dev/null
+  -> Classify... skill=apt conf=1.0 -> Analyze... severity=medium
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+
+[21:12:15] 156.196.221.227 (c9f0e3babaa1...) SSH=? dur=0ms  (probe — no login/commands)
+
+[21:12:15] 156.196.221.227 (c9f0e3babaa1...) SSH=root dur=0ms  (probe — no login/commands)
+
+[21:12:15] 156.196.221.227 (c9f0e3babaa1...) SSH=? dur=0ms  (probe — no login/commands)
+
+[21:12:15] 156.196.221.227 (c9f0e3babaa1...) SSH=SSH-2.0-paramiko_4.0.0 dur=4390ms
+  LOGIN OK: admin:
+  Commands (6):
+    > whoami
+    > id
+    > uname -a
+    > cat /etc/passwd
+    > ls -la /tmp
+    > ps aux
+  -> Classify... skill=apt conf=1.0 -> Analyze... severity=medium tactics=['Credential Access', 'Discovery'] actors=['Hafnium', 'Fin7']
+
+  [*] Stale session 0e92aa4566e2 (idle 300s) — processing partial
+
+[21:17:15] 156.196.221.227 (c9f0e3babaa1...) SSH=SSH-2.0-paramiko_4.0.0 dur=Nonems
+  LOGIN OK: test:password
+  Commands (2):
+    > cat /etc/shadow
+    > find / -name '*.conf' 2>/dev/null
+  -> Classify... skill=apt conf=1.0 -> Analyze... severity=medium tactics=['Credential Access', 'Discovery'] actors=['Hafnium', 'Fin7']
+
+  [*] Stale session 88e3114dbf50 (idle 300s) — processing partial
+
+  [*] Stale session f8f731e23ee6 (idle 300s) — processing partial
+
+  [*] Stale session 1df1d4f44737 (idle 300s) — processing partial
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+
+  [*] Stale session 3e9fd6733902 (idle 300s) — processing partial
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+[*] Log rotated/shrunk (15838B < offset 64307B) — resetting offset
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+[*] Cowrie Pipeline Bridge
+[*] Watching: /home/ubuntu/cowrie_logs/cowrie.json
+[*] Pipeline: http://localhost
+[*] Results:  /home/ubuntu/cowrie_logs/results/
+[*] Log rotated/shrunk (0B < offset 15838B) — resetting offset

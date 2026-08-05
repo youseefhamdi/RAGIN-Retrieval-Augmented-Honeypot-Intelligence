@@ -9,7 +9,7 @@ import re
 import time
 from typing import TYPE_CHECKING, Any
 
-import httpx
+import requests
 
 from ragin.gateway.client import GatewayClient
 from ragin.utils import CircuitBreaker, CostTracker, PromptTokenLimiter, _redact_pii
@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 _DEFAULT_GATEWAY_URL = os.environ.get("RAGIN_GATEWAY_URL", "http://localhost:8080")
-_DEFAULT_MODEL = os.environ.get("RAGIN_DON_MODEL", "inclusionai/ling-3.0-flash:free")
+_DEFAULT_MODEL = os.environ.get("RAGIN_DON_MODEL", "moonshotai/kimi-k3-free")
 
 
 class ThreatRAGEngine:
@@ -67,7 +67,7 @@ class ThreatRAGEngine:
         self._gateway = GatewayClient(
             gateway_url=self._gateway_url,
             api_key=self._api_key,
-            timeout=30.0,
+            timeout=200.0,
             default_model=self._model,
         )
 
@@ -281,7 +281,7 @@ class ThreatRAGEngine:
                     logger.info("Don LLM cost: $%.6f", cost)
 
             return content
-        except httpx.HTTPError as exc:
+        except requests.RequestException as exc:
             self._circuit_breaker.record_failure()
             logger.error("Gateway call failed: %s", exc)
             return f"[Report generation failed: {exc}]"

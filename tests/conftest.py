@@ -289,7 +289,7 @@ def sample_gateway_config() -> dict[str, Any]:
             "openrouter": {
                 "type": "openrouter",
                 "api_key": "test-key",
-                "base_url": "https://openrouter.ai/api/v1",
+                "base_url": "https://api.tokenrouter.com/v1",
                 "enabled": True,
             }
         },

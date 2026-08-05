@@ -10,7 +10,7 @@ use crate::{
     config::{GatewayConfig, ModelConfig, RoutingStrategy, SkillLevel},
     error::{GatewayError, GatewayResult},
     models::{
-        ChatRequest, ChatResponse, ChatChunk, Message, CostInfo, ModelCatalog, CostEstimate,
+        ChatRequest, ChatResponse, ChatChunk, Message, MessageContent, CostInfo, ModelCatalog, CostEstimate,
     },
     clients::{LlmClient, ClientFactory},
     validation::ResponseValidator,
@@ -87,6 +87,19 @@ impl GatewayBuilder {
 }
 
 impl Gateway {
+    /// Strip leaked chain-of-thought / reasoning lines and the `reasoning`
+    /// field out of a response so reasoning never reaches callers or the cache.
+    fn sanitize_response(&self, mut response: ChatResponse) -> ChatResponse {
+        for choice in &mut response.choices {
+            choice.message.reasoning = None;
+            if let Some(text) = choice.message.content.as_text() {
+                let cleaned = strip_reasoning_lines(text);
+                choice.message.content = MessageContent::Text(cleaned);
+            }
+        }
+        response
+    }
+
     #[instrument(skip(self, request), fields(model = %request.model, request_id))]
     pub async fn generate(&self, request: ChatRequest) -> GatewayResult<ChatResponse> {
         let request_id = Uuid::new_v4().to_string();
@@ -110,7 +123,7 @@ impl Gateway {
         let client = self.clients.get(&provider_name)
             .ok_or_else(|| GatewayError::NoAvailableProviders { model: model_name.clone() })?;
 
-        let cb = self.circuit_breakers.entry(provider_name.clone()).or_insert_with(|| CircuitBreaker::new(self.config.circuit_breaker.clone()));
+        let cb = self.circuit_breakers.entry(provider_name.clone()).or_insert_with(|| CircuitBreaker::new(self.config.circuit_breaker.clone())).clone();
         if cb.is_open() {
             return Err(GatewayError::CircuitBreakerOpen { provider: provider_name });
         }
@@ -119,7 +132,7 @@ impl Gateway {
         if self.config.caching.enabled && self.config.caching.cache_responses {
             if let Some(cached) = self.response_cache.lock().get(&cache_key) {
                 self.metrics.record_cache_hit();
-                return Ok(cached.clone());
+                return Ok(self.sanitize_response(cached.clone()));
             }
         }
 
@@ -138,6 +151,7 @@ impl Gateway {
                     cb.record_success();
                     self.rate_limiter.record_request(&provider_name).await;
 
+                    let response = self.sanitize_response(response);
                     let cost = self.calculate_cost(&response, model_config);
                     self.cost_tracker.record_cost(&model_name, &provider_name, cost.clone()).await;
 
@@ -149,7 +163,9 @@ impl Gateway {
                     return Ok(response);
                 }
                 Ok(Err(e)) => {
-                    cb.record_failure();
+                    if !matches!(e, GatewayError::RateLimit { .. }) {
+                        cb.record_failure();
+                    }
                     last_error = Some(e);
                     if !last_error.as_ref().unwrap().is_retryable() {
                         break;
@@ -188,7 +204,7 @@ impl Gateway {
             .ok_or_else(|| GatewayError::NoAvailableProviders { model: model_name.clone() })?;
 
         {
-            let cb = self.circuit_breakers.entry(provider_name.clone()).or_insert_with(|| CircuitBreaker::new(self.config.circuit_breaker.clone()));
+        let cb = self.circuit_breakers.entry(provider_name.clone()).or_insert_with(|| CircuitBreaker::new(self.config.circuit_breaker.clone())).clone();
             if cb.is_open() {
                 return Err(GatewayError::CircuitBreakerOpen { provider: provider_name });
             }
@@ -583,6 +599,7 @@ impl RateLimiter {
     }
 }
 
+#[derive(Clone)]
 struct CircuitBreaker {
     config: crate::config::CircuitBreakerConfig,
     failures: Arc<Mutex<u32>>,
@@ -662,4 +679,63 @@ impl CircuitBreaker {
             _ => {}
         }
     }
+}
+/// Remove leaked chain-of-thought / reasoning lines from text content.
+/// The upstream model occasionally emits step-by-step reasoning instead of
+/// raw command output; this mirrors the line-level filter in hisoka.
+fn strip_reasoning_lines(text: &str) -> String {
+    if text.trim().is_empty() {
+        return text.to_string();
+    }
+    let mut out = String::with_capacity(text.len());
+    for line in text.lines() {
+        let t = line.trim_start();
+        let is_reasoning = t.len() > 0
+            && (t.starts_with("1. ")
+                || t.starts_with("2. ")
+                || t.starts_with("3. ")
+                || t.starts_with("Step ")
+                || t.starts_with("Step\t")
+                || t.to_lowercase().starts_with("let me")
+                || t.to_lowercase().starts_with("let's")
+                || t.to_lowercase().starts_with("first,")
+                || t.to_lowercase().starts_with("firstly")
+                || t.to_lowercase().starts_with("secondly")
+                || t.to_lowercase().starts_with("thirdly")
+                || t.to_lowercase().starts_with("i need to")
+                || t.to_lowercase().starts_with("i will")
+                || t.to_lowercase().starts_with("analyzing")
+                || t.to_lowercase().starts_with("analyze the")
+                || t.to_lowercase().starts_with("here's what")
+                || t.to_lowercase().starts_with("as an ai")
+                || t.to_lowercase().starts_with("as a language model")
+                || t.to_lowercase().starts_with("i am not able")
+                || t.to_lowercase().starts_with("i cannot")
+                || t.to_lowercase().starts_with("i'm sorry"));
+        if is_reasoning {
+            continue;
+        }
+        out.push_str(line);
+        out.push('\n');
+    }
+    let collapsed = out.lines().collect::<Vec<_>>();
+    if collapsed.is_empty() {
+        return String::new();
+    }
+    // collapse 3+ blank lines down to 2 and strip leading/trailing whitespace
+    let mut prev_blank = false;
+    let mut result = String::with_capacity(out.len());
+    for line in collapsed {
+        if line.trim().is_empty() {
+            if prev_blank {
+                continue;
+            }
+            prev_blank = true;
+        } else {
+            prev_blank = false;
+        }
+        result.push_str(line);
+        result.push('\n');
+    }
+    result.trim().to_string()
 }

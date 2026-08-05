@@ -7,12 +7,12 @@ request_timeout_secs = 120
 keep_alive_secs = 30
 
 [providers.openrouter]
-name = "openrouter"
+name = "tokenrouter"
 provider_type = "openrouter"
-api_key = "sk-or-v1-REPLACED_OPENROUTER_KEY"
-base_url = "https://openrouter.ai/api/v1"
-api_base_url = "https://openrouter.ai/api/v1"
-models = ["inclusionai/ling-3.0-flash:free", "openai/gpt-4o-mini"]
+api_key = "sk-REPLACED_TOKENROUTER_KEY"
+base_url = "https://api.tokenrouter.com/v1"
+api_base_url = "https://api.tokenrouter.com/v1"
+models = ["openai/gpt-4o-mini", "moonshotai/kimi-k3-free"]
 priority = 1
 enabled = true
 weight = 1
@@ -21,7 +21,7 @@ max_retries = 3
 headers = {}
 
 [models]
-[models."inclusionai/ling-3.0-flash:free"]
+[models."moonshotai/kimi-k3-free"]
 provider = "openrouter"
 context_window = 128000
 max_output_tokens = 16384
@@ -30,9 +30,10 @@ output_cost_per_1k = 0.0
 enabled = true
 max_retries = 3
 timeout_secs = 60
-skill_levels = ["novice", "intermediate"]
+skill_levels = ["novice", "intermediate", "expert", "apt"]
+fallback_only = false
 
-[models."inclusionai/ling-3.0-flash:free".capabilities]
+[models."moonshotai/kimi-k3-free".capabilities]
 chat = true
 completion = false
 function_calling = true
@@ -71,10 +72,10 @@ latency_threshold_ms = 5000
 cost_threshold_usd = 0.01
 
 [routing.skill_routing]
-novice = "inclusionai/ling-3.0-flash:free"
-intermediate = "inclusionai/ling-3.0-flash:free"
-expert = "openai/gpt-4o-mini"
-apt = "openai/gpt-4o-mini"
+novice = "moonshotai/kimi-k3-free"
+intermediate = "moonshotai/kimi-k3-free"
+expert = "moonshotai/kimi-k3-free"
+apt = "moonshotai/kimi-k3-free"
 
 [rate_limiting]
 global_rpm = 100

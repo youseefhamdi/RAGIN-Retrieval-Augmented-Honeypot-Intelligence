@@ -73,7 +73,12 @@ async fn chat_completions(
     State(gateway): State<Arc<llm_gateway::Gateway>>,
     Json(request): Json<ChatRequest>,
 ) -> Result<Json<ChatResponse>, (StatusCode, String)> {
-    gateway.generate(request).await
+    let model = request.model.clone();
+    let start = std::time::Instant::now();
+    info!(request_id = %uuid::Uuid::new_v4(), model = %model, "POST /v1/chat/completions");
+    let res = gateway.generate(request).await;
+    info!(elapsed_ms = start.elapsed().as_millis(), model = %model, success = res.is_ok(), "POST /v1/chat/completions done");
+    res
         .map(Json)
         .map_err(|e| (e.status_code(), e.to_string()))
 }

@@ -6,6 +6,7 @@ scanner detection, and LRU response cache.
 """
 
 import argparse
+import asyncio
 import logging
 import os
 import re
@@ -113,6 +114,62 @@ class _ResponseCache:
 
 _response_cache = _ResponseCache()
 
+# Dedicated rate limiter for the lure handler (survives direct-port access
+# bypassing nginx entirely). Allows ~12 req/min per IP.
+_lure_rate_limiter: RateLimiter | None = None
+
+
+async def _handle_deception(attacker_input: str, session_context: dict, use_cache: bool = False) -> dict:
+    """Core deception handler — shared guard logic for deceive + lure + openai.
+
+    Applies LRU cache, RF scanner detection, LLM generation,
+    audit logging, and metrics. Cache hits return silently
+    (no duplicate audit/metrics), matching existing behaviour.
+
+    use_cache=False by default — response caching is disabled so
+    identical attacker input from different source IPs does not yield
+    byte-identical (cache-fingerprintable) responses. Pass True to opt
+    into the LRU cache for specific endpoints.
+    """
+    persona = session_context.get("skill_level", "novice")
+
+    cached = None
+    if use_cache:
+        cached = _response_cache.get(attacker_input, persona)
+        if cached is not None:
+            return cached
+
+    if _is_scanner(attacker_input):
+        logger.info("scanner input blocked: %r", attacker_input[:80])
+        result = await asyncio.to_thread(_component._static_fallback, persona, attacker_input)
+    else:
+        result = await asyncio.to_thread(_component.generate_response, attacker_input, session_context)
+
+    response_dict = {
+        "session_id": result.session_id,
+        "response_text": result.response_text,
+        "persona_used": result.persona_used,
+        "artifacts_injected": result.artifacts_injected,
+        "engagement_score": result.engagement_score,
+    }
+    _response_cache.put(attacker_input, persona, response_dict)
+
+    if _audit:
+        _audit.log_deception(
+            result.session_id,
+            {
+                "persona_used": result.persona_used,
+                "engagement_score": result.engagement_score,
+                "artifacts_injected": result.artifacts_injected,
+                "attacker_input_preview": attacker_input[:100],
+            },
+        )
+
+    if _metrics_collector:
+        _metrics_collector.record_deception(result.session_id, 0.0, result.engagement_score)
+
+    return response_dict
+
 
 def _is_scanner(attacker_input: str) -> bool:
     return any(pattern.search(attacker_input) for pattern in _SCANNER_PATTERNS)
@@ -170,12 +227,15 @@ _alert_manager: AlertManager | None = None
 _prometheus_metrics: dict[str, Any] | None = None  # type: ignore[name-defined]
 
 
+PUBLIC_PREFIXES = ("/health", "/metrics", "/ready", "/api/lure", "/api/deceive", "/v1/chat/completions")
+
+
 # --- Middleware ---
 
 
 @web.middleware
 async def auth_middleware(request, handler):
-    if request.path in ("/health", "/metrics", "/ready"):
+    if any(request.path.startswith(p) for p in PUBLIC_PREFIXES):
         return await handler(request)
     key = request.headers.get("X-API-Key", "")
     if API_KEY and key != API_KEY:
@@ -277,7 +337,7 @@ async def classify(request):
             duration_seconds=data.get("duration_seconds", 0),
             features=data.get("features", {}),
         )
-        result = _component.classify(session_log)
+        result = await asyncio.to_thread(_component.classify, session_log)
 
         # Audit log
         if _audit:
@@ -331,7 +391,7 @@ async def analyze(request):
             features=data.get("features", {}),
         )
         session_log = data.get("session_log", [])
-        result = _component.analyze(req, session_log)
+        result = await asyncio.to_thread(_component.analyze, req, session_log)
 
         # Audit log
         if _audit:
@@ -416,52 +476,131 @@ async def deceive(request):
             "skill_level": data.get("skill_level", "novice"),
             "context": data.get("context", ""),
         }
-        persona = session_context["skill_level"]
-
-        # Guard 1: LRU response cache
-        cached = _response_cache.get(attacker_input, persona)
-        if cached is not None:
-            logger.debug("cache hit for %r (persona=%s)", attacker_input[:60], persona)
-            return web.json_response(cached)
-
-        # Guard 2: RF-first scanner detection
-        if _is_scanner(attacker_input):
-            logger.info("scanner input blocked: %r", attacker_input[:80])
-            result = _component._static_fallback(persona, attacker_input)
-        else:
-            result = _component.generate_response(attacker_input, session_context)
-
-        response_dict = {
-            "session_id": result.session_id,
-            "response_text": result.response_text,
-            "persona_used": result.persona_used,
-            "artifacts_injected": result.artifacts_injected,
-            "engagement_score": result.engagement_score,
-        }
-        _response_cache.put(attacker_input, persona, response_dict)
-
-        # Audit log
-        if _audit:
-            _audit.log_deception(
-                result.session_id,
-                {
-                    "persona_used": result.persona_used,
-                    "engagement_score": result.engagement_score,
-                    "artifacts_injected": result.artifacts_injected,
-                    "attacker_input_preview": attacker_input[:100],
-                },
-            )
-
-        # In-memory metrics
-        if _metrics_collector:
-            _metrics_collector.record_deception(result.session_id, 0.0, result.engagement_score)
-
+        response_dict = await _handle_deception(attacker_input, session_context)
         return web.json_response(response_dict)
     except ValueError as e:
         return web.json_response({"error": str(e)}, status=400)
     except Exception as e:
         logger.exception("deceive error")
         return web.json_response({"error": str(e)}, status=500)
+
+
+def _make_lure_response(response_dict: dict) -> web.Response:
+    return web.Response(
+        text=response_dict["response_text"],
+        content_type="text/html",
+        charset="utf-8",
+    )
+
+
+def _parse_openai_messages(messages: list[dict]) -> tuple[str, str, dict]:
+    """From an OpenAI chat.completions payload extract:
+    (system_prompt, last_user_command, session_hints).
+
+    cowrie's llm/llm.py sends a system message first (containing
+    hostname/username/client_ip) followed by alternating User:/System:
+    turns. session_hints carry identity-derived hints we can use to
+    keep a stable RAGIN session_id per attacker.
+    """
+    system_prompt = ""
+    user_cmds = []
+    for msg in messages:
+        role = msg.get("role", "")
+        content = (msg.get("content") or "").strip()
+        if not content:
+            continue
+        if role == "system" and not system_prompt:
+            system_prompt = content
+        elif role == "user":
+            user_cmds.append(content)
+    last_user = user_cmds[-1] if user_cmds else "ls"
+    hints = {}
+    if system_prompt:
+        m_username = re.search(r"username is '([^']+)'", system_prompt)
+        m_ip = re.search(r"client_ip.?[:=] ?([0-9a-fA-F:.]+)", system_prompt)
+        if m_username:
+            hints["username"] = m_username.group(1)
+        if m_ip:
+            hints["client_ip"] = m_ip.group(1)
+    return system_prompt, last_user, hints
+
+
+async def openai_chat_completions(request):
+    """OpenAI-compatible /v1/chat/completions adapter for cowrie's LLM
+    backend (cowrie shell/config: backend = llm, [llm] host/path).
+
+    Translates cowrie's message list into a RAGIN deception call so a
+    live attacker over SSH receives Hisoka-pooled, persona-driven
+    responses instead of the hardcoded shell emulator.
+    """
+    try:
+        data = await request.json()
+    except Exception:
+        return web.json_response({"error": "Invalid JSON body"}, status=400)
+    try:
+        messages = data.get("messages", [])
+        system_prompt, attacker_input, hints = _parse_openai_messages(messages)
+
+        username = hints.get("username", "unknown")
+        client_ip = hints.get("client_ip", "unknown")
+        session_id = f"cowrie-{username}-{client_ip}"
+        session_context = {
+            "session_id": session_id,
+            "skill_level": "novice",
+            "context": system_prompt[:400],
+            "source": "cowrie-llm-backend",
+        }
+
+        # Route through the same guard logic (scanner/fallback/audit/metrics)
+        # but bypass the LRU cache so in-session commands stay distinct.
+        response_dict = await _handle_deception(attacker_input, session_context, use_cache=False)
+
+        # OpenAI-compatible response shape expected by cowrie's LLMClient.
+        payload = {
+            "id": f"chatcmpl-{session_id}",
+            "object": "chat.completion",
+            "created": int(time.time()),
+            "model": data.get("model", "hisoka"),
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {"role": "assistant", "content": response_dict["response_text"]},
+                    "finish_reason": "stop",
+                }
+            ],
+            "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
+        }
+        return web.json_response(payload)
+    except Exception as e:
+        logger.exception("openai_chat_completions error")
+        return web.json_response({"error": str(e)}, status=500)
+
+
+async def lure(request):
+    path = request.headers.get("X-Lure-Path", request.query.get("path", "/"))
+    clean_path = path.split("?")[0]
+    attacker_input = f"HTTP {request.method} {clean_path}"
+    session_context = {
+        "session_id": f"lure-{clean_path}",
+        "skill_level": "novice",
+        "context": f"lure path: {clean_path}",
+    }
+
+    # Per-IP rate limiting (app-level — survives direct port access)
+    client_ip = request.remote or "_unknown"
+    if _lure_rate_limiter and not _lure_rate_limiter.allow(client_ip):
+        return web.json_response(
+            {"error": "lure rate limit exceeded"},
+            status=429,
+            headers={"Retry-After": "5"},
+        )
+
+    try:
+        response_dict = await _handle_deception(attacker_input, session_context)
+        return _make_lure_response(response_dict)
+    except Exception:
+        logger.exception("lure error for %s", clean_path)
+        return web.Response(text="", status=500)
 
 
 async def metrics(request):
@@ -475,12 +614,13 @@ async def metrics(request):
 
 
 def create_app(component: str) -> web.Application:
-    global _audit, _metrics_collector, _rate_limiter, _alert_manager, _prometheus_metrics
+    global _audit, _metrics_collector, _rate_limiter, _lure_rate_limiter, _alert_manager, _prometheus_metrics
 
     # Initialize singletons
     _audit = AuditLogger()
     _metrics_collector = MetricsCollector()
     _rate_limiter = RateLimiter(max_tokens=60, refill_per_s=1.0)
+    _lure_rate_limiter = RateLimiter(max_tokens=12, refill_per_s=0.2)
     _alert_manager = AlertManager()
 
     app = web.Application(middlewares=[auth_middleware, rate_limit_middleware, timing_middleware])
@@ -494,6 +634,9 @@ def create_app(component: str) -> web.Application:
     }
     path, handler = route_map[component]
     app.router.add_post(path, handler)
+    if component == "hisoka":
+        app.router.add_route("*", "/api/lure", lure)
+        app.router.add_post("/v1/chat/completions", openai_chat_completions)
 
     # Prometheus metrics (try import)
     try:
