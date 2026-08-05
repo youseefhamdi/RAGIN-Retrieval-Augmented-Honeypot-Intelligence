@@ -208,7 +208,12 @@ class DonAdapter:
                     {"id": t.tactic_id, "name": t.tactic_name, "confidence": t.confidence} for t in result.tactics
                 ],
                 "candidate_actors": [
-                    {"name": a.name, "confidence": a.confidence, "known_ttps": a.known_ttps, "basis": "tactic-heuristic"}
+                    {
+                        "name": a.name,
+                        "confidence": a.confidence,
+                        "known_ttps": a.known_ttps,
+                        "basis": "tactic-heuristic",
+                    }
                     for a in result.threat_actors
                 ],
                 "evasion_techniques": evidence["evasion_techniques"],
