@@ -31,7 +31,7 @@
 
 ## Overview
 
-RAGIN is a research-grade **adaptive deception honeypot** that combines **Retrieval-Augmented Generation (RAG)** with **multi-persona generative deception** to engage attackers interactively instead of simply logging them.
+RAGIN is a research-grade **adaptive deception honeypot** that combines ** RAG - Retrieval-Augmented Generation ** with **multi-persona generative deception** to engage attackers interactively instead of simply logging them.
 
 Unlike static honeypots (e.g., Cowrie) that reply with canned banner responses, RAGIN:
 
